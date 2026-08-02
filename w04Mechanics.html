@@ -1,0 +1,454 @@
+<html>
+	<!--Tab title-->
+		<title>Mechanics</title>
+		
+	<!--Imported libraries-->
+		<head>
+			<link rel="shortcut icon" href="http://apsys-inc.com/izasoft/Images/WebSprites/i65TabIcon.ico">
+			<link rel="stylesheet" href="Stylesheets/s01Main.css"><!--Imported main stylesheet-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
+			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
+			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
+		</head>
+		
+	<!--CSS-->
+		<style>
+		</style>
+	
+	<!--Javascript-->
+		<script src='Javascript/j01JQuery311.js'></script>
+	    <script src="Javascript/j03UpperBanner.js"></script>
+		<script src="Javascript/j04UpperButtons.js"></script>
+		<script src="Javascript/j05LowerBanner.js"></script>
+		<script src="Javascript/j06Footnote.js"></script>
+		<!--<script src="Javascript/j07TableToggle.js"></script>-->
+		<script>
+			$('document').ready(function(){
+				//Table scripts
+					//Table#1
+						//Header
+							insertTableHeader(".tableContainer1", "table1", "Relevant Software Experience", "Name", "Application", "Start Year", "Proficiency");
+						//Rows
+							insertTableItem(".table1", "SolidWorks", "Mechanical Design", "2006", "Expert"); //1
+							insertTableItem(".table1", "SolidWorks Simulation", "Finite Element Analysis", "2009", "Expert"); //2
+							insertTableItem(".table1", "SolidWorks FloWorks", "Computational Fluid Dynamics", "2008", "Intermediate"); //3
+							insertTableItem(".table1", "AutoCAD Mechanical", "Floor plans, Pneumatics / Hydraulics Schematics", "2002", "Intermediate"); //4
+							insertTableItem(".table1", "Inventor", "Mechanical Design", "2003", "Intermediate"); //5
+							insertTableItem(".table1", "Pneudraw", "Pneumatic Schematics", "2012", "Intermediate"); //6
+							insertTableItem(".table1", "StarCCM+", "Computational Fluid Dynamics", "2016", "Beginner"); //7
+							insertLowerLegend(".table1");
+
+				//Standard code to build the tables
+					//Variables
+						var rowAlt = false;	
+						var rowAltStyle = "";
+					
+					//Functions
+						//get year duration
+							function getYearDuration(start){
+								let now = new Date();
+								let duration = now.getFullYear() - parseInt(start);
+								return `${start} (${duration == 0 ? '< 1 yr' : duration + ' yrs'})`;
+							}
+						//Add table header
+							function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry)
+								{
+									//Add the table to the DOM
+										$(entry).append(
+															'<div class = "addShadow">' +
+																'<table class = "' + tableName + '" id = "addTableBlue">'+
+																	'<tbody>'+
+																		//Header
+																			'<tr class = "tableHeader">'+
+																				'<td colspan="5">' + tableTitleEntry + '</td>'+
+																			'</tr>'+
+																			
+																		//Subheader
+																			'<tr class = "tableContentRow" id = "tableSubHeader">'+
+																				'<td class = "tableContent">' + col1Entry + '</td>'+
+																				'<td class = "tableContent">' + col2Entry + '</td>'+
+																				'<td class = "tableContent">' + col3Entry + '</td>'+
+																				'<td class = "tableContent">' + col4Entry + '</td>'+
+																			'</tr>'+
+																	'</tbody>'+
+																'</table>' + 
+															'</div>' 
+														);
+								}//End of insertTableHeader function
+								
+						//Add row items
+							function insertTableItem(tableEntry, col1Entry, col2Entry, col3Entry, col4Entry)
+								{
+									//Swap the alternating row so it shades differently
+										if (rowAlt == true)
+											{ 
+												rowAltStyle = 'id = "altRow"'; 
+												rowAlt = false;
+											}
+										else
+											{ 	
+												rowAltStyle = ""; 
+												rowAlt = true;
+											}
+									//convert the rating
+										let rating = `&#11088;`;
+										if(col4Entry == `Expert`){
+											rating = `&#11088; &#11088; &#11088;`;
+										}else if(col4Entry == `Intermediate`){
+											rating = `&#11088; &#11088;`
+										}
+									//Append the row to the table
+										$(tableEntry).append(
+													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
+														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
+													'</tr>'																		
+														);
+								}//End of insertTableItem function
+								
+						//Add the lower legend
+							function insertLowerLegend(tableEntry)
+								{
+									$(tableEntry).append(
+										'<tr class = "tableContentRow">'+
+											'<td colspan="4" class = "tableContent" style = "text-align: center; background-color: #4975AA; color: white;"><span class = "propagate"><strong>Proficiency Notes (Time Spent):</strong> <span style="font-style: normal !important;">&#11088;</span> = 10hrs - 50hrs  <span style="font-style: normal !important;">&#11088;&#11088;</span> = 50hrs - 200hrs  <span style="font-style: normal !important;">&#11088;&#11088;&#11088;</span>(can train) = 200+ hrs</span></td>'+
+											'</tr>'																		
+											);
+								}
+					});	//End of DOM check		
+		</script>
+		
+<script>
+//slidedeck script
+	//Run on startup
+		$('document').ready(function()
+			{//Start of document ready
+				//Slide deck		
+					insertSlidedeck(3, ".deckContainer1", "slidedeck1", "dotCounter1", "i04ProductDesignExploded", "i05ProductDesignBack", "i06ProductDesignFront");
+					insertSlidedeck(3, ".deckContainer2", "slidedeck2", "dotCounter2", "i07MachineDesign", "i08FixtureDesign", "i09DetailDrawing");
+					insertSlidedeck(3, ".deckContainer3", "slidedeck3", "dotCounter3", "i10FEA", "i12FEACantileverLift", "i11CFD");
+					insertSlidedeck(3, ".deckContainer4", "slidedeck4", "dotCounter4", "i13Pneumatics", "i14PneumaticSchematic", "i52PneumaticAssembly");
+					insertSlidedeck(2, ".deckContainer5", "slidedeck5", "dotCounter5", "i15Hydraulics", "i16HydraulicSchematic");
+					insertSquareDeck(4, ".deckContainer6", "slidedeck6", "dotCounter6", "i101HydrostaticTester", "i102HydrostaticTester", "i103HydrostaticTester", "i104HydrostaticTester");
+					insertSquareDeck(4, ".deckContainer7", "slidedeck7", "dotCounter7", "i105MonoblockFixture", "i106MonoblockFixture", "i107MonoblockFixture", "i108MonoblockFixture");
+
+				// add square deck
+					function insertSquareDeck(countEntry, containerEntry, deckNameEntry, dotNameEntry, imageName1Entry, imageName2Entry, imageName3Entry, imageName4Entry){
+						if(countEntry == 4){
+						//Add the table to the DOM
+							$(containerEntry).append(																
+							'<div class = "slideSquareContainer">' + 
+								//Images
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
+								//Side buttons
+									'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+									'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+								//Dots
+									'<div style = "text-align: center;">' + 
+										'<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+										'<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+										'<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+										'<span class = "' + dotNameEntry + '" onclick = "currentSlide(4, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+									'</div>' +
+							'</div>'
+											);
+						}
+					}
+					
+				// add slide deck
+					function insertSlidedeck(countEntry, containerEntry, deckNameEntry, dotNameEntry, imageName1Entry, imageName2Entry, imageName3Entry, imageName4Entry)
+						{//Start of insertSlidedeck
+							if(countEntry == 4)
+								{//Start of if countEntry == 3
+								//Add the table to the DOM
+									$(containerEntry).append(
+										//Start of slideshow container																	
+											'<div class = "slideshowContainer">' + 
+												//Images
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
+												//Side buttons
+													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+												//Dots
+													'<div style = "text-align: center;">' + 
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+												      '<span class = "' + dotNameEntry + '" onclick = "currentSlide(4, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													'</div>' +
+											'</div>'
+										//End of slideshow container
+															);
+								}//End of if countEntry == 3
+							else if(countEntry == 3)
+								{//Start of if countEntry == 3
+								//Add the table to the DOM
+									$(containerEntry).append(
+										//Start of slideshow container																	
+											'<div class = "slideshowContainer">' + 
+												//Images
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+												//Side buttons
+													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+												//Dots
+													'<div style = "text-align: center;">' + 
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													'</div>' +
+											'</div>'
+										//End of slideshow container
+															);
+								}//End of if countEntry == 3
+							else if (countEntry == 2)
+								{//Start of if countEntry == 2
+								//Add the table to the DOM
+									$(containerEntry).append(//Start of containerEntry append
+										//Start of slideshow container																	
+											'<div class = "slideshowContainer">' + 
+												//Images
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' +	 
+												//Side buttons
+													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+												//Dots
+													'<div style = "text-align:center">' + 
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+													'</div>' +
+											'</div>'
+										//End of slideshow container
+																)//End of containerEntry append
+								}//End of if countEntry == 2
+						}//End of insertTableHeader
+				
+				//Show the slides
+					showSlides(slideIndex, "slidedeck1", "dotCounter1");
+					showSlides(slideIndex, "slidedeck2", "dotCounter2");
+					showSlides(slideIndex, "slidedeck3", "dotCounter3");
+					showSlides(slideIndex, "slidedeck4", "dotCounter4");
+					showSlides(slideIndex, "slidedeck5", "dotCounter5");
+					showSlides(slideIndex, "slidedeck6", "dotCounter6");
+					showSlides(slideIndex, "slidedeck7", "dotCounter7");
+			});//End of document ready
+		
+	//Run on events(Needs to be outside document ready)
+		var slideIndex = 1;
+		function changeSlide(n, arrayEntry, dotEntry){showSlides((slideIndex += n), arrayEntry, dotEntry);}
+		function currentSlide(n, arrayEntry, dotEntry){showSlides((slideIndex = n), arrayEntry, dotEntry);}
+		function showSlides(n , arrayEntry, dotEntry) 
+			{//Start of showSlides
+				//Variables
+					  var i;
+					  var slides = document.getElementsByClassName(arrayEntry);
+					  var dots = document.getElementsByClassName(dotEntry);
+				//Reset on forward loop
+				  if (n > slides.length) 
+					{slideIndex = 1} 
+				//Reset on backward loop
+				  if (n < 1) 
+					{slideIndex = slides.length}
+				//Hide	
+					//Hide the slides
+					  for (i = 0; i < slides.length; i++) 
+						{slides[i].style.display = "none";}
+					//Hide the dots	
+					  for (i = 0; i < dots.length; i++) 
+						{dots[i].className = dots[i].className.replace(" active", "");}
+				
+				//Show
+					//Show the correct slide
+						slides[slideIndex - 1].style.display = "block"; 
+					//Show the dot
+						dots[slideIndex - 1].className += " active";
+			}//End of showSlides
+</script>	
+	<!--HTML-->
+		<body>
+			<table class="tableContainer">
+				<tbody>
+						<!--Row#1: upperBanner-->
+							<div class = "upperBanner"></div><!--imported script-->
+							
+						<!--Row#2: upperButtons-->	
+							<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
+								<div class = "upperButtons"></div><!--imported script-->
+							</div>
+							
+						<!--Row#3: custom content-->
+							<tr>
+								<td colspan="5">					
+										<div class = "animateDownContainers">
+											<div class = "addShadow">
+												<div class="infoContainer">
+													<!--Start of custom page content-->
+														<!--Content Header-->
+															<span class = "fontBlueBoldTitle">4. <u>Mechanics:</u></span>
+															<br><br>
+														<!--table1-->
+															<span class = "fontBlueBoldTitle"><span class = "tab1">4.1. <u>Relevant Software:</u></span></span>
+															<br><br>
+																<div class = "tableContainer1"></div>
+															<br>	
+														<!--text content-->	
+															<!--4.2-->	
+																<span class = "fontBlueBoldTitle"><span class = "tab1">4.2. <u>Projects:</u></span></span>
+																<br><br>
+																<span class = "tab1">
+																Dan's mechanical experience ranges from product design to machine design. 
+																Some of these products were designed for external use, where they were released on a company catalog.  Others
+																were designed for internal use, where they were released on a production floor.  When designing a product, Dan considers the KISS method,
+																poke yoke, ease of assembly, manufacturability, configurability, assuring that the product is designed to last, and that the product meets the function
+																requirements of the customer.
+																</span>
+																<br><br>
+
+																<!--4.2.1-->			
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.1. <u>Machine Design:</u></span></span>
+																	<br><br>
+
+																	<!--intro-->
+																	<span class = "tab2">
+																	Dan designed machines and fixtures including the weldments, sheet metal, fixtures, 
+																	and all detail & assembly drawings required.  He uses the ANSI dimensional 
+																	standards, tolerancing (for stackup, clearance, interference, and transition fits), GD&T, coatings (for galling & galvanic corrosion prevention), surface symbols, and
+																	weld symbols.  He also has experience with static / dynamic o-ring groove design (for sealing), 
+																	kinematic linkage design, keying feature alignment, and designing flow paths for optimized laminar flow.
+																	</span>
+																	<br><br>
+
+																	<!--hydrostatic tester-->
+																	<span class = "tab2">
+																	The hydrostatic tester shown below to the left was probably Dan's highlight project of his mechatronics career.  It was a greenfield gem that came once in a lifetime. 
+																	Dan had the liberty to design this high pressure testing machine from scratch.  With supervision, he designed and created all drawings for weldments, sheet metals, fixtures, pneumatics, hydraulics, electricals, and PLC programs.
+																	There were many meetings discussing specifications with sales suppliers and visiting sites to oversea that the fabrication was to speck.
+																	It took about 1 year to design, fabricate, and release to production.
+																	</span>
+																	
+																	<br><br>
+
+																	<!--monoblock fixture-->
+																	<span class = "tab2">
+																	The electropolishing machine shown below to the right was another major project of Dan's mechatronics career.  He did not design the entire machine, just the monobolock fixture inside it.
+																	This project required heavy understanding of CFD fluid distribution, custom o-ring seal design, thermodynamics, and tight GD&T tolerances.
+																	</span>
+																	<br><br>
+																	<!--square decks-->
+																	<div style="margin-left: -5px; display: flex; gap: 10px; align-items: flex-start;">
+																		<div style="flex: 1;">
+																			<div class = "deckContainer6"></div>
+																			<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.1:</span> Hydrostatic tester machine.</span>														
+																		</div>
+																		<div style="flex: 1;">
+																			<div class = "deckContainer7"></div>
+																			<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.2:</span> Monoblock electropolishing fixture.</span>
+																																		
+																		</div>
+																	</div>
+																	<br>
+																	<!--other-->
+																	<span class = "tab2">
+																	When off-the-shelf hardware is not available, Dan designs his own cylinders, cams, linkages, or bearings.
+																	When designing bearings, Dan uses a series of calculators he developed to help automate some of the conventional design methods.
+																	His calculators use a series of OCR scanned values from design records, where 
+																	linear / power / log regressions interpolate the data, sub-routines calculate the eigenvalues, and a series of nested IF-ELSE statements calculate the final design values. 
+																	The report showing these bearing calculators can be found here:
+																	<a target="_blank" href="Documents/d01Bearings.pdf" class = "fontRedBoldHyperlink"><i class="fa fa-arrow-circle-o-down"></i><em>bearings.pdf</em></a>.  
+																	</span>	
+																	<br><br>
+
+																	<div class = "deckContainer2"></div>
+																	<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.3:</span> Machine examples Dan modeled as a class exercise for one of the classes he teaches.</span>
+																	<br><br>	
+
+																<!--4.2.2-->
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.2. <u>Pneumatic Design:</u></span></span>	
+																	<br><br>
+																	<span class = "tab2">
+																	Dan also has experience designing pneumatic systems.  
+																	He is familiar with designing and assembling solenoids, manifolds, fittings, plugs, silencers, speed controllers, or FRLs (Fluid Regulator Lubricator).  
+																	He has experience with the products of SMC, Bimba, and Festo.  He uses PneuDraw and AutoCAD to create pneumatic and P&ID schematics. 
+																	</span>
+																	<br><br>
+																	<div class = "deckContainer4"></div>
+																	<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.4:</span> Pneumatic design example Dan created as a class exercise for one of the classes he teaches.</span>
+																	<br><br>
+
+																<!--4.2.3-->
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.3. <u>Hydraulic Design:</u></span></span>	
+																	<br><br>
+																	<span class = "tab2">
+																	Dan had a brief exposure designing hydraulic systems for one of his projects.  The design process was similar to pneumatics, but the fluid viscocity was much higher, 
+																	and the pressure requirements were as high as 7,000psi.  This made it a challenge in finding compatible off-the-shelf hardware.
+																	</span>
+																	<br><br>
+																	<div class = "deckContainer5"></div>
+																	<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.5:</span> Hydraulic design example Dan created as a class exercise for one of the classes he teaches.</span>
+																	<br><br>
+																
+																<!--4.2.4-->		
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.4. <u>Product Design:</u></span></span>
+																	<br><br>
+																	<span class = "tab2">
+																	Dan designed consumer products for the biomedical and energy industries. These include handheld devices, mechanical tools, and fixtures.
+																	Consumer products are designed differently than machines.  To manufacture the parts, Dan uses injection molding, 3D printing, metal fabrication, and machining. 
+																	When designing for injection molding, he considers draft analysis, occluded undercut analysis, and fastening methods (lips & grooves, snap hooks, and mounting bosses) for design.  
+																	Here is an example of an injection molded design:	
+																	</span>
+																	<br><br>
+																	<div class = "deckContainer1"></div>
+																	<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.6:</span> Product Dan designed and modeled as a class exercise for one of the classes he teaches.</span>
+																	<br><br>
+
+																<!--4.2.5-->		
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.5. <u>FEA / CFD:</u></span></span>	
+																	<br><br>
+																	<span class = "tab2">
+																	Dan uses <em>Finite Element Analysis (FEA)</em> and <em>Computational Fluid Dynamics (CFD)</em> using <em>SW Simulation</em> and <em>Flow Simulation</em>. 
+																	He uses FEA primarily for displacement, stress, and strain analysis.  He uses CFD primarily for fluid velocity and turbulence analysis.  
+																	He used both in the industry primarily in fluid distribution analysis of electropolishing fixtures and stress analysis on high pressure testing equipment.
+																	Here are examples of both:
+																	</span>
+																	<br><br>
+																	<div class = "deckContainer3"></div>
+																	<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 4.7:</span> FEA / CFD example Dan modeled as a class exercise for one of the classes he teaches.</span>
+																	<br><br>
+
+																<!--4.2.6-->
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">4.2.6. <u>System Design:</u></span></span>	
+																	<br><br>
+																	<span class = "tab2">
+																	For Dan's BSME senior design project, he worked with a team of 3 engineers to build a water cooling recycling system at a forging plant.  
+																	The plant was dumping 6 figure $ sums of water / yr cooling billets.  This 6 months project significantly reduced that waste.
+																	Dan was involved with specification review and engineering design.
+																	He also created the video below to show stakeholders the expected implementation.
+																	</span>
+																	<br><br>
+																	<video poster = "Images/Mechanics/i93WaterSystemPreview.jpg" class = "addShadow" controls  
+																	style = "width: 500px; display: block; margin: auto; text-align: center;"><source src="Videos/v06WaterSystem.mp4" type="video/mp4"></video>
+																	<span class = "figureCaption" style = "margin-left: 160px;"><span class = "figurelabel">Figure 4.8:</span> Video of BSME senior design project.</span>
+
+														<!--End of custom page content-->	
+												</div>
+												<div class = "lowerBanner"></div><!--imported script-->
+											</div>
+											<div class = "footnote"></div>
+										</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</body>
+</html>

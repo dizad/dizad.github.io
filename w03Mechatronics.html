@@ -1,0 +1,296 @@
+<html>
+	<!--Tab title-->
+		<title>Mechatronics</title>
+		
+	<!--Imported libraries-->
+		<head>
+			<link rel="shortcut icon" href="http://apsys-inc.com/izasoft/Images/WebSprites/i65TabIcon.ico">
+			<link rel="stylesheet" href="Stylesheets/s01Main.css"><!--Imported main stylesheet-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
+			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
+			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
+		</head>
+		
+	<!--CSS-->
+		<style>
+		</style>
+	
+	<!--Javascript-->
+		<script src='Javascript/j01JQuery311.js'></script>
+	    <script src="Javascript/j03UpperBanner.js"></script>
+		<script src="Javascript/j04UpperButtons.js"></script>
+		<script src="Javascript/j05LowerBanner.js"></script>
+		<script src="Javascript/j06Footnote.js"></script>
+		<!--<script src="Javascript/j07TableToggle.js"></script>-->
+		<script>
+			$('document').ready(function(){
+				//Table invokes
+					//Table#1
+						//Header
+							insertTableHeader(".tableContainer1", "table1", "Relevant Software Experience", "Name", "Application", "Start Year", "Proficiency");
+						//Rows
+							insertTableItem(".table1", "AutoCAD Electrical", "Electrical Schematics", "2012", "Intermediate"); //1
+							insertTableItem(".table1", "Matlab (Simulink)", "System Control Modeling", "2010", "Intermediate"); //2
+							insertTableItem(".table1", "RSLogix500 / 5000", "Industrial PLC Programming", "2012", "Intermediate"); //3
+							insertTableItem(".table1", "FactoryTalkView", "Industrial HMI Programming", "2013", "Intermediate"); //4
+							insertTableItem(".table1", "Eagle / LTSpice", "PCB Layouts / Electronic Schematics", "2011", "Beginner"); //5
+							insertTableItem(".table1", "Labview", "System Integration", "2010", "Beginner"); //6
+							insertLowerLegend(".table1");
+
+				//Standard code to build the tables
+					//Variables
+						var rowAlt = false;	
+						var rowAltStyle = "";
+					
+					//Functions
+						//get year duration
+							function getYearDuration(start){
+								let now = new Date();
+								let duration = now.getFullYear() - parseInt(start);
+								return `${start} (${duration == 0 ? '< 1 yr' : duration + ' yrs'})`;
+							}
+						//Add table header
+							function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry)
+								{
+									//Add the table to the DOM
+										$(entry).append(
+											'<div class = "addShadow">' +
+												'<table class = "' + tableName + '" id = "addTableBlue">'+
+													'<tbody>'+
+														//Header
+															'<tr class = "tableHeader">'+
+																'<td colspan="5">' + tableTitleEntry + '</td>'+
+															'</tr>'+
+															
+														//Subheader
+															'<tr class = "tableContentRow" id = "tableSubHeader">'+
+																'<td class = "tableContent">' + col1Entry + '</td>'+
+																'<td class = "tableContent">' + col2Entry + '</td>'+
+																'<td class = "tableContent">' + col3Entry + '</td>'+
+																'<td class = "tableContent">' + col4Entry + '</td>'+
+															'</tr>'+
+													'</tbody>'+
+												'</table>' + 
+											'</div>' 
+										);
+								}//End of insertTableHeader function
+								
+						//Add row items
+							function insertTableItem(tableEntry, col1Entry, col2Entry, col3Entry, col4Entry)
+								{//Start of insertTableItem function
+									//Swap the alternating row so it shades differently
+										if (rowAlt == true)
+											{ 
+												rowAltStyle = 'id = "altRow"'; 
+												rowAlt = false;
+											}
+										else
+											{ 	
+												rowAltStyle = ""; 
+												rowAlt = true;
+											}
+									//convert the rating
+										let rating = `&#11088;`;
+										if(col4Entry == `Expert`){
+											rating = `&#11088; &#11088; &#11088;`;
+										}else if(col4Entry == `Intermediate`){
+											rating = `&#11088; &#11088;`
+										}
+									//Append the row to the table
+										$(tableEntry).append(
+													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
+														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
+													'</tr>'																		
+														);
+								}//End of insertTableItem function
+								
+						//Add the lower legend
+							function insertLowerLegend(tableEntry)
+								{
+									$(tableEntry).append(
+										'<tr class = "tableContentRow">'+
+											'<td colspan="4" class = "tableContent" style = "text-align: center; background-color: #4975AA; color: white;"><span class = "propagate"><strong>Proficiency Notes (Time Spent):</strong> <span style="font-style: normal !important;">&#11088;</span> = 10hrs - 50hrs  <span style="font-style: normal !important;">&#11088;&#11088;</span> = 50hrs - 200hrs  <span style="font-style: normal !important;">&#11088;&#11088;&#11088;</span>(can train) = 200+ hrs</span></td>'+
+											'</tr>'																		
+											);
+								}
+					});	//End of DOM check		
+		</script>
+		
+<script>
+//slidedeck script
+	//Run on startup
+		$('document').ready(function()
+			{
+				//Invokes		
+					insertSlidedeck(2, ".deckContainer1", "slidedeck1", "dotCounter1", "i17ElectricalSchematic", "i18PCBLayout");
+					insertSlidedeck(2, ".deckContainer2", "slidedeck2", "dotCounter2", "i19CabinetDesign", "i20TerminalBlocks");
+					
+				//Add table header
+					function insertSlidedeck(countEntry, containerEntry, deckNameEntry, dotNameEntry, imageName1Entry, imageName2Entry, imageName3Entry)
+						{
+							//Add the table to the DOM
+								$(containerEntry).append(
+									//Start of slideshow container																	
+										'<div class = "slideshowContainer">' + 
+											//Images
+												'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechatronics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+												'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechatronics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' +	 
+											//Side buttons
+												'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+												'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+											//Dots
+												'<div style = "text-align:center">' + 
+												  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+												  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+												'</div>' +
+										'</div>'
+									//End of slideshow container
+														)
+						}//End of insertTableHeader function	
+					
+					showSlides(slideIndex, "slidedeck1", "dotCounter1");
+					showSlides(slideIndex, "slidedeck2", "dotCounter2");
+					showSlides(slideIndex, "slidedeck3", "dotCounter3");
+					showSlides(slideIndex, "slidedeck4", "dotCounter4");
+					showSlides(slideIndex, "slidedeck5", "dotCounter5");
+			});
+		
+	//Run on events
+		var slideIndex = 1;
+		function changeSlide(n, arrayEntry, dotEntry){showSlides((slideIndex += n), arrayEntry, dotEntry);}
+		function currentSlide(n, arrayEntry, dotEntry){showSlides((slideIndex = n), arrayEntry, dotEntry);}
+		function showSlides(n , arrayEntry, dotEntry) 
+			{
+				//Variables
+					  var i;
+					  var slides = document.getElementsByClassName(arrayEntry);
+					  var dots = document.getElementsByClassName(dotEntry);
+				//Reset on forward loop
+				  if (n > slides.length) 
+					{slideIndex = 1} 
+				//Reset on backward loop
+				  if (n < 1) 
+					{slideIndex = slides.length}
+				//Hide	
+					//Hide the slides
+					  for (i = 0; i < slides.length; i++) 
+						{slides[i].style.display = "none";}
+					//Hide the dots	
+					  for (i = 0; i < dots.length; i++) 
+						{dots[i].className = dots[i].className.replace(" active", "");}
+				
+				//Show
+					//Show the correct slide
+						slides[slideIndex - 1].style.display = "block"; 
+					//Show the dot
+						dots[slideIndex - 1].className += " active";
+			}
+</script>
+	<!--HTML-->
+		<body>
+			<table class="tableContainer">
+				<tbody>
+						<!--Row#1: upperBanner-->
+							<div class = "upperBanner"></div><!--imported script-->
+							
+						<!--Row#2: upperButtons-->	
+							<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
+								<div class = "upperButtons"></div><!--imported script-->
+							</div>
+							
+						<!--Row#3: custom content-->
+							<tr>
+								<td colspan="5">					
+										<div class = "animateDownContainers">
+											<div class = "addShadow">
+												<div class="infoContainer">
+													<!--Start of custom page content-->
+														<!--Content Header-->
+															<span class = "fontBlueBoldTitle">3. <u>Mechatronics:</u></span>
+															<br><br>
+														<!--table1-->
+															<span class = "fontBlueBoldTitle"><span class = "tab1">3.1. <u>Relevant Software:</u></span></span>
+															<br><br>
+																<div class = "tableContainer1"></div>
+															<br>	
+														<!--text content-->	
+															<!--4.2-->	
+																<span class = "fontBlueBoldTitle"><span class = "tab1">3.2. <u>Projects:</u></span></span>
+																	<br><br>
+																	<span class = "tab1">
+																	Dan's mechatronics experience spreads from the industry to academics. In the industry, 
+																	he experienced mechatronics on an "electrical scale", where he designed a series of <em>Assembly & 
+																	Test</em> systems. He's familiar with mechatronics hardware such as solenoids, 
+																	electro-proportional regulators, PLCs, E-STOPs, push buttons, I/O expansion modules, power supplies, pressure/flow 
+																	transducers, safety controllers, and light curtains. He designed electrical panels, wiring schematics, 
+																	and programmed PLCs. Dan took 3 training sessions(1 week each) at Rockwell Automation's Twinsburg 
+																	facility for <em>RSLogix500</em>, <em>RSLogix5000</em>, and <em>FactoryTalkView</em> training. 
+																	<br><br>
+																	For his master's project, he experienced mechatronics on an "electronic" scale where he designed basic PCB layouts and developed 
+																	embedded controller/interface software. This process was similar to programming PLCs and HMIs but was on 
+																	a smaller scale and allowed for more customization. The title of his dissertation was: <em>"Designing, modeling, 
+																	and embedded programming of a torque limiting brushless motor system."</em>
+																	</span>
+																		<br><br>
+																		
+																<!--4.2.1-->		
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">3.2.1. <u> Electro-Mechanical System Design:</u></span></span>
+																		<br><br>
+																		<span class = "tab2">
+																			Dan's project for his master's degree in <em>Mechatronics Engineering</em> can be downloaded here: 
+																			<a target="_blank" href="Documents/d02Report.pdf" class = "fontRedBoldHyperlink"><i class="fa fa-arrow-circle-o-down"></i><em>report.pdf</em></a>.
+																			This report shows the detailed process Dan took to develop an embedded interface for a standard 
+																			mechatronics application.
+																		</span>
+																	<br><br>
+																		
+																<!--4.2.2-->			
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">3.2.2. <u>Electrical Schematic Design:</u></span></span>
+																		<br><br>
+																		<!--CGI-->
+																			<span class = "tab2">
+																				Dan also has experience with electrical schematics. Dan creates an electrical packet consisting of a TOC(Table of Content), 
+																				power, safety, controls, I/O expansion, AC/DC, external auxiliary, communications, and terminal index sheet. Dan designs according 
+																				to NFPA79, datasheets, internal/external technical reviews, and localized testing. He uses signal generators, 
+																				multimeters, power supplies, and oscilloscopes to test parts locally before energizing the entire system. Dan created 2-3 of these electrical 
+																				packets in his career. Dan was also briefly exposed to PCB design where he was under the supervision of aerospace engineers to route PCB 
+																				boards as shown in the slidedeck below.
+																			</span>
+																			<br><br>
+																			<div class = "deckContainer1"></div>
+																		<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 3.1:</span> (1)Example electrical schematic of the PLC page /(2)PCB routing.</span>	
+																		<br><br>
+																<!--4.2.3-->		
+																	<span class = "fontBlueBoldTitle"><span class = "tab2">3.2.3. <u>Electrical Panel Design:</u></span></span>	
+																		<br><br>
+																		<span class = "tab2">
+																			Dan also has experience with electrical panel design, a process similar to building custom computers. 
+																			He has experience reviewing component datasheets for pin diagrams, overall sizes, and electric current 
+																			requirements so that all components can interface together. Dan uses the component current requirements 
+																			to specify circuit breakers and total system current to specify power supplies. Dan also makes 
+																			sure that mechanical safety devices are in place such as LOTO, safety controllers, and power disconnects. 
+																			Dan is familiar with mechatronic suppliers/manufacturers such as Rexel(Rockwell Automation), 
+																			Banner(Adcon, Turk), Sola, Keyence, and Altech. The 3D models are typically imported from the supplier site 
+																			and assembled in SolidWorks. Dan designed 4-5 cabinets in his career and has an example shown below that 
+																			was provided with permission from the customer. This cabinet was unfortunately never built because of project
+																			reprioritization, but serves as a good example for cabinet design.
+																		</span>
+																			<br><br>
+																				<div class = "deckContainer2"></div>
+																			<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 3.2:</span> (1) Example electrical panel design / (2) Terminal block assembly.</span>
+																		<br><br>		
+													<!--End of custom page content-->	
+												</div>
+												<div class = "lowerBanner"></div><!--imported script-->
+											</div>
+											<div class = "footnote"></div>
+										</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</body>
+</html>

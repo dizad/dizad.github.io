@@ -1,0 +1,146 @@
+<html>
+	<!--Tab title-->
+		<title>Corporate Training</title>
+		
+	<!--Imported libraries-->
+		<head>
+			<link rel="shortcut icon" href="http://apsys-inc.com/izasoft/Images/WebSprites/i65TabIcon.ico">
+			<link rel="stylesheet" href="Stylesheets/s01Main.css"><!--Imported main stylesheet-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
+			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
+			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
+		</head>
+		
+	<!--CSS-->
+		<style>
+		</style>
+	
+	<!--Javascript-->
+		<script src='Javascript/j01JQuery311.js'></script>
+	    <script src="Javascript/j03UpperBanner.js"></script>
+		<script src="Javascript/j04UpperButtons.js"></script>
+		<script src="Javascript/j05LowerBanner.js"></script>
+		<script src="Javascript/j06Footnote.js"></script>
+		<!--<script src="Javascript/j07TableToggle.js"></script>-->
+		<script>
+			$('document').ready(function(){
+				//Table invokes
+				
+					//Table#1(don't forget to include inside <body>)
+						//Header
+							insertTableHeader(".tableContainer1", "table1", "General Corporate Training", "Institute", "Description", "Year", "Duration (days)", "Status");
+						//Rows
+							insertTableItem(".table1", "TRACOM", "Social Styles", "2016", "1", "Complete"); //1
+							insertTableItem(".table1", "Corporate", "Emotional Intelligence", "2016", "1", "Complete"); //2
+							insertTableItem(".table1", "Swagelok", "Crucial Conversations", "2016", "1", "Complete"); //3
+							insertTableItem(".table1", "Swagelok", "Talking to Distributors", "2016", "1", "Complete"); //4
+							insertTableItem(".table1", "ALICE", "Active Response Training", "2016", "1", "Complete"); //5
+							insertTableItem(".table1", "Swagelok", "Disciplined Problem Solving", "2016", "1", "Complete"); //6
+							insertTableItem(".table1", "Management Concepts", "Project Management", "2015", "3", "Complete"); //7
+							insertTableItem(".table1", "Swagelok", "Intro to SAP", "2015", "5", "Complete"); //8
+							insertTableItem(".table1", "Rockwell Automation", "RsLogix5000 (ControlLogix)", "2014", "5", "Complete"); //9
+							insertTableItem(".table1", "Swagelok", "Lean 101", "2014", "1", "Complete"); //10
+							insertTableItem(".table1", "Applied Geometrics", "Intro to GD&T", "2013", "3", "Complete"); //11
+							insertTableItem(".table1", "Corporate", "NFPA97", "2012", "3", "Complete"); //12
+							insertTableItem(".table1", "Rockwell Automation", "Machine Safety", "2012", "2", "Complete"); //13
+							insertTableItem(".table1", "Rockwell Automation", "RsLogix500 (SLC-500)", "2012", "5", "Complete"); //14
+							insertTableItem(".table1", "Rockwell Automation", "FactoryTalkView", "2012", "5", "Complete"); //15
+				//Code to build the tables
+					//Variables
+						var rowAlt = false;	
+						var rowAltStyle = "";
+					
+					//Functions
+						//Add table header
+							function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry, col5Entry)
+								{
+									//Add the table to the DOM
+										$(entry).append(
+															'<div class = "addShadow">' +
+																'<table class = "' + tableName + '" id = "addTableBlue">'+
+																	'<tbody>'+
+																		//Header
+																			'<tr class = "tableHeader">'+
+																				'<td colspan="5">' + tableTitleEntry + '</td>'+
+																			'</tr>'+
+																			
+																		//Subheader
+																			'<tr class = "tableContentRow" id = "tableSubHeader">'+
+																				'<td class = "tableContent">' + col1Entry + '</td>'+
+																				'<td class = "tableContent">' + col2Entry + '</td>'+
+																				'<td class = "tableContent">' + col3Entry + '</td>'+
+																				'<td class = "tableContent">' + col4Entry + '</td>'+
+																				'<td class = "tableContent">' + col5Entry + '</td>'+
+																			'</tr>'+
+																	'</tbody>'+
+																'</table>' + 
+															'</div>' 
+														);
+								}//End of insertTableHeader function
+								
+						//Add row items
+							function insertTableItem(tableEntry, academyEntry, descriptionEntry, yearEntry, durationEntry, gradeEntry)
+								{
+									//Swap the alternating row so it shades differently
+										if (rowAlt == true)
+											{ 
+												rowAltStyle = 'id = "altRow"'; 
+												rowAlt = false;
+											}
+										else
+											{ 	
+												rowAltStyle = ""; 
+												rowAlt = true;
+											}
+										
+									//Append the row to the table
+										$(tableEntry).append(
+													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+														'<td class = "tableContent" style = "text-align: center; width: 350px;"><span class = "propagate">' + academyEntry + '</span></td>'+
+														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + descriptionEntry + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + yearEntry + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + durationEntry + '</span></td>'+
+														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + gradeEntry + '</span></td>'+
+													'</tr>'																		
+														);
+								}//End of insertTableItem function
+					});			
+		</script>
+		
+	<!--HTML-->
+		<body>
+			<table class="tableContainer">
+				<tbody>
+						<!--Row#1: upperBanner-->
+							<div class = "upperBanner"></div><!--imported script-->
+							
+						<!--Row#2: upperButtons-->	
+							<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
+								<div class = "upperButtons"></div><!--imported script-->
+							</div>
+					
+						<!--Row#3: custom content-->
+							<tr>
+								<td colspan="5">					
+										<div id = "object" class = "animateDownContainers">
+											<div class = "addShadow">
+												<div class="infoContainer">
+													<!--Start of custom page content-->
+														<!--Content Header-->
+															<span class = "fontBlueBoldTitle">11. <u>Corporate Training:</u></span><br><br>
+														<!--table1-->	
+															<span class = "fontBlueBoldTitle"><span class = "tab1">11.1. <u>General:</u></span></span>
+															<br><br>
+															<div class = "tableContainer1"></div>				
+													<!--End of custom page content-->	
+												</div>
+											<div class = "lowerBanner"></div><!--imported script-->
+											</div>
+											<div class = "footnote"></div>	
+										</div>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</body>
+</html>
