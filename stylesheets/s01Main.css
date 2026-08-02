@@ -1,0 +1,466 @@
+/*This is the main stylesheet for the entire site*/
+
+/*General styles*/
+	body
+		{
+			font-family: Arial, Sans-serif !important;
+			font-size: 12px;
+			font-style: italic !important;
+			color: #545454;
+			text-align: center;
+			margin: auto;
+			background: radial-gradient(#556578, #1C2126);
+		}
+		
+	a
+		{
+			text-decoration: none !important;
+			color: #737d86;
+			font-weight: bold;
+		}
+		
+	table 
+		{
+			border-collapse: collapse;
+			padding: 0px;
+			margin: 0px;
+		}
+		
+	td 
+		{
+			padding: 0px;
+			margin: 0px;
+			font-style: italic !important;
+		}
+		
+	tr 
+		{
+			padding: 0px;
+			margin: 0px;
+		}
+
+	.animateDownContainers
+		{
+			animation-name: pullDown;
+			-webkit-animation-name: pullDown;	
+			animation-duration: 1.2s;	
+			-webkit-animation-duration: 1.2s;
+			animation-timing-function: ease-out;	
+			-webkit-animation-timing-function: ease-out;	
+			transform-origin: 50% 0%;
+			-ms-transform-origin: 50% 0%;
+			-webkit-transform-origin: 50% 0%; 		
+		}
+
+	@keyframes pullDown 
+		{
+			0% {transform: scaleY(0.1);}
+			40% {transform: scaleY(1.02);}
+			60% {transform: scaleY(0.98);}
+			80% {transform: scaleY(1.01);}
+			100% {transform: scaleY(0.98);}				
+			80% {transform: scaleY(1.01);}
+			100% {transform: scaleY(1);}							
+		}
+
+	@-webkit-keyframes pullDown 
+		{
+			0% {-webkit-transform: scaleY(0.1);}
+			40% {-webkit-transform: scaleY(1.02);}
+			60% {-webkit-transform: scaleY(0.98);}
+			80% {-webkit-transform: scaleY(1.01);}
+			100% {-webkit-transform: scaleY(0.98);}				
+			80% {-webkit-transform: scaleY(1.01);}
+			100% {-webkit-transform: scaleY(1);}		
+		}
+		
+	/*Auxiliary Styles*/
+		.buttonTabPressed 
+			{
+				background-color: #FF8800;
+				color: yellow;
+			}
+
+		.addShadow
+			{
+				box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.3);
+			}	
+				
+		.infoContainer
+			{
+				background: white;
+				text-align: left;
+				padding: 40px;
+				width: 820px;
+			}
+			
+		.tab1 { margin-left: 20px; display:inline-block;}
+		.tab2 { margin-left: 40px; display:inline-block;}
+		.tab3 { margin-left: 60px; display:inline-block;}
+		.tab4 { margin-left: 70px; display:inline-block;}
+		.tab5 { margin-left: 80px; display:inline-block;}
+
+/*Slideshow styles*/	
+	.slideshowContainer
+		{
+		  max-width: 100%;
+		  position: relative;
+		  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5);
+		  margin-left: 60px;
+		  margin-right: 60px;
+		}
+
+	.slideSquareContainer
+		{
+		  max-width: 350px;
+		  position: relative;
+		  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5);
+		  margin-left: 30px;
+		  margin-right: 30px;
+		}
+
+	.dotCounter1, .dotCounter2, .dotCounter3, .dotCounter4, .dotCounter5 
+		{
+		  height: 13px;
+		  width: 13px;
+		  margin: 4px;
+		  background-color: #bbb;
+		  border-radius: 50%;
+		  display: inline-block;
+		  transition: background-color 0.6s ease;
+		}
+	
+	.active, .dotCounter:hover 
+		{
+		  background-color: #717171;
+		}
+
+	.buttonBack, .buttonForward 
+		{
+		  cursor: pointer;
+		  position: absolute;
+		  padding: 16px 10px 20px 10px;
+		  color: white;
+		  font-weight: bold;
+		  font-size: 20px;
+		  font-style: normal !important;
+		  transition: 0.6s ease;
+		  border-radius: 40px 0px 0px 40px;
+		  background-color: #4975AA;
+		  margin-top: -200px;
+		  margin-left: -30.7px;
+		  margin-right: -30.7px;
+		}
+
+	.buttonForward 
+		{
+		  right: 0;
+		  border-radius: 0px 40px 40px 0px;
+		}
+
+	.buttonBack:hover, .buttonForward:hover 
+		{
+		  background-color: #ffb400;
+		  color: yellow;
+		}	
+
+	#fade 
+		{
+		  -webkit-animation-name: fade;
+		  -webkit-animation-duration: 1.5s;
+		  animation-name: fade;
+		  animation-duration: 1.5s;
+		}
+
+	@-webkit-keyframes fade 
+		{
+		  from {opacity: .4}
+		  to {opacity: 1}
+		}
+
+	@keyframes fade 
+		{
+		  from {opacity: .4}
+		  to {opacity: 1}
+		}
+	
+/*Figure styles*/		
+	.figureCaption
+		{
+			font-style: italic;
+			opacity: 0.9;
+			font-size: 15px;
+		}
+		
+	.figureLabel
+		{
+			font-weight: bold;		
+		}	
+		
+/*Font styles*/
+	.fontBlueBoldTitle
+		{
+			color: #4975AA;
+			font-weight: bold;
+			/*font-family: 'Archivo Black', sans-serif;*/
+			font-style: italic;
+		}
+		
+	.fontRedBoldHyperlink 
+		{
+			color:red;
+			font-weight: bold;
+		}
+		
+	.fontBlueBoldHyperlink
+		{
+			color: #0066FF;
+			font-weight: bold;
+		}
+
+	.fontFootnote
+		{
+			font-size: 12px;
+			color: #737d86;
+			font-weight: bold;
+			/*opacity: 0.5;*/
+			font-style: italic;
+			text-align: center;
+			margin: auto;
+			padding-top: 7px;
+		}
+				
+/*Table styles*/	
+	.tableContainer
+		{
+			max-width: 900px;	
+			text-align: center;
+			margin: auto;
+		}
+
+	.tableHeader
+		{
+			text-align: center;
+			background-color: #4975AA; 
+			font-weight: bold;
+			color: white;
+			height: 40px; /*This adjusts the height of the upper header of content tables*/
+			transition: 0.2s ease;
+		}
+				
+	.tableHeader:hover
+		{
+			transition: 0.2s ease;
+			filter: brightness(1.2);
+		}
+			
+	.tableSub
+		{
+			text-align: center;
+			color: white;
+			font-weight: bold;
+			background-color: #6C9DD8;
+		}
+		
+	.tableHeaderSubnote
+		{
+			color: #A1DEFF;
+			font-size: 14px;
+		}
+			
+	#tableSubHeader
+		{
+			text-align: center;
+			background-color: #FFA200;  
+			font-weight: bold;
+			color: white;
+		}
+		
+	.tableContent
+		{
+			width: 162px; /* 860/ 5 rows minus border widths*/
+			height: 3px;
+			padding: 5px 5px 5px;
+		}
+		
+	.tableContentRow:hover		
+		{
+			background-color: #E0F9FF;
+		}
+		
+	#addTableBlue
+		{
+			background-color: #FFFFE0; /*this is actually yellow, name needs to be changed*/
+			color: #523F35;
+		}
+		
+	#altRow
+		{
+			background-color: #FFF1A6;
+		}
+		
+	#altRow:hover
+		{
+			background-color: #E0F9FF;
+		}
+				
+	/*Software Table*/
+		.tableSoftware
+			{
+				text-align: center;
+				margin: auto;
+			}
+			
+		.tableSoftwareItem
+			{
+				padding: 10px;
+			}
+			
+		.softwareCard
+			{
+				 transition: 0.5s ease;
+			}
+			
+		.softwareCard:hover
+			{
+				filter: opacity(0.90);
+				transition: 0.2s ease;
+				cursor: pointer;
+			}
+			
+/*Icons*/
+	.iconSize
+		{
+			font-size: 20px;
+		}
+	
+	.refIcon
+		{
+			font-size: 15px;
+			border-radius: 50%;
+			background-color:white;
+			padding: 5px;
+			color: #4975AA;
+			margin: 0px 50px 0px 50px;
+			transition: all .2s ease-in-out;
+		}
+
+	.refIcon:hover
+		{
+			background-color: #4975AA;
+			color: white;
+		}
+
+/*Banners*/		
+	.lowerBanner
+		{
+			padding: 15px 0px 0px 0px; /*adjust position of icons relative to banner height*/
+			height: 30px; /*adjusts height of lower banner*/
+			background-color: #4975AA;
+		}
+		
+	.upperBanner
+		{
+			text-align: center;
+			margin: auto;
+			margin-top: 40px;
+			width: 900px;
+			height: 175px; /*This adjusts the offset of the upperbanner*/
+		}
+				
+/*Dropdown styles*/
+	.dropbtn 
+		{
+			background-color: #4975AA;
+			display:inline-block;
+			cursor:pointer;
+			color:white;
+			font-size:15px;
+			font-weight:bold;
+			padding: 10px 5px 0px 5px; /*have to adjust this in corrolation to height to maintain vertical align*/			 
+			text-decoration:none;
+			transition: 0.5s ease;
+			width: 170px;
+			height: 30px; /*This adjusts the height of the banner buttons*/			 
+		}
+
+	.dropdown 
+		{
+			z-index:2;
+			transition: 0.5s ease;
+			position: relative;
+			display: inline-block;
+		}
+
+	.dropdown-content 
+		{
+			display: none;
+			position: absolute;
+			background-color: #FFFFE0;
+			box-shadow: 0px 0px 16px 0px rgba(80,60,40,0.5);
+			z-index: 1;
+		}
+
+	.dropdown-content a 
+		{
+			width: 170px;
+			padding-left: 10px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-align: left;
+			text-decoration: none;
+			display: block;
+			transition: max-height 0.25s ease-in;
+			font-size: 15px;
+			color: #FF8400;
+			font-weight: bold;
+		}
+
+	.dropdown-content a:hover 
+		{
+			transition: 0.2s ease;
+			background-color: #E0F9FF;
+			color: #4975AA;
+			cursor: pointer;
+		}
+
+	.dropdown:hover .dropdown-content 
+		{
+			transition: 0.5s ease;
+			display: block;
+			cursor: pointer;
+		}
+		
+	.dropdown:hover .dropbtn 
+		 {
+			background-color: #ffb400;
+			color: yellow;
+			transition: 0.5s ease;
+		}
+	
+/*Tooltip styles*/
+	.tooltip 
+		{
+			text-decoration:none;
+			position:relative;
+		}
+		
+	.tooltip span 
+		{
+			visibility: hidden;
+			background-color: rgba(255,255,224,0.9);
+			box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5);
+			color: #FF8400;
+			text-align: left;
+			padding: 20px;
+			position: absolute;
+			z-index: 2;
+			opacity: 0;
+			transition: opacity 0.2s;
+		}
+		
+	.tooltip:hover span 
+		{
+			visibility: visible;
+			opacity: 1;
+		}	
