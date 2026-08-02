@@ -1,0 +1,130 @@
+:root
+  {
+    /*Blues*/
+    --color1: #2B3336;
+    --color3: #141F29; /*screen*/
+    --color5: #414F54; /*ligther gray*/
+    --color6: #1C1E1F; /*darker gray*/
+    --color7: #38CDFF; /*font blue*/
+    --color8: #568A9C; /*font blue*/    
+    /*Yellows*/
+    --color2: #D2FF4A;
+    --color4: #778C00; /*border color*/
+  }
+
+body
+  {
+    background-color: var(--color1);
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    margin: auto;
+    transition: 1s ease;
+  }
+
+.fontTitle
+  {
+    font-family: Barrio, Helvetica;
+    font-size: 40px;
+    color: var(--color2);
+  }
+
+.fontSubTitle
+  {
+    font-family: Permanent Marker;
+    font-size: 30px;
+    color: var(--color2);
+  }
+
+.fontWikiTitle
+  {
+    font-size: 20px;
+    color: var(--color7);
+  }
+
+.fontWikiSubTitle
+  {
+    text-align: left !important;
+    font-weight: normal;
+    font-size: 15px;
+    color: var(--color8);
+  }
+
+.fontFootNote
+  {
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    opacity: 0.3;
+  }
+
+.butDefault
+  {
+    border: none !important;
+    margin: 3% auto 3% auto !important;
+    background-color: var(--color2);
+    transition: 0.5s ease;
+    text-align: center;
+    margin: auto;
+    color: var(--color1);
+    font-weight: bold;
+    border:solid 1px var(--color1); 
+  }
+
+.butDefault:hover
+  {
+    background-color: white;
+    color: var(--color4);
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+.butWiki
+  {
+    border: none !important;
+    padding: 5px;
+    line-height: 80%;
+    margin: 3% auto 3% auto !important;
+    width: 290px;
+    background-color:  var(--color3);
+    transition: 0.5s ease;
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    border:solid 1px var(--color1);
+        text-align: left;
+  }
+
+.butWiki:hover
+  { 
+    filter: brightness(2);
+    color: var(--color7);
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+input
+{
+  width: 300px;
+  text-align: center;
+  font-size: 20px;
+  margin: auto;
+  background-color: var(--color3);
+  color: var(--color7);
+  outline: none;
+  border: none;
+  /*-webkit-appearance: none;*/
+}
+
+.container1
+{
+  margin: auto;
+  max-width: 300px;
+}
+
+a
+{
+  text-decoration:none; /*Remove underline hover*/
+}
+

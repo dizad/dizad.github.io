@@ -1,0 +1,127 @@
+.titleFont
+  {
+    font-family: 'Permanent Marker', arial;
+    color:white;
+  }
+
+header
+  {
+    position:fixed;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    background-color:#427485;
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+.subHeader
+  {
+    background-image: -webkit-gradient(linear, 0% 0%,100% 0%, from(#2F7BA3), to(#1B2A33));
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    margin-top: -70px;
+  }
+
+.buttonA
+  {
+    background-color:#427485;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 6px;
+    margin-left: 0px;
+    transition: background 0.5s ease;
+    display: inline;
+    border-radius: 15px;
+  }
+
+.buttonA:hover /*cant have spaces after:*/
+  {
+    background-color: #729DAB;
+    color: white;
+    text-decoration: none;
+  }
+
+body
+  {
+    font-family: Helvetica, sans-serif, arial; 
+    background-color: #6EDBFF;
+    color: #314D57;
+    margin-top: 50px;
+  }
+
+.subTitlePanel
+  {
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/background.JPG");
+    opacity: 1;
+    border-radius: 20px;
+  }
+
+.panel1
+  {
+    background-color: white;
+    border-radius: 20px; 
+  }
+
+.panel2
+  {
+    background-color: #B5EDFF; 
+  }
+
+.panel3
+  {
+    background-color: #6EDBFF; /*#80DFFF*/
+      background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/clouds.JPG");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+
+.roundImage
+  {
+    border-radius: 50%;
+    border-width: 5px;
+    border-color: white;
+    border-style: solid;
+  }
+
+.rowMargin
+  {
+    margin: 5px;  
+  }
+
+.refIcon
+  {
+    font-size: 25px;
+    border:solid 4px #0099FF;
+    border-radius: 50%;
+    background-color:white;
+    padding: 10px;
+    color: #0099FF;
+    margin: 20px;
+    transition:all .3s ease-in-out;
+  }
+
+.refIcon:hover
+  {
+    background-color: #0099FF;
+    color: white;
+  }
+
+h4
+  {
+    background-color:#427485;
+    color:white;
+    font-weight:bold;
+    padding: 3px;  
+    border-radius: 20px;
+  }
+
+.fontNote
+  {
+    color: yellow;
+    font-size = 20px;
+  }

@@ -1,0 +1,117 @@
+:root
+  {
+    /*greens*/
+      --color1: #ADFFCA; 
+      --color2: #A9FF78;
+      --color3: #376E35;
+      --color4: #76DB44;
+      --color5: #221138;
+    /*pinks*/
+      --color6: #FF52F3;
+      --color7: #C67AFF;
+      --color8: #AB3DFF;
+      --color9: #471D52;
+      --color10: #6D388C;
+    /*other*/
+      --transTimeShort: 0.1s;
+      --transTimeLong: 0.2s;
+  }
+
+body
+  {
+    background-color: var(--color1);
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 25px;
+    margin: auto;
+    transition: 1s ease;
+  }
+
+.col4
+  {
+     column-count: 4; 
+  }
+
+table
+  {
+    margin: auto;
+    background-color: var(--color6);
+  }
+
+td
+  {
+    padding: 10px;
+    background-color:black;
+  }
+
+#screen
+  {
+    background-color: var(--color5);
+  }
+
+.butDefault
+  {
+    background-color: var(--color8);
+    padding: 5px 10px 5px 10px;
+    border:solid 1px var(--color9);
+    transition: var(--transTimeLong) ease;
+    width: 30px;
+    height: 30px;
+    transform: rotate(2deg);
+  }
+
+.butDefault:hover
+  {
+    background-color: var(--color4);
+    padding: 10px 20px 10px 20px;
+    border:solid 1px var(--color3);
+    transition: var(--transTimeShort) ease;
+    cursor: pointer;
+  }
+
+.butDefault:active
+  {
+    background-color:var(--color2);
+  }
+
+.butLock
+  {
+    background-color: var(--color7);
+    padding: 5px 10px 5px 10px;
+    border:solid 1px var(--color10);
+    transition: var(--transTimeLong) ease;
+    width: 30px;
+    height: 30px;
+    transform: rotate(2deg);
+  }
+
+.fontLog
+  {
+    font-size: 15px;
+    color: var(--color3);
+  }
+
+.fontTitle
+  {
+    font-family: Monofett;
+    font-size: 40px;
+    color: var(--color3);
+    transform: rotate(-1deg);
+  }
+
+.fontSubTitle
+  {
+    font-family: Permanent Marker;
+    font-size: 30px;
+    color: var(--color3);
+    transform: rotate(3deg);
+  }
+
+.fontScreen
+  {
+    font-family: Fira Mono;
+    color: var(--color2);
+    text-align: right;
+    transform: rotate(-1deg);    
+  }

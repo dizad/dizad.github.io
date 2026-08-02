@@ -1,0 +1,131 @@
+"use strict";
+
+//DIZAD completed 04/08/17
+//JQuery UI imported
+//JQuery imported
+//D3 imported
+//alert("[Description required]"); //Provide user instructions
+$(document).ready(function () {
+  //Start of DOM check function
+  var dataURL = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json"; //Api data location
+  //GetJSON Operation
+  $.getJSON(dataURL, function (dataEntry) {
+    //Start of JSON
+    //Set global variables
+    var chartMargin = {
+      top: 100,
+      bottom: 75,
+      left: 100,
+      right: 75
+    };
+    var chartWidth = $(".chart").width();
+    var chartHeight = $(".chart").height();
+    var scaleY = 18000 / (chartHeight - chartMargin.top - chartMargin.bottom);
+
+    //Initiate the svg to the core
+    var d3Core = d3.select(".d3Content").append('svg').attr('width', chartWidth).attr('height', chartHeight);
+
+    //Add toolTip
+    var d3ToolTip = d3.select(".d3Content").append("div").attr("class", "tooltip").style("opacity", 0);
+
+    //Add circles
+    var d3Circle = d3Core.append("circle").attr("class", "mouseOverCircle").style("opacity", 0).attr("r", 10);
+
+    //Add rectangle bars
+    var d3Main = d3Core.selectAll().data(dataEntry.data).enter()
+    //Rectangle attributes
+    .append("rect").attr("x", function (d, i) {
+      return i * ((chartWidth - (chartMargin.left + chartMargin.right)) / dataEntry.data.length) + chartMargin.left;
+    }); //Bar x location + offset
+    //Initial animation graphics
+    d3Main.transition().delay(function (d, i) {
+      return i * 5;
+    }).duration(500)
+    //End of animation graphics
+    .attr("y", function (d, i) {
+      return chartHeight - chartMargin.bottom - d[1] / scaleY;
+    }) //Bar y location + scale
+    .attr("width", 3) //Bar width
+    .attr("height", function (d, i) {
+      return d[1] / scaleY;
+    }); //Bar height
+    //Mouseover on rectangle
+    d3Main.on("mouseover", function (d) {
+      //Change bar style
+      d3.select(this).attr("class", "mouseInBarStyle").style("opacity", 1);
+      //Add circle     
+      d3Circle.style("opacity", 1).attr("cx", dataEntry.data.indexOf(d) * ((chartWidth - (chartMargin.left + chartMargin.right)) / dataEntry.data.length) + chartMargin.left) //Alternative: event.clientX - 552 or 560
+      .attr("cy", chartHeight - chartMargin.bottom - d[1] / scaleY);
+      //Add toolkit
+      d3ToolTip.transition().duration(100).style("opacity", 1);
+      d3ToolTip.html("<span><span id='fontLabels'>GDP: </span> " + d[1] + " Billion$ </span><br><span><span id='fontLabels'>Date: </span>" + d[0] + "</span>").style("left", d3.event.pageX + 20 + "px").style("top", d3.event.pageY - 60 + "px");
+    });
+    //MouseOut on rectangle
+    d3Main.on("mouseout", function () {
+      var rect = d3.select(this).attr("class", "mouseOutBarStyle");
+      //Fade off bar style
+      rect.transition().duration(250).style("opacity", 0.5);
+      //Fade off circle
+      d3Circle.style("opacity", 0);
+      //Tooltip
+      d3ToolTip.transition().duration(500).style("opacity", 0);
+    });
+
+    //Draw the gridLines
+    var yBlockSize = (chartHeight - chartMargin.bottom - chartMargin.top) / 9;
+    var xBlockSize = (chartWidth - chartMargin.left - chartMargin.right) / 10.075;
+    for (var i01 = 0; i01 < 10; i01++) {
+      d3Core.append("line").attr("id", "gridStyle").attr("x1", chartMargin.left).attr("y1", chartMargin.top + i01 * yBlockSize).attr("x2", chartWidth - chartMargin.right).attr("y2", chartMargin.top + i01 * yBlockSize);
+    }
+
+    for (var i02 = 0; i02 < 11; i02++) {
+      d3Core.append("line").attr("id", "gridStyle").attr("x1", chartMargin.left + i02 * xBlockSize).attr("y1", chartMargin.top).attr("x2", chartMargin.left + i02 * xBlockSize).attr("y2", chartHeight - chartMargin.bottom);
+    }
+
+    //Title
+    d3Core.append('text').attr('x', 100).attr('y', 50).attr('id', 'fontChartTitle').text('United States:');
+
+    d3Core.append('text').attr('x', 295).attr('y', 50).attr('id', 'fontBold').text('Gross Domestic Product(GDP)');
+
+    //Reference footnote
+    d3Core.append('text').attr('x', 575) //Keep in mind that this is rotated, so coords work different
+    .attr('y', chartHeight - 15).attr('id', 'fontChartLabel').text('http://www.bea.gov/national/pdf/nipaguid.pdf');
+
+    //Add the axes
+    //Add y-label "Gross Domestic Product"
+    d3Core.append('text').attr('transform', 'rotate(-90)').attr('x', -360) //Keep in mind that this is rotated, so coords work different
+    .attr('y', 40).attr('id', 'fontLabels').text('GDP (X 1Billion USD)');
+
+    //Set the Y scale
+    //Define the min and max by scanning through the data
+    var returnYData = dataEntry.data.map(function (dataEntry) {
+      return dataEntry[1];
+    });
+    var yDataMin = d3.min(returnYData);
+    var yDataMax = d3.max(returnYData);
+    //Set the scaleLinear
+    var yAxisScale = d3.scaleLinear().domain([yDataMax, yDataMin]) //Min/max range of input
+    .range([0, chartHeight - chartMargin.bottom - chartMargin.top]); //Min/max range of output
+    //Append to d3
+    d3Core.append('g').call(d3.axisLeft(yAxisScale)) //Import the scale values provided the built-in axisLeft method
+    .attr('transform', 'translate(' + (chartMargin.left - 10) + ', ' + chartMargin.top + ')'); //Define the y-axis location(xOffset, yOffset)
+
+    //Add the x-axis
+    //Add x-axis Label "Year"
+    d3Core.append('text').attr('x', chartWidth / 2).attr('y', chartHeight - 25).attr('id', 'fontLabels').text('Year');
+    //X-scale
+    var xDataMin = 0;
+    var xDataMax = 2015;
+
+    //Set the scaleLinear
+    var xAxisScale = d3.scaleLinear().domain([xDataMin, xDataMax]) //Min/max range of input
+    .range([0, chartWidth - chartMargin.left - chartMargin.right]); //Min/max range of output
+
+    var xAxis = d3.axisBottom(xAxisScale).ticks(10); //tickValues(d3.range(0, chartWidth + chartMargin.left + chartMargin.right, 85))
+
+    //Append to d3
+    d3Core.append('g').call(xAxis) //Import the scale values provided the built-in axisLeft method
+    .attr('id', 'axisStyle') //Add the line style
+    .attr('transform', 'translate(' + chartMargin.left + ',' + (475 + 10) + ')');
+  }); //End of JSON
+}); //End of DOM check function

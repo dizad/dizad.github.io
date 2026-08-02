@@ -1,0 +1,189 @@
+//DIZAD completed 04/11/17
+//JQuery UI imported
+//JQuery imported
+//D3 imported
+//alert("[Description required]"); //Provide user instructions
+$(document).ready(function(){//Start of DOM check function
+  var dataURL = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json"; //Api data location
+//GetJSON Operation
+  $.getJSON(dataURL, function(dataEntry)
+    {//Start of JSON
+    //Set global variables
+		   const chartMargin = 
+				{
+				  top: 100,
+				  bottom: 100,
+				  left: 100,
+				  right: 100
+				}   
+  	  const chartWidth = $(".chart").width();
+			const chartHeight = $(".chart").height();
+			const activeHeight = chartHeight - chartMargin.bottom - chartMargin.top;
+			const circleDefaultRadius = 10;
+			const scaleY = 5;
+         
+		//Initiate the svg to the core
+			var d3Core = d3.select(".d3Content")  
+				.append('svg')
+				.attr('width', chartWidth)
+				.attr('height', chartHeight);
+    
+		//Add toolTip
+			var d3ToolTip = d3.select(".d3Content")
+				.append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 0);
+        
+		//Add circles
+			var d3CoreSelectAll = d3Core.selectAll()
+			  .data(dataEntry)//This is where d becomes dataEntry,
+			  .enter()   
+			  .append("circle")
+			  .attr("class" , function(d){ if (d.Doping == ""){return "circleNoDope";} else{return "circleStyle";}})
+			  .attr("cx" , (d, i) => chartMargin.left + (d.Seconds - dataEntry[0].Seconds) * 3);
+		  
+			d3CoreSelectAll.transition()
+			  .delay((d , i) => i * 50)
+			  .duration(500)
+			  .attr("cy" , (d, i) => (chartHeight - chartMargin.bottom) - (d.Place * (activeHeight/(dataEntry.length))) + 0)
+			  .attr("r", circleDefaultRadius)
+			  
+		//Add line
+			 //d3Core.append("line")              
+			 //.attr("id" , "toolTipLineStyle")
+			 //.attr("x1", 100)
+			 //.attr("y1", 300)  
+			 //.attr("x2", 200)  
+			 //.attr("y2",200);
+    
+		//Mouseover
+		  d3CoreSelectAll.on("mouseover", function(d){
+			d3.select(this)
+			  .style("opacity", 1)
+			  .transition()
+			  .duration(100)
+			  .attr("r", 30)  
+   				//Add toolkit
+					d3ToolTip.transition()
+					  .duration(100)
+					  .style("opacity", 1);
+		//MouseOut
+		  d3CoreSelectAll.on("mouseout", function()
+			{
+				d3.select(this)
+					.transition()
+					.duration(250)
+					.attr("r", circleDefaultRadius)   
+				//Tooltip mouseOut
+					d3ToolTip.transition()
+					  .duration(500)
+					  .style("opacity", 0);
+			});
+
+          function dope(cyclistEntry)
+            {if(cyclistEntry.Doping == ""){return "No Doping Allegation.";}}
+							
+			 d3ToolTip.html("<span><span id='fontBold'>Name: </span> " + d.Name + "</span><br><span><span id='fontBold'>Rank: </span>" + d.Place + "</span><br><span><span id='fontBold'>Time: </span> " + d.Time + "</span><br><span><span id='fontBold'>Year: </span> " + d.Year + "</span><br><span><span id='fontBold'>Allegation: </span> " + d.Doping + dope[d] + "</span><br>")
+				.style("left", (d3.event.pageX + 50) + "px")
+				.style("top", (d3.event.pageY - 10) + "px");
+            }) 
+
+	//Draw the gridLines
+      const yBlockSize = (activeHeight) / 35; 
+      for (var i01 = 0; i01 < 36; i01++)
+        {
+          d3Core.append("line")              
+            .attr("id" , "gridStyle")
+            .attr("x1", chartMargin.left)
+            .attr("y1", chartMargin.top + i01 * yBlockSize)  
+            .attr("x2", chartWidth - chartMargin.right)  
+            .attr("y2", chartMargin.top  + i01 * yBlockSize);
+        }
+	//Labels
+		//Title
+			d3Core.append('text')
+				.attr('x', 200)
+				.attr('y', 50)
+				.attr('id', 'fontChartTitle')
+				.text('Cyclists Who Dope on the Job');
+    
+		//Reference footnote
+			d3Core.append('text')
+				.attr('x', 250) //Keep in mind that this is rotated, so coords work different
+				.attr('y', chartHeight - 15)
+				.attr('id', 'fontChartFootNote')
+				.text('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json');
+        
+       //Add y-label "Gross Domestic Product"
+			d3Core.append('text')
+				.attr('transform', 'rotate(-90)')
+				.attr('x', - 325) //Keep in mind that this is rotated, so coords work different
+				.attr('y', 40)
+				.attr('id', 'fontChartLabel')
+				.text('Ranking');
+    
+       //Add x-axis Label "Year"
+			d3Core.append('text')
+			    .attr('x', 300)
+			    .attr('y', chartHeight - 40)
+			    .attr('id', 'fontChartLabel')
+			    .text('Seconds Behind Record');
+    
+            //Data tag names
+        for (var i = 0; i < dataEntry.length; i++)
+          {
+            d3Core.append('text')
+              .attr('x', chartMargin.left + (dataEntry[i].Seconds - dataEntry[0].Seconds) * 3 + 15)
+              .attr('y', (chartHeight - chartMargin.bottom) - dataEntry[i].Place * 10 + 3)
+              .attr('id', 'fontDataTag')
+              .text(dataEntry[i].Name);
+          }
+
+    //Add Legend
+        d3Core.append('text')
+          .attr('x', 725)
+          .attr('y', 250)
+          .attr('id', 'fontChartLabel')
+          .text('Dope');
+        d3Core.append('text')
+          .attr('x', 715)
+          .attr('y', 400)
+          .attr('id', 'fontChartLabel')
+          .text('No Dope');
+        d3Core.append("circle")
+          .attr("class" , "circleStyle")
+          .attr('cx', 750)
+          .attr('cy', 200)
+          .attr('r', circleDefaultRadius)
+        d3Core.append("circle")
+          .attr("class" , "circleNoDope")
+          .attr('cx', 750)
+          .attr('cy', 350)
+          .attr('r', circleDefaultRadius);          
+
+      //Axes
+		//Y-axis
+            var yDataMin = 0; 
+            var yDataMax = dataEntry[34].Place; 
+            const yAxisScale = d3.scaleLinear()
+              .domain([yDataMax, yDataMin]) //Min/max range of input
+              .range([1 , activeHeight]); //Min/max range of output
+          //Append to d3
+            d3Core.append('g')
+              .call(d3.axisLeft(yAxisScale))
+              .attr('class', 'axeStyle')
+              .attr('transform', 'translate(' + (chartMargin.left - 10) + ', ' + chartMargin.top + ')');
+		//X-axis
+			var xDataMin = 0;
+			var xDataMax = dataEntry[34].Seconds - dataEntry[0].Seconds + 20; 
+			const xAxisScale = d3.scaleLinear()
+				.domain([xDataMin, xDataMax]) //Min/max range of input
+				.range([0, chartWidth - chartMargin.left - chartMargin.right]); //Min/max range of output
+			var xAxis = d3.axisBottom(xAxisScale)
+		  //Append to d3
+			d3Core.append('g')
+		   .attr('class', 'axeStyle')
+			  .call(xAxis)
+			  .attr('transform', 'translate(' + chartMargin.left + ','+ (450 + 10) +')')
+    }); //End of JSON
+});//End of DOM check function

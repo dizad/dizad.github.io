@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FCC#10: Simon Game</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+<!--fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Caesar+Dressing" rel="stylesheet"> 
+<!--Icons-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
+
+<!--Title block-->
+  <div class = "woodBackground">
+    <div class = "leafBorder"><div class = "fontTitle"></div></div>
+    
+<!--Main game-->
+    <div class = "simonBoard">
+      <!--Main quadrant simon buttons-->
+        <div class = "butSimonDefault butGreen"></div>
+        <div class = "butSimonDefault butRed"></div>
+        <div class = "butSimonDefault butBlue"></div>
+        <div class = "butSimonDefault butYellow"></div>    
+        <div id = "hLine"></div>
+        <div id = "vLine"></div>
+      <!--Control board-->
+        <div class = "controlBoard">
+          <div id = "labelStatus">PRESS START</div>
+          <div class = "butStart"></div>
+          <div class = "butStrict"></div>
+          <div id = "labelStep">00</div>
+        </div>
+    </div>
+  <!--footNote -->
+    <div class = "leafBorder" style = "transform: scaleY(-1);">
+      <hr style="visibility:hidden;" />
+      <div class = "fontFootNote">
+        <div><em>[FCC Project#10: Simon Game]</em></div>
+        <div><em>Exercise Topic(s): Javascript</em></div>
+        <div><em>Coded by: DIZAD 03/15/17</em></div>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

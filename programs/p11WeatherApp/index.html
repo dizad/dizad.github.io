@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FCC#04: Weather App</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div class = "container1">
+  <div class = "fontMetric">- Live Weather App -</div>
+  <div class = "container2">
+    <span class = "button" id = "imperial" style="margin-right: 1.4%; border-right: solid 1px black;">Imperial</span>
+    <span class = "button" id = "metric" style="margin-left: 1.4%; border-left: solid 1px black;">Metric</span>
+    <div class = "container3">
+      <div class = "fontLabel">Location/temp data found on: <span style = "color:white" id = "date"></span></div>
+      <div class = "font6" id = "location">[#location]</div>
+    </div>  
+  <div class = "well2Col">  
+    <div class = "container4">
+      <div class = "container4">
+        <div style = "border-right:solid 1px black;" class = "fontLabel">Current Temp:</div>
+        <div style = "border-right:solid 1px black;" class = "fontTemp" id = "currentTemp">[#currentTemp]</div>
+        <div style = "border-right:solid 1px black; border-top:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Max / Min Temp:</div>
+        <div style = "border-right:solid 1px black; border-bottom:solid 1px black;" class = "font3" id = "maxMinTemp">[#minMaxTemp]</div>
+        <div style = "border-right:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Sky Description:</div>
+        <div class = "font3" id = "skyDescription" style = "color: #305DBF; font-weight: bold;">[#skyDescription]</div>
+        <div style = "border-left:solid 1px black; border-bottom: solid 1px black;" class = "container4"><div id = "diagram"></div>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div class = "well3Col">
+      <div class = "container5">
+        <div style = "border-right:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Wind Speed:</div>
+        <div style = "border-right:solid 1px black;" class = "fontMetric" id = "windSpeed">[#windSpeed]</div>
+        <div style = "border-right:solid 1px black;" class = "fontUnit" id="speedUnit"></div>
+      </div>
+      <div class = "container5">
+        <div style = "border-right:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Wind Direction:</div>
+        <div style = "border-right:solid 1px black;" class = "fontMetric" id = "windDirection">[#windDirection]</div><div style = "border-right:solid 1px black;" class = "fontUnit">deg</div>
+      </div> 
+    <!--repeat here for pressure and humidity-->
+      <div class = "container5">
+        <div style = "border-left:solid 1px black; border-right:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Pressure:</div>
+        <div style = "border-right:solid 1px black; border-left:solid 1px black;" class = "fontMetric" id = "pressure">[#pressure]</div>
+        <div style = "border-right:solid 1px black; border-left:solid 1px black;" class = "fontUnit">hPa</div>
+      </div>
+      <div class = "container5">
+        <div style = "border-right:solid 1px black; border-left:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Humidity:</div>
+        <div style = "border-right:solid 1px black; border-left:solid 1px black;" class = "fontMetric" id = "humidity">[#humidity]</div>
+        <div style = "border-right:solid 1px black; border-left:solid 1px black;" class = "fontUnit">%</div>
+      </div> 
+      <div class = "container5">
+        <div style = "border-left:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Sea Level P:</div>
+        <div style = "border-left:solid 1px black;" class = "fontMetric" id = "seaLevel">[#sea level]</div>
+        <div style = "border-left:solid 1px black;" class = "fontUnit">hPa</div>
+      </div>
+      <div class = "container5">
+        <div style = "border-left:solid 1px black; border-bottom:solid 1px black;" class = "fontLabel">Ground Level P:</div>
+        <div style = "border-left:solid 1px black;" class = "fontMetric" id = "gndLevel">[#ground level]</div>
+        <div style = "border-left:solid 1px black;" class = "fontUnit">hPa</div>
+      </div> 
+    </div>    
+  </div>
+  <!--footer-->
+  <div style = "color:#1F3D57"><em>[FCC Project#04: Weather App] Exercise Topic(s): weather API</em></div>
+  <div style = "color:#1F3D57"><em>Coded by: DIZAD 02/10/17</em></div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>FCC#09: Tic Tac Toe</title>
+      <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--Other imported libraries-->
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy" rel="stylesheet"> <!--fonts-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
+
+<!--Title block -->
+  <div class = "fontTitle">Tic Tac Toe</div>
+
+<!--dropdown menu-->
+  <div class="dropdown">
+    <button class="dropbtn" id = "dropdownHead">X</button>
+    <div class="dropdown-content">
+      <a id = "xSymbol">X</a>
+      <a id ="oSymbol">0</a>
+    </div>
+  </div>
+  <span id = "butStart">START</span>
+
+<!--Strike container--> 
+  <span class = "strikeContainer"></span>
+
+<!--Main board-->  
+  <table>
+    <tbody> 
+    <!--Row#1-->  
+      <tr>
+        <td class = "butDefault" style = "border-left: none; border-top: none;" id = "00">-</td>
+        <td class = "butDefault" style = "border-top:none;" id = "10">-</td>
+        <td class = "butDefault" style = "border-top:none; border-right: none;" id = "20">-</td>
+      </tr>
+    <!--Row#2-->  
+      <tr>
+        <td class = "butDefault" style = "border-left: none" id = "01">-</td>
+        <td class = "butDefault" id = "11">-</td>
+        <td class = "butDefault" style = "border-right: none;" id = "21">-</td>
+      </tr>
+    <!--Row#3-->  
+      <tr>
+        <td class = "butDefault" style = "border-left: none; border-bottom: none;" id = "02">-</td>
+        <td class = "butDefault" style = "border-bottom: none;" id = "12">-</td>
+        <td class = "butDefault" style = "border-bottom: none; border-right: none;" id = "22">-</td>
+      </tr>
+    </tbody>  
+  </table>
+
+<!--footNote -->
+  <hr style="visibility:hidden;" />
+  <div class = "fontFootNote"><em>[FCC Project#09: Tic Tac Toe] </em></div>
+  <div class = "fontFootNote"><em>Exercise Topic(s): Javascript</em></div>
+  <div class = "fontFootNote"><em>Coded by: DIZAD 03/10/17</em></div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

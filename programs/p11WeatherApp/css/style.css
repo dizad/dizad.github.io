@@ -1,0 +1,227 @@
+/*Universal variables*/
+:root
+  {
+    --color1: #1F3D57;
+    --color2: #3BCEFF; //highlight color
+    --color3: #226199;
+    --color4: #0B58E6; //color of location
+    --color5: #00FFC8; //Another font highlight color
+    --transTime: 0.75s;
+  }
+
+/*General classes:*/
+body
+  {
+    background-color: #78FDFF;
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif,;
+  }
+
+/*Containers:*/
+  .container1 /*main background box:*/
+    {
+      max-width: 540px;
+      margin: 1% auto;
+      background-image: -webkit-gradient(linear, 0% 0%,0% 100%, from(#0A1B21), to(#050708));
+    }
+
+  .container2 /*Lighter inner box:*/
+    {
+      max-width: 500px;
+      margin: auto;
+      background-image: -webkit-gradient(linear, 0% 0%,0% 100%, from(#182A30), to(#11191C));
+  border:solid 1px black; 
+    }
+
+  .container3/*Location box:*/
+    {
+      padding: 0%;
+      background-color: var(--color4);
+      border-top:solid 1px black;
+      border-bottom:solid 1px black; 
+    }
+
+  .container4 /*Temperature box:*/
+    {
+      height: 225px;
+      background-image: -webkit-gradient(linear, 0% 0%,0% 100%, from(#007BFF), to(#82DAFF)); 
+    }
+
+.well3Col
+  {
+  column-count: 3; 
+  }
+
+.well2Col
+  {
+  column-count: 2;
+  }
+
+.container5 /*Auxiliary boxes:*/
+  {
+    height: 85px;
+    background-color: #0C1211;
+    border-top:solid 1px black;
+  }
+
+/*Fonts:*/
+  .font1
+    {
+      font-size: 10px;
+       border:solid 1px black; 
+    }
+  .font2
+    {
+      font-size: 20px;
+      border:solid 1px black; 
+    }
+  .font3 
+    {
+      font-size: 30px;
+    }
+  .font4
+    {
+      font-size: 40px; //
+       border:solid 1px black; 
+    }
+  .font5
+    {
+      font-size: 40px;
+       border:solid 1px black; 
+    }
+  .font6
+    {
+      font-size: 50px;
+      border-top:solid 1px black; 
+    }
+  .fontTemp
+    { color: yellow;
+      font-size: 60px;
+      font-weight: bold;
+      border-top:solid 1px black;  
+    }
+  .fontUnit
+    {
+      color:#297557;
+    }
+  .fontLabel /*Labels*/
+    {
+      color: var(--color2);
+      background-color: var(--color1);
+    }
+  .fontMetric
+    {
+      font-size: 30px;
+      color: #00FFC8; 
+    }
+
+/*Diagrams*/
+/*Cloud*/
+ .cloud 
+    { 
+        background: white;
+        width: 75px;
+        height: 75px;
+        position: absolute;
+        margin: 65px 65px; //centers
+        text-align: center;
+        border-radius: 50%;  
+    }
+  .cloud:before 
+    { 
+        content: "";
+        position: absolute;
+        top: 30px;
+        left: -20px;
+        height: 50px;
+        width: 150px;
+        background: white;
+        border-radius: 50%;  
+    }
+  .cloud:after 
+    {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 50px;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: white;
+        border-radius: 50%;
+        clip-path: circle(50% at 50% 50%);
+    }
+
+/*sun*/
+  .sun 
+    { 
+        background: orange;
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        text-align: center;
+        margin: 75px 75px; //centers
+
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45eg);
+            -ms-transform: rotate(45eg);
+             -o-transform: rotate(45deg);
+    }
+  .sun:before 
+    {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 80px;
+        width: 80px;
+        background: orange;
+        -webkit-transform: rotate(135deg);
+           -moz-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+             -o-transform: rotate(135deg);
+    }
+  .sun:after 
+    {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 80px;
+        width: 80px;
+        background: yellow;
+        clip-path: circle(50% at 50% 50%);
+    }
+
+/*Buttons*/
+  .button
+  {
+    font-size: 20px;
+    background-color: var(--color3);
+    color: var(--color2);
+    padding: 0% 17.6% 0% 17.6%;
+    margin: auto auto auto auto;
+    display:inline-block;
+    transition: var(--transTime) ease;
+    transition: background 0.75s ease;
+  }
+  .button:hover
+  {
+    background-color: #18DE8F;
+    color: white;
+
+    cursor: pointer;
+      transition: background 0.75s ease;
+  }
+  .button:active
+  {
+    background-color:white;
+  }
+  .buttonPressed
+  {
+    background-color:#3F7560;
+    color:#8AFFD0;
+  }
+
+

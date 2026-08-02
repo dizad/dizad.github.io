@@ -1,0 +1,175 @@
+/*Imported libraries: CSS Preprocessor*/
+/*Color variables*/
+  $color1: #4a5e82;
+  $darkBlue: #0D1114;
+  $panelBlue: #4B6476;
+  $lightGreen: #DDFF55;
+  $labelGray: #1F2830;
+  $tableBlue: #0D1013;
+  $labelBlue: #1E252B;
+  $lightBlue: #BDE8FF;
+  $textBlue: #00A6FF;
+
+.bodyMidLayer
+  {
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC06TwitchTVMonitor/gridPattern.png");
+  }
+
+.bodyForeLayer
+  {
+    background: radial-gradient(transparent 0%, black 85%, black 100%);
+    background-repeat: no-repeat; 
+  }
+
+body
+  {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    margin: auto;
+    transition: 1s ease;
+  }
+
+table
+  {
+    margin-top: 10px;
+    max-width: 600px;
+    border-collapse:collapse;
+    margin: auto;
+  }
+
+.fontTitle
+  {
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC06TwitchTVMonitor/bannerTexture.jpg");
+    background-size: cover;
+    margin-top: 20px;
+    padding: 0% 4% 0% 4%;
+    font-family: Slackey, Helvetica;
+    font-size: 40px;
+    color: $lightGreen;
+    background-color: $panelBlue;
+  }
+
+.subTitle
+  {
+    font-size: 50px;
+    color:white;
+  }
+
+#fontTwitch
+  {
+    background-color: #AA75FF;
+    mix-blend-mode: color-dodge;
+  }
+
+.fontFootNote
+  {
+    font-size: 15px;
+    font-weight: normal;
+    color: gray;
+    opacity: 0.7;
+  }
+
+.fontOnline
+  {
+    padding: 0% 1% 0% 1%;
+    border-radius: 20px;
+    color: lime;
+    background-color: DarkGreen;
+    font-weight: bold;
+    left: 0% !important;
+  }
+
+.fontOffline
+  {
+    padding: 0% 1% 0% 1%;
+    border-radius: 20px;
+    color: white;
+    background-color: red;
+    font-weight: bold;
+    left: 0% !important;
+  }
+
+.fontClosed
+  {
+    color: red;
+  }
+
+.fontTwitchSlabTitle
+  {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+  }
+
+.fontTwitchSlabStreaming
+  {
+    font-size: 20px;
+    font-weight: normal;
+    color: green;
+    font-style: italic;
+  }
+
+.butDefault
+  {
+    width: 200px;
+    background-color: $panelBlue;
+    transition: 0.5s ease;
+    text-align: center !important;
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC06TwitchTVMonitor/buttonTexture.jpg");
+    background-size: cover; 
+  }
+
+.butDefault:hover
+  {
+    filter: contrast(1.5);
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+.logoStyle
+  {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+
+.twitchResultsClass
+  {
+   background-color: black;
+   box-shadow: 0px 0px 30px black;
+  }
+
+a
+  {
+    text-decoration:none; /*Remove underline hover*/
+  }
+
+.butTwitchSlab
+  {
+      padding: 5px;
+      /*margin: 1% auto 1% auto !important;*/
+      transition: 0.5s ease;
+  }
+
+.butTwitchSlab:hover
+  { 
+    filter: brightness(2);
+    color: var(--color7);
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+.break
+  {
+    padding: 1%;
+    font-size: 15px;
+    color: gray;
+    background: linear-gradient(#121212 0%, black 100%);
+  }

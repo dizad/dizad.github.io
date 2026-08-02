@@ -1,0 +1,97 @@
+/*General styles*/
+  .background
+    {
+      background: #EDEDED;
+      height: 100vh;
+      background-image:
+        linear-gradient(45deg, gray, white), 
+        linear-gradient(lightBlue, #6E6E6E);
+      background-size: 1em 1em, 100% 100%;
+      background-blend-mode: hard-light;
+    }
+
+  body
+    {
+      text-align: center;
+      color: black;
+      font-family: Roboto, sans-serif;
+      margin: 15px auto;
+      transition: 1s ease;
+    }
+
+/*Chart styles*/
+  .chart
+    {
+      border-color: LemonChiffon;
+      background: white;
+      width: 1500px;
+      height: 500px;
+      text-align: center;
+      margin: auto;
+      box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5);
+    }
+  
+  .d3Content 
+    {
+      width: 100%;
+    }
+
+  .tooltip 
+    {
+      color: black;
+      position: absolute;
+      text-align: left;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      pointer-events: none;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+/*Fonts*/
+  .fontChallengeTitle
+    {
+      opacity: 0.5;
+      max-width: 803px;
+      text-align: center;
+      margin: auto;
+      color: #252329;
+     // font-family: Covered By Your Grace, sans-serif;
+      font-size: 30px;
+     // font-style: Italic;
+    }
+
+  .fontFootNote
+    {
+      font-size: 15px;
+      font-weight: normal;
+      font-style: italic;
+      margin: 10px auto;
+      text-align: center;
+      opacity: 0.5;
+    }
+
+  #fontChartTitle
+    {
+      font-weight: normal;
+      font-style: normal;
+      fill: #3F4345;
+      font-size: 30px;
+    }
+
+  #fontChartLabel
+    {
+      fill: #3F4345;
+      font-size: 20px;
+    }
+
+  #fontBold
+    {
+      font-weight: bold;
+    }
+
+  #fontChartFootNote
+    {
+      font-size: 12px;
+      opacity: 0.5;
+    }

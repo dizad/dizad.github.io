@@ -1,0 +1,56 @@
+//General
+  body 
+    {
+      background: linear-gradient(135deg, #1E2124, #5A7591);    
+      text-align: center;
+      color: white;
+      font-family: Roboto, sans-serif;
+      margin: 15px auto;
+      transition: 1s ease;
+    }
+
+  #reactApp 
+    {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #356B8F;
+      background: radial-gradient(#96F5FF 15%, #00B5FF 60%);
+    }
+
+//Fonts
+  .fontTitle 
+    {
+      text-align: center;
+      margin: auto;
+      font-family: Anton, sans-serif;
+      font-size: 30px;
+    }
+
+  .fontFootNote 
+    {
+      font-size: 85%;
+      font-family: tahoma;
+      font-style: italic;
+    }
+
+	#fontBold
+		{
+		  font-weight: bold;
+		}
+
+//D3 items
+  .tooltip 
+    {
+      display: none;
+      padding: 5px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #5F7C85;
+      background-color: #E0F8FF;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: 1;
+      color: black;
+      text-align: left;
+    }

@@ -1,0 +1,119 @@
+/*Sass imported*/
+/*General styles*/
+  body
+    {
+      background-color: #9ED2FF;
+      text-align: center;
+      color: black;
+      font-family: Helvetica, sans-serif;
+      margin: auto;
+      transition: 1s ease;
+    }
+
+  .background
+    {
+      background: linear-gradient(#3273ED 1%, #9ED2FF 100%);
+    }
+  
+/*Chart styles*/
+  .chart
+    {
+      background-color: white;
+      width: 800px;
+      height: 550px;
+      text-align: center;
+      margin: auto;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    }
+  
+  .d3Content 
+    {
+      width: 100%;
+    }
+
+  .tooltip 
+    {
+      position: absolute;
+      text-align: left;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      border-radius: 5px;
+      pointer-events: none;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      background-color: white;
+    }
+
+  #gridStyle
+    {
+      /*stroke-dasharray: 1;*/
+      stroke: black;
+      opacity: 0.2;
+      stroke-width: 1px;
+      fill: none;
+    }
+/*MouseOvers*/
+  .mouseOverCircle
+    {
+      stroke-width: 2px;
+      stroke: #3273ED;
+      fill: none;
+    }
+
+  .chart .mouseInBarStyle
+    {
+      fill: #3273ED;
+    }
+
+  .chart rect, /*At default*/
+  .chart .mouseOutBarStyle /*AND at mouseover*/
+    {
+      fill: #3D9EFF;
+      opacity: 0.5;
+    }
+
+/*Fonts*/
+  #fontChartTitle
+    {
+      text-decoration: underline;
+      font-size: 30px;
+      opacity: 0.6;
+    }
+
+  #fontBold
+    {
+      fill: #3273ED;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 30px;
+    }
+  
+  #fontChartLabel
+    {
+      font-size: 10px;
+    }
+  
+  #challengeTitle
+    {
+      font-size: 30px;
+      color: white;
+      font-family: Hind Madurai;
+      font-weight: normal;
+      opacity: 0.8;
+    }
+  
+  #fontFootNote
+    {
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: normal;
+      font-style: italic;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+#fontLabels
+  {
+    opacity: 0.7;
+    font-weight: bold;
+  }

@@ -1,0 +1,162 @@
+:root
+  {
+      --color1: #14202B;
+      --color2: #FFA42E; 
+      --color3: #FF6200;
+  }
+
+.honeycomb
+  {
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC08PomodoroClock/honeycombTexture.png");  
+  }
+
+body
+  {
+    background: radial-gradient(#19212E 1%, black 60%); /* Standard syntax */
+    background-repeat: no-repeat; 
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    margin: auto;
+    transition: 1s ease;
+  }
+
+.fontTitle
+  {
+    color: #10161E;
+    font-family: Faster One, Helvetica;
+    font-size: 40px;
+  }
+
+#container1
+  {
+    background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC08PomodoroClock/background.png");
+    transition: 1s ease;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+  }
+
+.fontFootNote
+  {
+    transform: translate(0px, -75px);
+    font-size: 15px;
+    font-weight: normal;
+    color: #273547;
+  }
+
+#screenCountdown
+  {
+    font-family: Helvetica, Arial;
+    color: #80FF00;
+  }
+
+.butDefault
+  {
+    font-size: 17px;
+    width: 50px;
+    transition: 0.5s ease;
+    text-align: center !important;
+    margin: auto;
+    color: #35522A;
+    font-weight: bold;
+  }
+
+.butDefault:hover
+  {
+    color: white;
+    transition: 0.5s ease;
+    cursor: pointer;   
+  }
+
+#butStart:hover + #container1{ background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC08PomodoroClock/backgroundLightLeft.png"); }
+#butStop:hover ~ #container1{ background-image: url("http://www.apsys-inc.com/DIZAD_Web_Libraries/Images/FreeCodeCamp/FCC08PomodoroClock/backgroundLightRight.png"); }
+
+.mainContainer
+  {
+    transform: translate(0px, -50px);
+  }
+
+.butAdjust
+  {
+    border-weight: 2px;
+    border-color: black;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    color: #00966A;
+    border-radius: 50%;
+    background-color:  #0f1216;
+    text-align: center;
+    padding: auto;
+  }
+
+.butAdjust:hover
+  {
+    transition: 0.5s ease;
+    cursor: pointer;
+    color: white;
+  }
+
+#butPlusTimer
+  {
+    transform: translate(244px, -180px);
+  }
+
+#butMinusTimer
+  {
+    transform: translate(65px, -220px);
+  }
+
+#butPlusBreak
+  {
+    transform: translate(244px, -205px);
+  }
+
+#butMinusBreak
+  {
+    transform: translate(65px, -245px);
+  }
+
+#butStart
+  {
+    transform: translate(-125px, 70px) rotate(-45deg);
+  }
+
+#butStop
+  {
+     transform: translate(110px, 78px) rotate(45deg);
+  }
+
+.screen
+  {
+    font-size:45px;
+    transform: translate(116px, -350px);
+    background-color: #030D0C;
+    color: #00FFB3;
+    width: 120px;
+    height: 56px;
+  }
+
+.timeRing 
+  {
+    position:relative;
+    top:24px;
+    margin: auto;
+    border: 10px solid white;
+    border-radius: 50%;
+    border-top: 10px solid #F7FFC4;
+    border-right: 10px solid #E2FF8A;
+    border-bottom: 10px solid #D1FF46;
+    width: 288px;
+    height: 288px;
+    animation: spin 10s linear infinite;
+  }
+
+@keyframes spin 
+  {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }

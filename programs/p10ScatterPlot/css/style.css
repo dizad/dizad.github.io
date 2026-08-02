@@ -1,0 +1,149 @@
+/*General styles*/
+  .background
+    {
+      background: linear-gradient(#0E0D12 1%, #19181C 50%, #0E0D12 100%);
+    }
+
+  body
+    {
+      background: #0E0D12;
+      text-align: center;
+      color: LemonChiffon;
+      font-family: Roboto, sans-serif;
+      margin: 15px auto;
+      transition: 1s ease;
+    }
+
+/*Chart styles*/
+  .chart
+    {
+      border-style: solid;
+      border-width: 2px;
+      border-color: LemonChiffon;
+      background: linear-gradient(#252329 1%, #23163B 100%);
+      width: 800px;
+      height: 550px;
+      text-align: center;
+      margin: auto;
+      box-shadow: 0px 0px 100px rgba(255, 254, 209, 0.05);
+    }
+  
+  .d3Content 
+    {
+      width: 100%;
+    }
+
+  .tooltip 
+    {
+      color: LemonChiffon;
+      position: absolute;
+      text-align: left;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      border-radius: 10px;
+      border-style: solid;
+      border-width: 4px;
+      stroke: lemonChiffon;
+      pointer-events: none;
+      box-shadow: 0px 0px 30px rgba(255, 254, 209, 0.1);
+      background-color: rgba(156, 102, 255, 0.3);
+    }
+
+  .circleStyle
+    {
+      fill: #422063;
+      opacity: 0.8;
+      stroke-width: 2px;
+      stroke: #FFF485;
+    }
+
+  .circleNoDope
+    {
+      fill: rgba(153 , 255 , 0 , 0.5);
+      opacity: 1;
+      stroke-width: 2px;
+      stroke: #FFF485;
+    }
+
+  #toolTipLineStyle
+    {
+      stroke: LemonChiffon;
+      stroke-width: 3px;  
+    }
+
+  #gridStyle
+    {
+      stroke: yellow;
+      opacity: 0.2;
+      stroke-width: 1px;
+      fill: none;
+    }
+
+  .axeStyle text
+    {
+      font-size: 15px;
+      fill: LemonChiffon;
+    }
+
+  .axeStyle line, path
+    {
+      stroke: #0E0D12;
+      fill: LemonChiffon;
+      stroke-width: 2px;
+    }
+
+/*Fonts*/
+  .fontChallengeTitle
+    {
+      max-width: 803px;
+      text-align: center;
+      margin: auto;
+      color: #252329;
+      background-color: LemonChiffon;
+      font-family: Roboto, sans-serif;
+      font-size: 30px;
+    }
+
+  .fontFootNote
+    {
+      font-size: 15px;
+      font-weight: normal;
+      font-style: italic;
+      margin: 10px auto;
+      text-align: center;
+      opacity: 0.5;
+    }
+
+  #fontChartTitle
+    {
+      font-weight: bolder;
+      font-style: italic;
+      fill: LemonChiffon;
+      font-size: 30px;
+    }
+
+  #fontChartLabel
+    {
+      fill: LemonChiffon;
+      font-size: 20px;
+    }
+
+  #fontBold
+    {
+      font-weight: bold;
+    }
+
+  #fontChartFootNote
+    {
+      fill: LemonChiffon;
+      font-size: 12px;
+      opacity: 0.2;
+    }
+
+#fontDataTag
+  {
+    fill: LemonChiffon;
+    font-size: 12px;
+    opacity: 0.5;
+  }

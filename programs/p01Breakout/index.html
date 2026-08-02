@@ -1,0 +1,937 @@
+<!--START---------------------------------------------------------------------------->
+<!DOCTYPE html>
+<!--HTML START----------------------------------------------------------------------->
+<html>
+	<head>
+		<meta charset="utf-8"> <!-- charset standard-->
+		<title>Breakout</title> <!-- tab title-->
+<!--CSS STYLE------------------------------------------------------------------------>
+<style>
+	body{
+		font-family: arial;
+		background-color: black;
+		color: white;
+		}; 
+	<!--glitch notes: for some reason rgb() and using comments on body{}glitches results-->
+	.CLASS_JS
+		{
+			border:15 px;
+			background-color: rgb(0,0,0);
+		};
+</style>
+<!--JAVASCRIPT------------------------------------------------------------------------>
+<div class="CLASS_JS">
+<script src="processing.js"></script>
+<script type="text/processing" data-processing-target = "mycanvas">
+//data structures
+	//variables
+
+		//canvas
+			var canvasX = 900;
+			var canvasY = 800;
+		
+		//GUI
+			var GUI_marginX = 20;
+			var GUI_margshift_Y = 100;
+			var canvas_shiftX = 100;
+		
+		//play_zone
+			var play_zone_marginX = 30;
+			var play_zone_margshift_Y = 200;
+		
+		//stroke templates
+			var stroke001 = 2;
+		
+		//GUI block widths
+			var title_block_width = 325;
+			var control_block_width = 750;
+		
+		//bolt
+			var bolt_offset = 20;
+			var bolt_dia = 10;
+		
+		//GRID
+			var gridX = 88;
+			var gridY = 88;
+			var grid_moveY = 0;
+			var star_moveX = 0;
+		
+		//colors
+			var W = [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 255]; //Grays Lighter <--> Darker
+			var G0 = [204, 255, 51];//yellow#1-used display buttons
+			var G1 = [0, 250, 113];//green#2-used for pushbuttons
+			
+			var B1 = [255, 255, 0];//bricks#1 color
+			var B2 = [100, 255, 50];//bricks#2 color
+			var B3 = [0, 255, 150];//bricks#3 color
+			var B4 = [0, 255, 255];//bricks#4 color
+			var B5 = [0, 200, 255];//bricks#5 color
+
+		//star
+			var star_dia = 40;
+
+		//gap variables
+			var Bgap1 = 73; //display button gaps
+			var Bgap2 = 30; //control button gaps
+		
+		//ball
+			var ball_dia = 20;
+			var gravity = 0;
+			var boost = 0;
+			var ball_life = 1;
+			var ball_starter = 0;
+			
+		//HUD	
+			var score = 0;
+			var level = 1;
+			var seconds = 0;
+			var milliseconds = 0;
+			var grid_speed = 1;
+		
+		//bolts
+			var OBJ_bolt = function(boltX, boltY)
+				{
+				fill(W[2],W[2],W[2],W[11]); //white fill color
+				ellipse(boltX, boltY, bolt_dia + 15, bolt_dia + 15);//outer circle
+				ellipse(boltX, boltY, bolt_dia, bolt_dia);//inner circle
+				};
+			
+		//hearts
+			var OBJ_heart = function(x) 
+				{
+				noStroke();
+				fill(G0[0], G0[1], G0[2], W[11], W[11]); //display lives
+				rect(button_lives.x + x, button_lives.y + 9, 6,15);
+				}	
+				
+		//recoil
+			var recoil =
+				{
+				board : 0, //status of board recoil function
+				amplitude1: 10,
+				angle1: 0	
+				}
+				
+		//recoil function	
+			var function_recoil = function()
+					{
+					board.y = board.y + recoil.amplitude1 * cos(recoil.angle1);
+					recoil.angle1 += 1.5; //control speed
+					recoil.amplitude1 -= 1.5; //damper
+					if(recoil.amplitude1 < 0) //reset the settings when amplitude reaches 0
+						{recoil.amplitude1 = 0;
+						recoil.board = 0;
+						recoil.amplitude1 = 10;
+						recoil.angle = 0;
+						}
+					};			
+					
+		//buttons
+			//constructors
+				var button = function(config)
+					{
+					this.x = config.x || 0;
+					this.y = config.y || 0;
+					this.radius = config.radius || 0;
+					this.width = config.width || 150;
+					this.height = config.height || 30;
+					this.label = config.label || 0;
+					this.txtsize = config.txtsize || 18;
+					this.r = config.r || 0;
+					this.g = config.g || 0;
+					this.b = config.b || 0;
+					this.a = config.a || W[1];
+					this.life = config.life || 3;
+					}
+				
+			//methods 
+				//draw buttons
+				button.prototype.draw = function()
+					{
+					strokeWeight(2);
+					stroke(this.r, this.g, this.b, W[11]);
+					fill(this.r, this.g, this.b, this.a);//main rectangle
+					rect(this.x, this.y, this.width, this.height, this.radius);
+					fill(this.r+50, this.g+50, this.b+50, W[11]);//text
+					textSize(this.txtsize);
+					textAlign(CENTER, CENTER);
+					text(this.label, this.x + this.width/2, this.y + this.height/2);
+					};
+
+				//mouse inspect method
+				button.prototype.is_mouse_inside = function() 
+					{
+					return  mouseX > this.x &&
+							mouseX < (this.x + this.width) &&
+							mouseY > this.y &&
+							mouseY < (this.y + this.height);
+					}
+				
+				//mouse over method
+				button.prototype.mouse_over = function()
+					{
+					if (this.is_mouse_inside())
+						{
+						this.r = W[11];
+						} else
+						{
+						this.r = W[0];
+						this.y = this.y;
+						}
+					}
+		
+			//instances	
+				//PAGE buttons
+					//STAMP button
+						var button_stamp = new button
+							({
+							x: 650,
+							y: 10,
+							width: 230,
+							label: "LAST UPDATE: 09/09/16",
+							r: W[11],
+							g: W[11],
+							b: W[11]
+							});
+					//BACK button 
+						var button_back = new button
+							({
+							x: 20,
+							y: 10,
+							width: 90,
+							label: "    BACK",
+							r: G1[0],
+							g: G1[1],
+							b: G1[2]
+							});
+							
+				//label buttons
+					//LIVES button	
+						var button_lives = new button
+							({
+							x: 40,
+							y: 160,
+							label: "LIVES =              ",
+							r: W[11],
+							g: W[11],
+							b: W[11]
+							});
+					//SCORE button	
+						var button_score = new button
+							({
+							x: button_lives.x + button_lives.width + Bgap1,
+							y: 160,
+							label: "SCORE =       ",
+							r: W[11],
+							g: W[11],
+							b: W[11]
+							});		
+					//LEVEL button	
+						var button_level = new button
+							({
+							x: button_score.x + button_score.width + Bgap1,
+							y: 160,
+							label: "LEVEL =    ",
+							r: W[11],
+							g: W[11],
+							b: W[11]
+							});	
+					//TIME button	
+						var button_time = new button
+							({
+							x: button_level.x + button_level.width + Bgap1,
+							y: 160,
+							label: "SECS =      ",
+							r: W[11],
+							g: W[11],
+							b: W[11]
+							});
+							
+				//Setting buttons
+					//RESTART button	
+						var button_restart = new button
+							({
+							x: 40,
+							y: 710,
+							label: "RESTART",
+							r: G1[0],
+							g: G1[1],
+							b: G1[2],
+							width: 100
+							});
+					//PAUSE button	
+						var button_pause = new button
+							({
+							x: button_restart.x + button_restart.width + Bgap2,
+							y: button_restart.y,
+							label: "PAUSE",
+							r: G1[0],
+							g: G1[1],
+							b: G1[2],
+							width: 75
+							});		
+					//LEVEL SET button	
+						var button_levelset = new button
+							({
+							x: button_pause.x + button_pause.width + Bgap2,
+							y: button_restart.y,
+							label: "LEVEL SET",
+							r: G1[0],
+							g: G1[1],
+							b: G1[2],
+							width: 150
+							});	
+					//sensitivity button	
+						var button_sensitivity = new button
+							({
+							x: button_levelset.x + button_levelset.width + Bgap2,
+							y: button_restart.y,
+							label: "SENSITIVITY",
+							r: G1[0],
+							g: G1[1],
+							b: G1[2],
+							width: 150
+							});	
+					//sound button
+						var button_sound = new button
+							({
+							x: button_sensitivity.x + button_sensitivity.width + Bgap2,
+							y: button_restart.y,
+							label: "S",
+							r: W[0],
+							g: G1[1],
+							b: G1[2],
+							radius: 0,
+							width: 30
+							});
+					//Controls button
+						var button_controls = new button
+							({
+							x: 610,
+							y: button_restart.y ,
+							r: W[8],
+							g: W[8],
+							b: W[8],
+							label: "    [A]  CONTROLS  [D]    ", 
+							width: 250,
+							radius: 0
+							});
+
+		//Triangle arrows function
+			//Draw left button
+				var button_arrow_L = function( x, y, l, a)
+					{
+					//strokeWeight(2);
+					//stroke(W[11], W[11], W[11], W[2]);
+					fill(W[11], W[11], W[11], a);
+					triangle(button_controls.x + x, button_controls.y + button_controls.height/2,
+							 button_controls.x + x + l, button_controls.y + y,
+							 button_controls.x + x + l, button_controls.y + button_controls.height - y);			
+					};
+				
+			//Draw right button
+				var button_arrow_R = function( x, y, l, a)
+					{
+					//strokeWeight(1);
+					//stroke(W[11], W[11], W[11], W[8]);
+					fill(W[11], W[11], W[11], a);
+					triangle(button_controls.x + button_controls.width - x, button_controls.y + button_controls.height/2,
+							 button_controls.x + button_controls.width - x - l, button_controls.y + y,
+							 button_controls.x + button_controls.width - x - l, button_controls.y + button_controls.height - y);			
+					};				
+													
+		//splash screens
+			var splash = function(config)
+				{
+				this.x = config.x || 450;
+				this.y = config.y || 450;
+				this.dia = config.dia || 250;
+				this.r = config.r || 0;
+				this.g = config.g || 150;
+				this.b = config.b || 0;
+				this.a = config.a || W[3];
+				this.energy_a = config.energy_a || 0;
+				this.life = config.life || 1;
+				this.weight = config.weight || 5;
+				this.t_size = config.t_size || 100;
+				this.label = config.label || "GO!";
+				this.shift_y = config.shift_y || 25;
+				this.osci_angle = config.osci_angle || 0;
+				};
+		
+			//start splash method
+			splash.prototype.draw = function() 
+				{
+				fill(this.r, this.g, this.b, this.energy_a); //energy circle
+				ellipse(this.x, this.y - this.shift_y, this.dia, this.dia);
+				stroke(W[11], W[11], W[11]); //main circle
+				strokeWeight(this.weight);
+				fill(this.r, this.g, this.b, this.a);
+					this.dia++;
+					if (this.dia > 300){this.dia=300;}//grow outside
+				ellipse(this.x, this.y - this.shift_y, this.dia, this.dia); 
+				fill(W[11], W[11], W[11], W[11]); //label
+					this.t_size++;
+					if (this.t_size >150){this.t_size = 150;}
+				textSize(this.t_size);
+				text(this.label, this.x, this.y - this.shift_y);
+				};
+			
+			//mouse inside method
+			splash.prototype.mouse_inside = function()
+				{
+				return  mouseX > this.x - this.dia/2 &&
+						mouseX < this.x + this.dia/2 &&
+						mouseY > this.y - this.dia/2 &&
+						mouseY < this.y + this.dia/2
+				}
+				
+			//GO splash instance
+			var splash_go = new splash
+				({
+				});
+					
+			//GAME OVER splash instance
+			var splash_gg = new splash
+				({
+				label: "GG!",
+				life: 0,
+				r: 255,
+				g: 0,
+				b: 0,
+				a: W[11]
+				});
+		//bricks
+			//bricks attempt#2
+			//constructor for brick	
+			var brick = function(x, y, r, g, b, life)
+				{
+				this.x = x; //brick x location
+				this.y = y; //brick y location
+				this.width = 95; //brick width
+				this.height = 20; //brick height
+				this.life = life; //brick life
+				this.r = r;
+				this.g = g;
+				this.b = b;
+				};
+				
+			//draw method for brick	
+			brick.prototype.draw = function()
+				{
+				if (this.life > 0)
+					{
+					fill(this.r, this.g, this.b);
+					rect(this.x, this.y, this.width, this.height);
+					fill(W[0], W[2], W[0]); //draw the life on the brick
+					text(this.life, this.x + this.width/2, this.y + this.height/2);
+					}
+				};
+								
+			//array	parameters
+				var bricks = []; //initiate array
+				var A_brick =  //object of variables for array
+					{
+					col: 8, //number of columns
+					shift_Y: 210, //initial Y
+					gap: 8, //gap between bricks in the XY
+					shift_X: 40, //shift X
+					};
+
+				for (var i = 0; i < A_brick.col; i++) //defining all 5 brick types
+					{
+						bricks.push(new brick(i * (95 + A_brick.gap) + A_brick.shift_X, A_brick.shift_Y + (20 + A_brick.gap)*4, B5[0], B5[1], B5[2], 1)); //brick1
+						bricks.push(new brick(i * (95 + A_brick.gap) + A_brick.shift_X, A_brick.shift_Y + (20 + A_brick.gap)*3, B4[0], B4[1], B4[2], 2)); //brick2
+						bricks.push(new brick(i * (95 + A_brick.gap) + A_brick.shift_X, A_brick.shift_Y + (20 + A_brick.gap)*2, B3[0], B3[1], B3[2], 3)); //brick3
+						bricks.push(new brick(i * (95 + A_brick.gap) + A_brick.shift_X, A_brick.shift_Y + (20 + A_brick.gap)*1, B2[0], B2[1], B2[2], 4)); //brick4
+						bricks.push(new brick(i * (95 + A_brick.gap) + A_brick.shift_X, A_brick.shift_Y + 00 * 0 + 00000000000, B1[0], B1[1], B1[2], 5)); //brick5
+					}
+				
+		//board
+			//variables
+					var board_drift = 0;
+					var board_angle = 0;
+			//constructors
+					var board = function(config)
+					{
+					this.x = config.x || 0;
+					this.y = config.y || 0;
+					this.width = config.width || 125;
+					this.height = config.height || 20;
+					};
+			//prototypes
+				//draw prototype
+				board.prototype.draw = function()
+					{
+					noStroke();
+					fill(0, 100, 200, 255);//draw the pad
+					ellipse(this.x + this.width/2, this.y + this.height, this.width, 30);
+					fill(B5[0], B5[1], B5[2]);//draw the main board
+					rect(this.x, this.y, this.width, this.height);
+					fill(W[11], W[11], W[11], W[11]); //draw the bounce board
+					rect(this.x, this.y, this.width, 5);
+					this.x = constrain(this.x, 45, 730);
+					};
+				//go left prototype
+				board.prototype.goleft = function()
+					{
+					this.x -= 20;
+					};
+				//go right prototype
+				board.prototype.goright = function()
+					{
+					this.x += 20;
+					};
+			//instances
+			var board = new board
+				({
+				x:387,
+				y:650
+				});							
+
+		//pause
+			var ball_speedY = 15; //initial Y speed
+			var ball_speedX = 0; //initial X speed
+			var ball_control_speed = 20; //speed limiter of ball
+			var ball_starter_speed = 15;
+			var button_pause_latch = 0;
+
+							
+		//vectors
+			var ball_P = new PVector(450, 450); // ball position inital values (PVector is a built-in object)
+			var ball_V = new PVector(ball_speedX, ball_speedY); // ball velocity initial values (PVector is a built-in object)				
+			
+			
+			
+		var ballArrayX = [];
+		var ballArrayY = [];
+		var ballX = ball_P.x;
+		var ballY = ball_P.y;
+			
+			
+			
+			
+			
+//Actual code		
+//Canvas
+	size(canvasX, canvasY); //canvas size
+	frameRate(24); //frame rate of animation
+	
+//BEGIN DRAW FUNCTION---------------------------------------------------------------------------------------------------------------------------------
+draw = function() 
+{
+	button_restart.mouse_over();
+	button_pause.mouse_over();
+	button_sound.mouse_over();
+	button_sensitivity.mouse_over();
+	button_levelset.mouse_over();
+	button_back.mouse_over();
+
+		//GUI
+			background(0, 0, 0);//background color
+			strokeWeight(stroke001); //border stroke weight
+			stroke(255,255,255, W[4]); //border white stroke color
+			fill(W[3], W[3], W[3],W[4]); //background initial color
+			
+			rect(GUI_marginX/2, GUI_margshift_Y/2, canvasX - GUI_marginX, 1.05 * canvasY - GUI_margshift_Y, 0);//main rectangle
+			
+		//GRID
+			//color of grid lines
+				stroke(W[11], W[11], W[11], W[2]); 
+				
+			//draw vertical lines
+				for (grid_Xi = 1; grid_Xi < 10; grid_Xi ++)
+					{
+					line(GUI_marginX / 2 + (gridX * grid_Xi), 50, GUI_marginX/2 + (gridX * grid_Xi), canvasY-10);//Vertical lines
+					};
+					
+			//draw horizontal lines
+				for (grid_Yi = 1; grid_Yi < 10; grid_Yi ++)
+					{
+				line(GUI_marginX/2, grid_moveY + gridY * grid_Yi, canvasX - GUI_marginX/2, grid_moveY + gridY * grid_Yi);//Horizontal lines
+					};
+				grid_moveY -=grid_speed; //grid motion speed
+				
+				//reset the horizontal lines
+					if(grid_moveY < -gridY)
+						{
+						grid_moveY = 0;
+						}
+				
+		//play_zone
+			stroke(W[5], W[10], W[5], W[11]); //color of OUTLINES
+			fill(34,100,75,W[4]); //fill color
+			rect(GUI_marginX/2 + play_zone_marginX/2, GUI_margshift_Y/2 + play_zone_margshift_Y/2, canvasX - GUI_marginX - play_zone_marginX, canvasY - GUI_margshift_Y - play_zone_margshift_Y+50, 0);//main rectangle
+			noStroke();
+			fill(75,100,75,W[6]); //fill color
+			stroke(W[5], W[11], W[5], W[11]); //color of OUTLINES
+			rect(GUI_marginX/2 + play_zone_marginX/2, GUI_margshift_Y/2 + play_zone_margshift_Y/2, canvasX - GUI_marginX - play_zone_marginX,50, 0);//glow rectangle
+			//line(GUI_marginX/2 + play_zone_marginX/2, 200, (canvasX - GUI_marginX/2 - play_zone_marginX/2), 200);//line split
+
+		//title_block
+			fill(W[8], W[8], W[2], W[2]);//color
+			stroke(W[11], W[11], W[5], W[8]); 
+			rect(150, 70, 600, 60, 30);
+			textSize(35);//size of title
+			fill(W[11], W[11], W[10], W[11]);
+			text("Game Example using JAVASCRIPT", width/2+4, 100);//title text
+		
+		//control_block
+			fill(75,100,75,W[6]); //fill color
+			stroke(W[5], W[11], W[5], W[11]); //color of OUTLINES
+			rect(GUI_marginX/2 + play_zone_marginX/2, 700, canvasX - GUI_marginX - play_zone_marginX,50, 0);//glow rectangle
+			fill(255, 255, 255, 500);//font color
+			textSize(50);//size of title
+
+		//bolts
+			stroke(255,255,255); //border white stroke color
+			OBJ_bolt(GUI_marginX/2 + bolt_offset, GUI_margshift_Y/2 + bolt_offset); //location#1
+			OBJ_bolt(GUI_marginX/2 + bolt_offset, GUI_margshift_Y/2 + (1.05 * canvasY - GUI_margshift_Y) - bolt_offset); //location#2
+			OBJ_bolt(GUI_marginX/2 + (canvasX - GUI_marginX) - bolt_offset, GUI_margshift_Y/2 + bolt_offset); //location#3
+			OBJ_bolt(GUI_marginX/2 + (canvasX - GUI_marginX) - bolt_offset, GUI_margshift_Y/2 + (1.05 * canvasY - GUI_margshift_Y) - bolt_offset); //location#4
+			
+		//black cover-covers the scan lines
+			noStroke();
+			fill(0,2,0);
+			rect(0, 0, 900, 50);
+			
+		//draw the ball
+		if (ball_life == 1)
+		{
+		noStroke();
+		
+		/*fill(W[1], W[11], W[11], 5);
+		ellipse(ball_P.x - ball_V.x * 5.0, ball_P.y - ball_V.y*5.0, ball_dia * 0.90, ball_dia * 0.90);
+		
+		fill(W[2], W[11], W[11], 10);
+		ellipse(ball_P.x - ball_V.x * 4.5, ball_P.y - ball_V.y*4.5, ball_dia * 0.91, ball_dia * 0.91);
+		
+		fill(W[3], W[11], W[11], 15);
+		ellipse(ball_P.x - ball_V.x * 4.0, ball_P.y - ball_V.y*4.0, ball_dia * 0.92, ball_dia * 0.92);
+		
+		fill(W[4], W[11], W[11], 20);
+		ellipse(ball_P.x - ball_V.x * 3.5, ball_P.y - ball_V.y*3.5, ball_dia * 0.93, ball_dia * 0.93);
+		
+		fill(W[5], W[11], W[11], 25);
+		ellipse(ball_P.x - ball_V.x * 3.0, ball_P.y - ball_V.y*3.0, ball_dia * 0.94, ball_dia * 0.94);
+
+		fill(W[6], W[11], W[11], 50);
+		ellipse(ball_P.x - ball_V.x * 2.5, ball_P.y - ball_V.y*2.5, ball_dia * 0.95, ball_dia * 0.95);
+		
+		fill(W[7], W[11], W[11], 75);
+		ellipse(ball_P.x - ball_V.x * 2.0, ball_P.y - ball_V.y*2.0, ball_dia * 0.96, ball_dia * 0.96);
+		
+		fill(W[8], W[11], W[11], 100);
+		ellipse(ball_P.x - ball_V.x * 1.5, ball_P.y - ball_V.y*1.5, ball_dia * 0.97, ball_dia * 0.97);
+		
+		fill(W[9], W[11], W[11], 125);
+		ellipse(ball_P.x - ball_V.x * 1.0, ball_P.y - ball_V.y*1.0, ball_dia * 0.98, ball_dia * 0.98);
+		
+		fill(W[10], W[11], W[11], 150);
+		ellipse(ball_P.x - ball_V.x * 0.5, ball_P.y - ball_V.y*0.5, ball_dia * 0.99, ball_dia * 0.99);*/	
+
+		ballArrayX.push(ball_P.x);
+		ballArrayY.push(ball_P.y);
+
+				
+		fill(W[1], W[11], W[11], W[1]);
+		ellipse(ballArrayX[ballArrayX.length-9], ballArrayY[ballArrayY.length-9], ball_dia*0.91, ball_dia*0.91);
+				
+		fill(W[2], W[11], W[11], W[2]);
+		ellipse(ballArrayX[ballArrayX.length-8], ballArrayY[ballArrayY.length-8], ball_dia*0.92, ball_dia*0.92);				
+				
+		fill(W[3], W[11], W[11], W[3]);
+		ellipse(ballArrayX[ballArrayX.length-7], ballArrayY[ballArrayY.length-7], ball_dia*0.93, ball_dia*0.93);		
+				
+		fill(W[4], W[11], W[11], W[4]);
+		ellipse(ballArrayX[ballArrayX.length-6], ballArrayY[ballArrayY.length-6], ball_dia*0.94, ball_dia*0.94);			
+		
+		fill(W[5], W[11], W[11], W[5]);
+		ellipse(ballArrayX[ballArrayX.length-5], ballArrayY[ballArrayY.length-5], ball_dia*0.95, ball_dia*0.95);
+		
+		fill(W[6], W[11], W[11], W[6]);
+		ellipse(ballArrayX[ballArrayX.length-4], ballArrayY[ballArrayY.length-4], ball_dia*0.96, ball_dia*0.96);
+		
+		fill(W[7], W[11], W[11], W[7]);
+		ellipse(ballArrayX[ballArrayX.length-3], ballArrayY[ballArrayY.length-3], ball_dia*0.97, ball_dia*0.97);
+		
+		fill(W[8], W[11], W[11], W[8]);
+		ellipse(ballArrayX[ballArrayX.length-2], ballArrayY[ballArrayY.length-2], ball_dia*0.98, ball_dia*0.98);
+		
+		fill(W[9], W[11], W[11], W[9]);
+		ellipse(ballArrayX[ballArrayX.length-1], ballArrayY[ballArrayY.length-1], ball_dia*0.99, ball_dia*0.99);
+		
+		fill(W[11], W[11], W[11], W[11]);
+		ellipse(ball_P.x, ball_P.y, ball_dia, ball_dia);
+		
+		}
+		
+		//buttons				
+			//label buttons
+				//draw lives button
+					button_lives.draw(); 
+				//draw score button
+					button_score.draw();
+				//draw level button
+					button_level.draw(); 
+				//draw time button
+					button_time.draw();
+			
+			//setting buttons
+				//draw restart button
+					button_restart.draw(); 
+				//draw pause button
+					button_pause.draw();
+				//draw controls button
+					button_controls.draw();
+			
+	//board
+		//board controls
+		board.draw(); // draw the board
+		button_arrow_L( 10, 3, 25, W[2]); // left-arrow:  x-offset, y-offset, triangle length, alpha
+		button_arrow_R( 10, 3, 25, W[2]); // right-arrow: x-offset, y-offset, triangle length, alpha
+		
+			if(keyPressed)
+				{
+				if(key == 'a' || key == 'A')
+				{
+				board.goleft();
+				board_drift = -2;//Increases the speed to the left
+				button_arrow_L( 10, 3, 25, W[11]); //Light up left arrow light
+				}
+				else //return to zero-used to set the drift motion
+				{
+				board_drift = 0;
+				 //restore left arrow light
+				}				
+				if(key == 'd' || key == 'D')
+				{
+				board.goright();
+				board_drift = 2;//increases the speed to the right
+				button_arrow_R( 10, 3, 25, W[11]); //Light up right arrow light
+				}
+				}
+				else //return to zero-used to set the drift motion
+				{
+				board_drift = 0;
+				}
+				
+			/*	
+			if(keyPressed)
+				{
+				if(key == 'w' || key == 'W')
+				{
+				boost = 1.5;
+				}
+				if(key == 's' || key == 'S')
+				{
+				ball_V.y = 10;
+				}
+				}	*/		
+						
+	//ball dynamics
+			ball_P.add(ball_V); //(.add is a built-in method for adding vectors)
+
+		//horizontal wall collision
+		if ((ball_P.x > 860) || (ball_P.x < 30)) 
+			{
+			ball_V.x = ball_V.x * -1; //reverse speed
+			//score += 1; //increase score by 1
+			}
+		//ceiling collision
+		if (ball_P.y < 200 + ball_dia) 
+			{
+			ball_V.y = ball_V.y * -1; //reverse speed
+			//score += 1; //increase score by 1
+			}		
+		// horizontal collision
+		if ((ball_P.y > 700) && (button_lives.life > 0))	
+			{
+			ball_P.x = 450;
+			ball_P.y = 450;
+			ball_V.x = 0;
+			ball_V.y = 0;
+			splash_go.life = 1;
+			button_lives.life -= 1;
+			}
+		
+			//reduce lives display
+			if (button_lives.life === 3) // 3 lives
+			{
+			OBJ_heart(90);
+			OBJ_heart(110);
+			OBJ_heart(130);
+			}else if (button_lives.life === 2) // 2 lives
+			{
+			OBJ_heart(90);
+			OBJ_heart(110);
+			}else if (button_lives.life === 1) // 1 life
+			{
+			OBJ_heart(90);
+			}else if (button_lives.life <1)
+			{
+			//splash_gg.draw();
+			grid_speed = 0;
+			};
+		
+		//board collision	
+		if ((ball_P.y > board.y - 20) && (ball_P.x > board.x) && (ball_P.x < (board.x + board.width)))
+			{
+			ball_V.y = ball_V.y * -1; //reverse speed
+			ball_V.x = ball_V.x + board_drift; //add the speed of the board
+			//score += 2; //increase score by 2
+			fill(W[11], W[11], W[11], W[5]); //flash white when hit
+			rect(board.x, board.y, board.width, 0);
+			recoil.board = 1;
+			}
+			//activate recoil
+			if (recoil.board === 1)
+				{
+				function_recoil();
+				}
+	
+		//brick collision & draw
+		for(var i = 0; i < bricks.length; i++)
+			{
+				bricks[i].draw(); //draw the brick
+				if ((ball_P.x > bricks[i].x) && (ball_P.x < bricks[i].x + bricks[i].width) && (ball_P.y > bricks[i].y) && (ball_P.y < bricks[i].y + bricks[i].height) && (bricks[i].life > 0)) //ball collision
+				{
+				//ball_V.y = ball_V.y * -1; //reverse Y speed
+				//ball_V.x = ball_V.x * -1; //reverse X speed
+				score += 50; //increase score by 50
+				bricks[i].life -= 1; //decrease life by 1
+				bricks[i].r += 100; //make it more red
+				bricks[i].g -= 100; //make it more red
+				bricks[i].b -= 100; //make it more red
+				fill(W[11], W[11], W[11]); //flash white when it hits
+				rect(bricks[i].x, bricks[i].y, bricks[i].width, bricks[i].height);
+				}
+			}
+		
+	//HUD scripts
+		//custom timer
+		if (splash_go.life == 0)
+		{
+			milliseconds++;
+			if (milliseconds > 32)
+			{
+			seconds++;
+			milliseconds = 0;
+			}
+		}
+		
+	//HUD metrics
+		//display score
+			fill(G0[0], G0[1], G0[2], W[11], W[11]); //display score
+			text(score, button_score.x + 125, button_score.y + 15); 
+		//display time
+			fill(G0[0], G0[1], G0[2], W[11], W[11]); //display score
+			text(seconds, button_time.x + 125, button_time.y + 15);
+		//display levels
+			text(level, button_level.x + 125, button_score.y +15);
+	
+//GO splash
+		//glow the energy on the go splash
+			splash_go.osci_angle +=0.05; //increment the splash angle
+			splash_go.energy_a = 255 * sin(splash_go.osci_angle); //adjust the alpha accordingly
+		//draw "GO" splash
+			if (splash_go.life == 1)
+				{	
+				splash_go.draw();
+				ball_P.x = 450;
+				ball_P.y = 450;
+				ball_V.x = 0;
+				ball_V.y = 0;
+				}
+	
+	//when mouse clicked, disappear
+		mouseClicked = function() //use mouseClicked in only one place, just like the draw function
+			{
+				//splash button
+				if(splash_go.mouse_inside() && splash_go.life == 1) //mouse clicking and making sure white splash doesnt come back when its dead
+				{
+				splash_go.life = 0;
+				ball_V.y = ball_starter_speed; //initiate the speed
+				fill(W[11], W[11], W[11], W[11]); //make button white when clicked
+				ellipse(splash_go.x, splash_go.y - splash_go.shift_y, splash_go.dia, splash_go.dia);
+				}
+				
+				//sound button
+					if (button_sound.is_mouse_inside())
+						{
+						button_sound.a = W[11];
+						}
+					
+				//sensitivity button
+					else if (button_pause.is_mouse_inside())
+						{
+						button_pause_latch = 1;
+						alert("PAUSE!!")
+						}
+					else if (button_restart.is_mouse_inside())
+						{
+						document.location.reload();
+						button_restart.a = W[11];
+						}
+			};
+	
+	//roll over a red
+		if(splash_go.mouse_inside())
+		{
+		splash_go.r = W[11]; 
+		}else
+		{
+		splash_go.r = W[0];
+		}
+
+//official END OF DRAW-for some reason past cursor object causes faults.	
+
+	//cursor 
+		//cursor target
+			strokeWeight(2);
+			stroke(G0[0], G0[1], G0[2], W[11]);
+			fill(255, 0, 0 , W[0]);
+			line(mouseX + 9, mouseY, mouseX - 10, mouseY);
+			line(mouseX, mouseY - 10, mouseX, mouseY + 9);
+			ellipse(mouseX, mouseY, 20, 20);
+		//cursor coordinates
+			fill(G0[0], G0[1], G0[2], W[11]);
+			textSize(24);
+			text(mouseX +"/"+ mouseY, mouseX + 65, mouseY);
+		//mousefun
+			if (mousePressed == true)
+			{
+			fill(G0[0], G0[1], G0[2], W[11]);
+			ellipse(mouseX, mouseY, 20, 20);
+			}
+			
+	if(score > 5999)
+	{alert("YOU WIN!!");}
+	
+	if(button_lives.life < 1)
+	{alert("GAME OVER!!");}
+			
+	//date stamp
+	fill(W[11],W[11],W[11], W[8]);
+	textSize(15);
+	text("DIZAD 10/22/16", 780,770);
+}; // OFFICIAL END DRAW FUNCTION
+//end of script function
+
+</script>
+<canvas id="mycanvas"></canvas>
+</div>
+<!--HTML BODY------------------------------------------------------------------------>
+<body>
+</body>
+</html>
+<!--END------------------------------------------------------------------------------->
+<!-- Future ideas:
+	1. board that can slightly rotate as it is moved
+	2.imported icons
+	3.make a and d arrows slimmer
+	4. 3 levels that increase speed and shorten board.
+	5. powerups? 1)extra life, 2)Y-free, 3) destroy all in its way, no recoil(momentum), 4)double ball, 5) longer pad
+	6. bricks fade off after hit
+	7. On new levels, make the bricks assemble themselves in a wave
+	8. brick recoil
