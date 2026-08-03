@@ -4,8 +4,8 @@
 		
 	<!--Imported libraries-->
 		<head>
-			<link rel="shortcut icon" href="http://apsys-inc.com/izasoft/Images/WebSprites/i65TabIcon.ico">
-			<link rel="stylesheet" href="Stylesheets/s01Main.css"><!--Imported main stylesheet-->
+			<link rel="shortcut icon" href="images/webSprites/i65TabIcon.ico">
+			<link rel="stylesheet" href="stylesheets/s01Main.css"><!--Imported main stylesheet-->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
 			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
 			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
@@ -15,13 +15,14 @@
 		<style>
 		</style>
 	
-	<!--Javascript-->
-		<script src='Javascript/j01JQuery311.js'></script>
-	    <script src="Javascript/j03UpperBanner.js"></script>
-		<script src="Javascript/j04UpperButtons.js"></script>
-		<script src="Javascript/j05LowerBanner.js"></script>
-		<script src="Javascript/j06Footnote.js"></script>
-		<!--<script src="Javascript/j07TableToggle.js"></script>-->
+	<!--javascript-->
+		<script src='javascript/j01JQuery311.js'></script>
+	    <script src="javascript/j03UpperBanner.js"></script>
+		<script src="javascript/j04UpperButtons.js"></script>
+		<script src="javascript/j05LowerBanner.js"></script>
+		<script src="javascript/j06Footnote.js"></script>
+		
+	<!--page script-->
 		<script>
 			$('document').ready(function(){
 				//Table invokes
@@ -59,26 +60,26 @@
 								{
 									//Add the table to the DOM
 										$(entry).append(
-															'<div class = "addShadow">' +
-																'<table class = "' + tableName + '" id = "addTableBlue">'+
-																	'<tbody>'+
-																		//Header
-																			'<tr class = "tableHeader">'+
-																				'<td colspan="5">' + tableTitleEntry + '</td>'+
-																			'</tr>'+
-																			
-																		//Subheader
-																			'<tr class = "tableContentRow" id = "tableSubHeader">'+
-																				'<td class = "tableContent">' + col1Entry + '</td>'+
-																				'<td class = "tableContent">' + col2Entry + '</td>'+
-																				'<td class = "tableContent">' + col3Entry + '</td>'+
-																				'<td class = "tableContent">' + col4Entry + '</td>'+
-																				'<td class = "tableContent">' + col5Entry + '</td>'+
-																			'</tr>'+
-																	'</tbody>'+
-																'</table>' + 
-															'</div>' 
-														);
+											'<div class = "addShadow">' +
+												'<table class = "' + tableName + '" id = "addTableBlue">'+
+													'<tbody>'+
+														//Header
+															'<tr class = "tableHeader">'+
+																'<td colspan="5">' + tableTitleEntry + '</td>'+
+															'</tr>'+
+															
+														//Subheader
+															'<tr class = "tableContentRow" id = "tableSubHeader">'+
+																'<td class = "tableContent">' + col1Entry + '</td>'+
+																'<td class = "tableContent">' + col2Entry + '</td>'+
+																'<td class = "tableContent">' + col3Entry + '</td>'+
+																'<td class = "tableContent">' + col4Entry + '</td>'+
+																'<td class = "tableContent">' + col5Entry + '</td>'+
+															'</tr>'+
+													'</tbody>'+
+												'</table>' + 
+											'</div>' 
+										);
 								}//End of insertTableHeader function
 								
 						//Add row items
@@ -98,19 +99,19 @@
 										
 									//Append the row to the table
 										$(tableEntry).append(
-													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
-														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + academyEntry + '</span></td>'+
-														'<td class = "tableContent" style = "width: 400px;"><span class = "propagate">' + descriptionEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + yearEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + durationEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' 
-															+ '<a href="images/certificates/' + certEntry + '.jpg" target="_blank">'
-															+ '<i class="fa fa-external-link"></i>'
-															+ '</a>'
-															+ '</span>'
-														+ '</td>'+
-													'</tr>'																		
-														);
+											'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+												'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + academyEntry + '</span></td>'+
+												'<td class = "tableContent" style = "width: 400px;"><span class = "propagate">' + descriptionEntry + '</span></td>'+
+												'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + yearEntry + '</span></td>'+
+												'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + durationEntry + '</span></td>'+
+												'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' 
+													+ '<a href="images/certificates/' + certEntry + '.jpg" target="_blank">'
+													+ '<i class="fa fa-external-link"></i>'
+													+ '</a>'
+													+ '</span>'
+												+ '</td>'+
+											'</tr>'																		
+										);
 								}//End of insertTableItem function
 					});			
 		</script>

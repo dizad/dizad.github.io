@@ -4,8 +4,8 @@
 		
 	<!--Imported libraries-->
 		<head>
-			<link rel="shortcut icon" href="http://apsys-inc.com/izasoft/Images/WebSprites/i65TabIcon.ico">
-			<link rel="stylesheet" href="Stylesheets/s01Main.css"><!--Imported main stylesheet-->
+			<link rel="shortcut icon" href="images/webSprites/i65TabIcon.ico">
+			<link rel="stylesheet" href="stylesheets/s01Main.css"><!--Imported main stylesheet-->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
 			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
 			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
@@ -15,13 +15,14 @@
 		<style>
 		</style>
 	
-	<!--Javascript-->
-		<script src='Javascript/j01JQuery311.js'></script>
-	    <script src="Javascript/j03UpperBanner.js"></script>
-		<script src="Javascript/j04UpperButtons.js"></script>
-		<script src="Javascript/j05LowerBanner.js"></script>
-		<script src="Javascript/j06Footnote.js"></script>
-		<!--<script src="Javascript/j07TableToggle.js"></script>-->
+	<!--javascript-->
+		<script src='javascript/j01JQuery311.js'></script>
+	    <script src="javascript/j03UpperBanner.js"></script>
+		<script src="javascript/j04UpperButtons.js"></script>
+		<script src="javascript/j05LowerBanner.js"></script>
+		<script src="javascript/j06Footnote.js"></script>
+		
+	<!--page script-->
 		<script>
 			$('document').ready(function(){
 				//Table scripts
@@ -99,13 +100,13 @@
 										}
 									//Append the row to the table
 										$(tableEntry).append(
-													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
-														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
-														'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
-													'</tr>'																		
-														);
+											'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+												'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
+												'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
+												'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
+												'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
+											'</tr>'																		
+										);
 								}//End of insertTableItem function
 								
 						//Add the lower legend
@@ -141,10 +142,10 @@
 							$(containerEntry).append(																
 							'<div class = "slideSquareContainer">' + 
 								//Images
-									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
-									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
-									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
-									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+									'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
 								//Side buttons
 									'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
 									'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
@@ -170,10 +171,10 @@
 										//Start of slideshow container																	
 											'<div class = "slideshowContainer">' + 
 												//Images
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "height:350px;"></div>' +
 												//Side buttons
 													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
 													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
@@ -195,9 +196,9 @@
 										//Start of slideshow container																	
 											'<div class = "slideshowContainer">' + 
 												//Images
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' + 	 
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "height:350px;"></div>' +
 												//Side buttons
 													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
 													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
@@ -218,8 +219,8 @@
 										//Start of slideshow container																	
 											'<div class = "slideshowContainer">' + 
 												//Images
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "Images/Mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' +	 
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "height:350px;"></div>' +
+													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/mechanics/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "height:350px;"></div>' +	 
 												//Side buttons
 													'<span class = "buttonBack" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
 													'<span class = "buttonForward" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
@@ -365,7 +366,7 @@
 																	His calculators use a series of OCR scanned values from design records, where 
 																	linear / power / log regressions interpolate the data, sub-routines calculate the eigenvalues, and a series of nested IF-ELSE statements calculate the final design values. 
 																	The report showing these bearing calculators can be found here:
-																	<a target="_blank" href="Documents/d01Bearings.pdf" class = "fontRedBoldHyperlink"><i class="fa fa-arrow-circle-o-down"></i><em>bearings.pdf</em></a>.  
+																	<a target="_blank" href="documents/d01Bearings.pdf" class = "fontRedBoldHyperlink"><i class="fa fa-arrow-circle-o-down"></i><em>bearings.pdf</em></a>.  
 																	</span>	
 																	<br><br>
 
@@ -436,8 +437,8 @@
 																	He also created the video below to show stakeholders the expected implementation.
 																	</span>
 																	<br><br>
-																	<video poster = "Images/Mechanics/i93WaterSystemPreview.jpg" class = "addShadow" controls  
-																	style = "width: 500px; display: block; margin: auto; text-align: center;"><source src="Videos/v06WaterSystem.mp4" type="video/mp4"></video>
+																	<video poster = "images/mechanics/i93WaterSystemPreview.jpg" class = "addShadow" controls  
+																	style = "width: 500px; display: block; margin: auto; text-align: center;"><source src="videos/v06WaterSystem.mp4" type="video/mp4"></video>
 																	<span class = "figureCaption" style = "margin-left: 160px;"><span class = "figurelabel">Figure 4.8:</span> Video of BSME senior design project.</span>
 
 														<!--End of custom page content-->	
