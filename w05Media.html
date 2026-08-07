@@ -1,358 +1,440 @@
 <html>
-	<!--Tab title-->
-		<title>Media</title>
-		
-	<!--Imported libraries-->
-		<head>
-			<link rel="shortcut icon" href="images/webSprites/i65TabIcon.ico">
-			<link rel="stylesheet" href="stylesheets/s01Main.css"><!--Imported main stylesheet-->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
-			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
-			<!--http://www.w3schools.com/icons/icons_reference.asp icon reference-->
-		</head>
-		
-	<!--CSS-->
-		<style>
-		</style>
-	
-	<!--javascript-->
-		<script src='javascript/j01JQuery311.js'></script>
-	    <script src="javascript/j03UpperBanner.js"></script>
-		<script src="javascript/j04UpperButtons.js"></script>
-		<script src="javascript/j05LowerBanner.js"></script>
-		<script src="javascript/j06Footnote.js"></script>
-		
-	<!--page script-->
-		<script>
-			$('document').ready(function()
-			{//Start of document ready
-				//Header table stuff
-				//Table invokes
-					//Table#1
-						//Header
-							insertTableHeader(".tableContainer1", "table1", "Relevant Software Experience", "Name", "Application", "Start Year", "Proficiency");
-						//Rows
-							insertTableItem(".table1", "Flash MX", "2D Animation", "2004", "Expert"); //1
-							insertTableItem(".table1", "Maya", "3D Animation", "2004", "Expert"); //2
-							insertTableItem(".table1", "SolidWorks Motion Studies / Photoview360", "3D Animation", "2014", "Intermediate"); //3
-							insertTableItem(".table1", "After Effects", "Compositing", "2010", "Intermediate"); //4
-							insertTableItem(".table1", "Premiere", "Video Editing", "2010", "Intermediate"); //5
-							insertTableItem(".table1", "Photoshop", "Graphics Editing", "2002", "Intermediate"); //6
-							insertTableItem(".table1", "Syflex / Blastcode / Realflow", "Simulation", "2004", "Intermediate"); //7
-							insertTableItem(".table1", "Sound Forge / Wavepad", "Audio editing", "2004", "Intermediate"); //8
-							insertTableItem(".table1", "Particle Illusion", "Dynamics", "2005", "Intermediate"); //9
-							insertTableItem(".table1", "Windows Movie Maker", "Compressing", "2007", "Intermediate"); //10
-							insertLowerLegend(".table1");
 
-				//Standard code to build the tables
-					//Variables
-						var rowAlt = false;	
-						var rowAltStyle = "";
-					//get year duration
-						function getYearDuration(start){
-							let now = new Date();
-							let duration = now.getFullYear() - parseInt(start);
-							return `${start} (${duration == 0 ? '< 1 yr' : duration + ' yrs'})`;
-						}
-					//Add table header
-						function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry)
-							{//Start of insertTableHeader
-								//Add the table to the DOM
-									$(entry).append(
-														'<div class = "addShadow">' +
-															'<table class = "' + tableName + '" id = "addTableBlue">'+
-																'<tbody>'+
-																	//Header
-																		'<tr class = "tableHeader">'+
-																			'<td colspan="5">' + tableTitleEntry + '</td>'+
-																		'</tr>'+
-																		
-																	//Subheader
-																		'<tr class = "tableContentRow" id = "tableSubHeader">'+
-																			'<td class = "tableContent">' + col1Entry + '</td>'+
-																			'<td class = "tableContent">' + col2Entry + '</td>'+
-																			'<td class = "tableContent">' + col3Entry + '</td>'+
-																			'<td class = "tableContent">' + col4Entry + '</td>'+
-																		'</tr>'+
-																'</tbody>'+
-															'</table>' + 
-														'</div>' 
-													);
-							}//End of insertTableHeader
-							
-					//Add row items
-						function insertTableItem(tableEntry, col1Entry, col2Entry, col3Entry, col4Entry)
-							{//Start of insertTableItem function
-								//Swap the alternating row so it shades differently
-									if (rowAlt == true)
-										{ 
-											rowAltStyle = 'id = "altRow"'; 
-											rowAlt = false;
-										}
-									else
-										{ 	
-											rowAltStyle = ""; 
-											rowAlt = true;
-										}
-								//convert the rating
-									let rating = `&#11088;`;
-									if(col4Entry == `Expert`){
-										rating = `&#11088; &#11088; &#11088;`;
-									}else if(col4Entry == `Intermediate`){
-										rating = `&#11088; &#11088;`
-									}
-								//Append the row to the table
-									$(tableEntry).append(
-												'<tr class = "tableContentRow"' + rowAltStyle + '>'+
-													'<td class = "tableContent" style = "7width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
-													'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
-													'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
-													'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
-												'</tr>'																		
-													);
-								}//End of insertTableItem function
-								
-						//Add the lower legend
-							function insertLowerLegend(tableEntry)
-								{
-									$(tableEntry).append(
-										'<tr class = "tableContentRow">'+
-											'<td colspan="4" class = "tableContent" style = "text-align: center; background-color: #4975AA; color: white;"><span class = "propagate"><strong>Proficiency Notes (Time Spent):</strong> <span style="font-style: normal !important;">&#11088;</span> = 10hrs - 50hrs  <span style="font-style: normal !important;">&#11088;&#11088;</span> = 50hrs - 200hrs  <span style="font-style: normal !important;">&#11088;&#11088;&#11088;</span>(can train) = 200+ hrs</span></td>'+
-											'</tr>'																		
-											);
-								}
-			});	//End of document ready		
-		</script>
+<!--tab title-->
+
+	<title>Media</title>
+	
+<!--imported styles-->
+
+	<head>
+		<script src="javascript/j09HeaderImports.js"></script>
+	</head>
+
+<!--imported scripts-->
+
+	<script src='javascript/j01JQuery311.js'></script>
+	<script src="javascript/j03UpperBanner.js"></script>
+	<script src="javascript/j04UpperButtons.js"></script>
+	<script src="javascript/j05LowerBanner.js"></script>
+	<script src="javascript/j06Footnote.js"></script>
+	
+<!--page script-->
+
+	<script>
+		$('document').ready(function(){
 		
-		<script>
-			$('document').ready(function()
-			{//Start of document ready
-			//SlideDeck functions
-				//Slide deck
-					insertSlidedeck(3, ".deckContainer1", "slidedeck1", "dotCounter1", "marketing", "i56Logo", "i54Mascot", "i55Label", "", "", "", "");
-					insertSlidedeck(8, ".deckContainer2", "slidedeck2", "dotCounter2", "entertainment", "i58TheArmoredArbitan", "i57ASecondChance", "i59CharacterDesign", "i60TheBlueFalcons", "i61MagornaBlue", "i62TheForbiddenKingdom", "i63FaceYourFears", "i83Landscape");
-					
-				//InsertSlideDeck function
-					function insertSlidedeck(countEntry, containerEntry, deckNameEntry, dotNameEntry, subfolderEntry, imageName1Entry, imageName2Entry, imageName3Entry, imageName4Entry, imageName5Entry, imageName6Entry, imageName7Entry, imageName8Entry)
-						{//Start of insertSlidedeck
-							if(countEntry == 3)
-								{//Start of if countEntry == 3
-								//Add the table to the DOM
-									$(containerEntry).append(//Start of containerEntry append
-										//Start of slideshow container																	
-											'<div class = "slideshowContainer">' + 
-												//Images
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "width: 100%;"></div>' + 	 
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "width: 100%;"></div>' +
-												//Side buttons
-													'<span class = "buttonBack" style = "margin-top: -170px;" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
-													'<span class = "buttonForward" style = "margin-top: -170px;" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
-												//Dots
-													'<div style = "text-align: center;">' + 
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													'</div>' +
-											'</div>'
-										//End of slideshow container
-															);//End of containerEntry append
-								}//End of if countEntry == 3
-							else if (countEntry == 8)
-								{//Start of if countEntry == 8
-								//Add the table to the DOM
-									$(containerEntry).append(//Start of containerEntry append
-										//Start of slideshow container																	
-											'<div class = "slideshowContainer">' + 
-												//Images
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "width: 100%;"></div>' + 	 
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName5Entry + '.jpg" alt = "' + imageName5Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName6Entry + '.jpg" alt = "' + imageName6Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName7Entry + '.jpg" alt = "' + imageName7Entry + '" style = "width: 100%;"></div>' +
-													'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName8Entry + '.jpg" alt = "' + imageName8Entry + '" style = "width: 100%;"></div>' +
-												//Side buttons
-													'<span class = "buttonBack" style = "margin-top: -170px;" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
-													'<span class = "buttonForward" style = "margin-top: -170px;" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
-												//Dots
-													'<div style = "text-align: center;">' + 
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(4, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(5, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(6, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(7, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(8, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
-													'</div>' +
-											'</div>'
-										//End of slideshow container
-															)//End of containerEntry append
-															
-								}//End of countEntry == 8
-						}//End of insertTableHeader	
-					
-				//Show the slides
-					showSlides(slideIndex, "slidedeck1", "dotCounter1");
-					showSlides(slideIndex, "slidedeck2", "dotCounter2");
-				//End of slideDeck functions
-			});//End of document ready
+		// header table stuff
+		
+			// table invokes
 			
-			//Run on events(Needs to be outside document ready)
-				var slideIndex = 1;
-				function changeSlide(n, arrayEntry, dotEntry){showSlides((slideIndex += n), arrayEntry, dotEntry);}
-				function currentSlide(n, arrayEntry, dotEntry){showSlides((slideIndex = n), arrayEntry, dotEntry);}
-				function showSlides(n , arrayEntry, dotEntry) 
-					{//Start of showSlides
-						//Variables
-							  var i;
-							  var slides = document.getElementsByClassName(arrayEntry);
-							  var dots = document.getElementsByClassName(dotEntry);
-						//Reset on forward loop
-						  if (n > slides.length) 
-							{slideIndex = 1} 
-						//Reset on backward loop
-						  if (n < 1) 
-							{slideIndex = slides.length}
-						//Hide	
-							//Hide the slides
-							  for (i = 0; i < slides.length; i++) 
-								{slides[i].style.display = "none";}
-							//Hide the dots	
-							  for (i = 0; i < dots.length; i++) 
-								{dots[i].className = dots[i].className.replace(" active", "");}
-						//Show
-							//Show the correct slide
-								slides[slideIndex - 1].style.display = "block"; 
-							//Show the dot
-								dots[slideIndex - 1].className += " active";
-					}//End of showSlides	
-		</script>
+				// table# 1
+				
+					// header
+					
+						insertTableHeader(".tableContainer1", "table1", "Relevant Software Experience", "Name", "Application", "Start Year", "Proficiency");
+						
+					// rows
+					
+						insertTableItem(".table1", "Flash MX", "2D Animation", "2004", "Expert"); //1
+						insertTableItem(".table1", "Maya", "3D Animation", "2004", "Expert"); //2
+						insertTableItem(".table1", "SolidWorks Motion Studies / Photoview360", "3D Animation", "2014", "Intermediate"); //3
+						insertTableItem(".table1", "After Effects", "Compositing", "2010", "Intermediate"); //4
+						insertTableItem(".table1", "Premiere", "Video Editing", "2010", "Intermediate"); //5
+						insertTableItem(".table1", "Photoshop", "Graphics Editing", "2002", "Intermediate"); //6
+						insertTableItem(".table1", "Syflex / Blastcode / Realflow", "Simulation", "2004", "Intermediate"); //7
+						insertTableItem(".table1", "Sound Forge / Wavepad", "Audio editing", "2004", "Intermediate"); //8
+						insertTableItem(".table1", "Particle Illusion", "Dynamics", "2005", "Intermediate"); //9
+						insertTableItem(".table1", "Windows Movie Maker", "Compressing", "2007", "Intermediate"); //10
+						insertLowerLegend(".table1");
+
+			// standard code to build the tables
+			
+				// variables
+				
+					var rowAlt = false;	
+					var rowAltStyle = "";
+					
+				// get year duration
+				
+					function getYearDuration(start){
+						let now = new Date();
+						let duration = now.getFullYear() - parseInt(start);
+						return `${start} (${duration == 0 ? '< 1 yr' : duration + ' yrs'})`;
+					}
+					
+				// add table header
+				
+					function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry){
+						$(entry).append(
+							'<div class = "addShadow">' +
+								'<table class = "' + tableName + '" id = "addTableBlue">'+
+									'<tbody>'+
+									// header
+										'<tr class = "tableHeader">'+
+											'<td colspan="5">' + tableTitleEntry + '</td>'+
+										'</tr>'+
+										
+									// sub header
+										'<tr class = "tableContentRow" id = "tableSubHeader">'+
+											'<td class = "tableContent">' + col1Entry + '</td>'+
+											'<td class = "tableContent">' + col2Entry + '</td>'+
+											'<td class = "tableContent">' + col3Entry + '</td>'+
+											'<td class = "tableContent">' + col4Entry + '</td>'+
+										'</tr>'+
+									'</tbody>'+
+								'</table>' + 
+							'</div>' 
+						);
+					}
+						
+				// add row items
+				
+					function insertTableItem(tableEntry, col1Entry, col2Entry, col3Entry, col4Entry){
+					
+						// swap the alternating row so it shades differently
+						
+							if (rowAlt == true){ 
+								rowAltStyle = 'id = "altRow"'; 
+								rowAlt = false;
+							} else{ 	
+								rowAltStyle = ""; 
+								rowAlt = true;
+							}
+							
+						// convert the rating
+						
+							let rating = `&#11088;`;
+							if(col4Entry == `Expert`){
+								rating = `&#11088; &#11088; &#11088;`;
+							}else if(col4Entry == `Intermediate`){
+								rating = `&#11088; &#11088;`
+							}
+							
+						// append the row to the table
+						
+							$(tableEntry).append(
+								'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+									'<td class = "tableContent" style = "7width: 300px;"><span class = "propagate">' + col1Entry + '</span></td>'+
+									'<td class = "tableContent" style = "width: 300px;"><span class = "propagate">' + col2Entry + '</span></td>'+
+									'<td class = "tableContent" style = "text-align: center;"><span class = "propagate">' + getYearDuration(col3Entry) + '</span></td>'+
+									'<td class = "tableContent" style = "text-align: center; font-style: normal !important;"><span class = "propagate">' + rating + '</span></td>'+
+								'</tr>'																		
+							);
+						}
+						
+				// add the lower legend
+				
+					function insertLowerLegend(tableEntry){
+						$(tableEntry).append(
+							'<tr class = "tableContentRow">'+
+							'<td colspan="4" class = "tableContent" style = "text-align: center; background-color: #4975AA; color: white;"><span class = "propagate"><strong>Proficiency Notes (Time Spent):</strong> <span style="font-style: normal !important;">&#11088;</span> = 10hrs - 50hrs  <span style="font-style: normal !important;">&#11088;&#11088;</span> = 50hrs - 200hrs  <span style="font-style: normal !important;">&#11088;&#11088;&#11088;</span>(can train) = 200+ hrs</span></td>'+
+							'</tr>'																		
+						);
+					}
+		});	
+	</script>
+	
+	<script>
+		$('document').ready(function(){
 		
-	<!--HTML-->
-		<body>
-			<table class="tableContainer">
-				<tbody>
-						<!--Row#1: upperBanner-->
-							<div class = "upperBanner"></div><!--imported script-->
+		// slide deck functions
+		
+			// slide deck
+			
+				insertSlidedeck(3, ".deckContainer1", "slidedeck1", "dotCounter1", "marketing", "i56Logo", "i54Mascot", "i55Label", "", "", "", "");
+				insertSlidedeck(8, ".deckContainer2", "slidedeck2", "dotCounter2", "entertainment", "i58TheArmoredArbitan", "i57ASecondChance", "i59CharacterDesign", "i60TheBlueFalcons", "i61MagornaBlue", "i62TheForbiddenKingdom", "i63FaceYourFears", "i83Landscape");
+				
+			// insert slide deck
+			
+				function insertSlidedeck(countEntry, containerEntry, deckNameEntry, dotNameEntry, subfolderEntry, imageName1Entry, imageName2Entry, imageName3Entry, imageName4Entry, imageName5Entry, imageName6Entry, imageName7Entry, imageName8Entry){
+					if(countEntry == 3){
+						$(containerEntry).append(																	
+							'<div class = "slideshowContainer">' + 
+							// images
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "width: 100%;"></div>' + 	 
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "width: 100%;"></div>' +
 							
-						<!--Row#2: upperButtons-->	
-							<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
-								<div class = "upperButtons"></div><!--imported script-->
+							// side buttons
+								'<span class = "buttonBack" style = "margin-top: -170px;" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+								'<span class = "buttonForward" style = "margin-top: -170px;" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+							
+							// dots
+								'<div style = "text-align: center;">' + 
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								'</div>' +
+							'</div>'
+						);
+					} else if (countEntry == 8){
+						$(containerEntry).append(																	
+							'<div class = "slideshowContainer">' + 
+							// images
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName1Entry + '.jpg" alt = "' + imageName1Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName2Entry + '.jpg" alt = "' + imageName2Entry + '" style = "width: 100%;"></div>' + 	 
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName3Entry + '.jpg" alt = "' + imageName3Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName4Entry + '.jpg" alt = "' + imageName4Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName5Entry + '.jpg" alt = "' + imageName5Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName6Entry + '.jpg" alt = "' + imageName6Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName7Entry + '.jpg" alt = "' + imageName7Entry + '" style = "width: 100%;"></div>' +
+								'<div class = "' + deckNameEntry + '" id = "fade" style = "display: none; text-align: center;"><img src = "images/media/' + subfolderEntry + '/' + imageName8Entry + '.jpg" alt = "' + imageName8Entry + '" style = "width: 100%;"></div>' +
+							
+							// side buttons
+								'<span class = "buttonBack" style = "margin-top: -170px;" onclick = "changeSlide(-1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10094;</span>' + 
+								'<span class = "buttonForward" style = "margin-top: -170px;" onclick = "changeSlide(1, \'' + deckNameEntry + '\', \'' + dotNameEntry + '\')">&#10095;</span>' +
+							
+							// dots
+								'<div style = "text-align: center;">' + 
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(1, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(2, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(3, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(4, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(5, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(6, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(7, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								  '<span class = "' + dotNameEntry + '" onclick = "currentSlide(8, "' + deckNameEntry + '", "' + dotNameEntry + '")"></span>' +
+								'</div>' +
+							'</div>'
+						)						
+					}
+				}
+				
+			// show the slides
+			
+				showSlides(slideIndex, "slidedeck1", "dotCounter1");
+				showSlides(slideIndex, "slidedeck2", "dotCounter2");
+		});
+		
+		// run on events
+		
+			var slideIndex = 1;
+			function changeSlide(n, arrayEntry, dotEntry){showSlides((slideIndex += n), arrayEntry, dotEntry);}
+			function currentSlide(n, arrayEntry, dotEntry){showSlides((slideIndex = n), arrayEntry, dotEntry);}
+			function showSlides(n , arrayEntry, dotEntry) {
+			
+			// variables
+			
+				  var i;
+				  var slides = document.getElementsByClassName(arrayEntry);
+				  var dots = document.getElementsByClassName(dotEntry);
+				  
+			// reset on forward loop
+			
+				if (n > slides.length){
+					slideIndex = 1
+				}
+				
+			// reset on backward loop
+			
+				if (n < 1){
+					slideIndex = slides.length
+				}
+				
+			// hide
+			
+				// hide the slides
+				
+				for (i = 0; i < slides.length; i++){
+					slides[i].style.display = "none";
+				}
+					
+				// hide the dots
+				
+				for (i = 0; i < dots.length; i++){
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				
+			// show
+			
+				// show the correct slide
+				
+					slides[slideIndex - 1].style.display = "block";
+					
+				// show the dot
+				
+					dots[slideIndex - 1].className += " active";
+			}
+	</script>
+	
+<!--html-->
+
+	<body>
+		<table class="tableContainer">
+			<tbody>
+			
+			<!--row# 1: upper banner-->
+			
+				<div class = "upperBanner"></div>
+				
+			<!--row# 2: upper buttons-->
+			
+				<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
+					<div class = "upperButtons"></div>
+				</div>
+				
+			<!--row# 3: custom content-->
+			
+				<tr>
+					<td colspan="5">					
+						<div id = "object" class = "animateDownContainers">
+							<div class = "addShadow">
+								<div class="infoContainer">
+								
+								<!--start of custom page content-->
+								
+								<!--content header-->
+								
+									<span class='fontSectionHeader'>MEDIA:</span>
+
+									<br><br>
+									
+								<!--software table-->
+								
+									<span class='fontSectionHeader tab1'>RELEVANT SOFTWARE:</span>
+									
+									<br><br>
+									
+									<div class = "tableContainer1"></div>
+									
+									<br>
+									
+								<!--text content-->
+								
+									<!--projects-->	
+									
+										<span class='fontSectionHeader tab1'>PROJECTS:</span>
+										
+										<br><br>
+										
+										<span class = "tab1"> 
+										Dan made 25 movies to date, each ranging from 2 to 30 mins long. 
+										He uses this skill to present complex designs, concepts, and systems to co-workers, customers, and stakeholders.  
+										This helps communicate engineering designs to an audience that is not always technically-savvy.  
+										Some of his videos were shown at corporate summits, local television stations, and training modules.
+										</span>
+										
+										<br><br>
+											
+									<!--animations-->
+
+										<span class='fontSectionHeader tab2'>2D / 3D ANIMATION:</span>
+																					
+										<br><br>
+
+										<span class = "tab2">
+											Dan creates 2D animations using frame-by-frame, motion-key-driven, or shape-key-driven animation.
+											The upper banner animation on this website is a good 2D animation example showing all 3 of these techniques into one.
+											Dan also creates 3D animations using CGI (Computer Generated Imagery).  The CGI process involves modeling, texturing / UV mapping, 
+											rigging / skinning, animating, simulating (dynamics), lighting, and rendering.  The left video below shows Dan's 2D animations and
+											the right video below shows Dan's 3D animations.
+										</span>
+										
+										<br><br>
+										
+										<video poster = "images/media/animation/i64Animation2DPoster.jpg" class = "addShadow" controls style = "width: 407.5px;"><source src="videos/v05Animation2D.mp4" type="video/mp4"></video>
+										<video poster = "images/media/animation/i51Animation3DPoster.jpg" class = "addShadow" controls style = "width: 407.5px;"><source src="videos/v02Animation3D.mp4" type="video/mp4"></video>
+										<span class = "figureCaption"><span class = "figurelabel">Figure 5.1:</span> Compilation of Dan's 2D and 3D animations respectively.</span>
+										
+										<br><br>
+								
+										<span class = "tab2">
+											When animating technical mechanical designs, Dan prefers to use <em>SolidWorks Motion</em> 
+											and <em>Photoview360</em>.  These packages can easily show the details of a design.  Here's an example video:
+										</span>
+										
+										<br><br>
+										
+										<video poster = "images/media/animation/i50MotionStudiesPoster.jpg" class = "addShadow" controls  style = "width: 100%;"><source src="videos/v01MotionStudies.mp4" type="video/mp4"></video>
+										<span class = "figureCaption"><span class = "figurelabel">Figure 5.2:</span> A technical animation of a mechanical design.</span>
+										
+										<br><br>
+											
+									<!--compositing / editing-->
+									
+										<span class='fontSectionHeader tab2'>COMPOSITING / EDITING:</span>
+										
+										<br><br>
+										
+										<span class = "tab2">
+										Dan creates videos by generating the 2D / 3D elements, compositing the layers, editing the timing / sound / transitions, and finally compressing.  
+										Here's a screenshot of the editing phase	
+										</span>
+										
+										<br><br>
+										
+										<img class = "addShadow" src="images/media/animation/i01VideoEditing.jpg" alt="Video editing" align="middle" style="width:100%">
+										<span class = "figureCaption"><span class = "figurelabel">Figure 5.3:</span> Screenshot of the editing phase of movie making.</span>
+											
+										<br><br>
+											
+									<!--graphic design-->
+									
+										<span class='fontSectionHeader tab2'>GRAPHIC DESIGN:</span>
+										
+										<br><br>
+										
+										<span class = "tab2">
+											In early 2010, Dan began freelancing designs for various marketing departments of law firms, biotech companies, and start-ups. 
+											Dan designed logos, mascots, emblems, consumer product labels, and corporate powerpoints.
+										</span>
+										
+										<br><br>
+																			
+										<div class = "deckContainer1"></div>
+										
+										<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.4:</span> Various graphic designs Dan made for marketing.</span></span>
+										
+										<br><br>
+											
+									<!--digital painting-->
+									
+										<span class='fontSectionHeader tab2'>DIGITAL PAINTING:</span>
+										
+										<br><br>
+										
+										<span class = "tab2">
+											Dan also has experience designing vehicles, characters, and concept designs related to the entertainment industry.  
+											Dan mainly uses <em>Photoshop</em> and a <em>WACOM</em> tablet to digitally paint his artwork.  He learned this 
+											trade mainly from online academies such as the <em>Gnomon School of Visual Effects</em>, <em>Digital-Tutors</em>, and <em>ID Tech Camps</em>.
+											Dan never did this professionally, but enjoyed doing this as a hobby.  Dan's favorite theme to paint is science fiction.
+										</span>
+										
+										<br><br>
+										
+										<div class = "deckContainer2"></div>	
+										
+										<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.5:</span> Various vehicle, character, and conceptual science fiction digital paintings.</span></span>
+										
+										<br><br>
+
+									<!--literature-->
+									
+										<span class='fontSectionHeader tab2'>LITERATURE:</span>
+										
+										<br><br>
+										
+										<span class = "tab2">
+											Dan also took a stab at literature by authoring and illustrating a graphic novel called OWA aka Outstanding Worldwide Automation.  
+											OWA is a satirical science fiction book about a distant society that runs on ultimate efficiency.  The idea of this book began 15 years ago but it was officially written, edited, and illustrated in 2 years. 
+											The book is published here <a target="_blank" href="https://www.amazon.com/Book-OWA-Tomorrow-Better-ebook/dp/B09QK9L1JC/ref=sr_1_1?crid=67Z53XQDW9CZ&keywords=the+book+of+owa&qid=1642547813&sprefix=the+book+of+owa%2Caps%2C101&sr=8-1" class = "fontBlueBoldHyperlink"><i class="fa fa-book"></i><em>book</em></a>.
+										</span>
+										
+										<br><br>
+									
+										<img class = "addShadow" src="images/media/literature/i74Owa.jpg" alt="OWA book" align="middle" style="width:100%">
+										<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.6:</span> Various pages of the OWA book.</span></span>
+										
+								<!--end of custom page content-->
+								
+								</div>
+								<div class = "lowerBanner"></div>
 							</div>
-							
-						<!--Row#3: custom content-->
-							<tr>
-								<td colspan="5">					
-										<div id = "object" class = "animateDownContainers">
-											<div class = "addShadow">
-												<div class="infoContainer">
-													<!--Start of custom page content-->
-													<!--Content Header-->
-														<span class = "fontBlueBoldTitle">5. <u>Media:</u></span>
-														<br><br>
-													<!--table1-->
-														<span class = "fontBlueBoldTitle"><span class = "tab1">5.1. <u>Relevant Software:</u></span></span>
-														<br><br>
-															<div class = "tableContainer1"></div>
-														<br>	
-													<!--text content-->	
-														<!--5.2-->	
-															<span class = "fontBlueBoldTitle"><span class = "tab1">5.2. <u>Projects:</u></span></span>
-																<br><br>
-																<span class = "tab1"> 
-																Dan made 25 movies to date, each ranging from 2 to 30 mins long. 
-																He uses this skill to present complex designs, concepts, and systems to co-workers, customers, and stakeholders.  
-																This helps communicate engineering designs to an audience that is not always technically-savvy.  
-																Some of his videos were shown at corporate summits, local television stations, and training modules.</span>
-																	<br><br>
-																	
-															<!--5.2.1-->		
-																<span class = "fontBlueBoldTitle"><span class = "tab2">5.2.1. <u>2D / 3D Animation:</u></span></span>
-																	<br><br>
-																	<span class = "tab2">
-																		Dan creates 2D animations using frame-by-frame, motion-key-driven, or shape-key-driven animation.
-																		The upper banner animation on this website is a good 2D animation example showing all 3 of these techniques into one.
-																		Dan also creates 3D animations using CGI (Computer Generated Imagery).  The CGI process involves modeling, texturing / UV mapping, 
-																		rigging / skinning, animating, simulating (dynamics), lighting, and rendering.  The left video below shows Dan's 2D animations and
-																		the right video below shows Dan's 3D animations.
-																	</span>
-																	<br><br>
-																		<video poster = "images/media/animation/i64Animation2DPoster.jpg" class = "addShadow" controls style = "width: 407.5px;"><source src="videos/v05Animation2D.mp4" type="video/mp4"></video>
-																		<video poster = "images/media/animation/i51Animation3DPoster.jpg" class = "addShadow" controls style = "width: 407.5px;"><source src="videos/v02Animation3D.mp4" type="video/mp4"></video>
-																		<span class = "figureCaption"><span class = "figurelabel">Figure 5.1:</span> Compilation of Dan's 2D and 3D animations respectively.</span>
-																		<br><br>
-																	<!--Motion studies-->
-																		<span class = "tab2">
-																			When animating technical mechanical designs, Dan prefers to use <em>SolidWorks Motion</em> 
-																			and <em>Photoview360</em>.  These packages can easily show the details of a design.  Here's an example video:
-																		</span>
-																		<br><br>
-																	<video poster = "images/media/animation/i50MotionStudiesPoster.jpg" class = "addShadow" controls  style = "width: 100%;"><source src="videos/v01MotionStudies.mp4" type="video/mp4"></video>
-																			<span class = "figureCaption"><span class = "figurelabel">Figure 5.2:</span> A technical animation of a mechanical design.</span>
-																		<br><br>
-																	
-															<!--5.2.2-->		
-																<span class = "fontBlueBoldTitle"><span class = "tab2">5.2.2. <u>Compositing / Editing:</u></span></span>	
-																	<br><br>
-																	<span class = "tab2">Dan creates videos by generating the 2D / 3D elements, compositing the layers, editing the timing / sound / transitions, and finally compressing.  
-																	Here's a screenshot of the editing phase:
-																	</span>
-																		<br><br>
-																	<img class = "addShadow" src="images/media/animation/i01VideoEditing.jpg" alt="Video editing" align="middle" style="width:100%">
-																	<span class = "figureCaption"><span class = "figurelabel">Figure 5.3:</span> Screenshot of the editing phase of movie making.</span>
-																		<br><br>
-																		
-															<!--5.2.3-->
-																<span class = "fontBlueBoldTitle"><span class = "tab2">5.2.3. <u>Graphic Design:</u></span></span>	
-																	<br><br>
-																	<span class = "tab2">
-																		In early 2010, Dan began freelancing designs for various marketing departments of law firms, biotech companies, and start-ups. 
-																		Dan designed logos, mascots, emblems, consumer product labels, and corporate powerpoints.
-																	</span>
-																<br><br>
-																<!--Marketing Slide deck-->
-																	<div class = "deckContainer1"></div>	
-																	<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.4:</span> Various graphic designs Dan made for marketing.</span></span>
-																	<br><br>
-																	
-															<!--5.2.4-->
-																<span class = "fontBlueBoldTitle"><span class = "tab2">5.2.4. <u>Digital Painting:</u></span></span>	
-																	<br><br>
-																	<span class = "tab2">
-																		Dan also has experience designing vehicles, characters, and concept designs related to the entertainment industry.  
-																		Dan mainly uses <em>Photoshop</em> and a <em>WACOM</em> tablet to digitally paint his artwork.  He learned this 
-																		trade mainly from online academies such as the <em>Gnomon School of Visual Effects</em>, <em>Digital-Tutors</em>, and <em>ID Tech Camps</em>.
-																		Dan never did this professionally, but enjoyed doing this as a hobby.  Dan's favorite theme to paint is science fiction.
-																	</span>
-																<br><br>
-																	<!--Entertainment Slide deck-->
-																	<div class = "deckContainer2"></div>	
-																	<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.5:</span> Various vehicle, character, and conceptual science fiction digital paintings.</span></span>
-																	<br><br>
-															<!--5.2.5-->
-																<span class = "fontBlueBoldTitle"><span class = "tab2">5.2.5. <u>Literature:</u></span></span>	
-																	<br><br>
-																	<span class = "tab2">
-																		Dan also took a stab at literature by authoring and illustrating a graphic novel called OWA aka Outstanding Worldwide Automation.  
-																		OWA is a satirical science fiction book about a distant society that runs on ultimate efficiency.  The idea of this book began 15 years ago but it was officially written, edited, and illustrated in 2 years. 
-																		The book is published here <a target="_blank" href="https://www.amazon.com/Book-OWA-Tomorrow-Better-ebook/dp/B09QK9L1JC/ref=sr_1_1?crid=67Z53XQDW9CZ&keywords=the+book+of+owa&qid=1642547813&sprefix=the+book+of+owa%2Caps%2C101&sr=8-1" class = "fontBlueBoldHyperlink"><i class="fa fa-book"></i><em>book</em></a>.
-																	</span>
-																	<br><br>
-																<!--literature screenshot-->
-																	<img class = "addShadow" src="images/media/literature/i74Owa.jpg" alt="OWA book" align="middle" style="width:100%">
-																	<span class = "tab3"><span class = "figureCaption"><span class = "figurelabel">Figure 5.6:</span> Various pages of the OWA book.</span></span>
-													<!--End of custom page content-->	
-												</div>
-												<div class = "lowerBanner"></div><!--imported script-->
-											</div>
-											<div class = "footnote"></div>
-										</div>
-								</td>
-							</tr>
-				</tbody>
-			</table>
-		</body>
+							<div class = "footnote"></div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
 </html>

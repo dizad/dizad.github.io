@@ -1,266 +1,324 @@
 <html>
-	<!--Tab title-->
-		<title>Degrees</title>
-		
-	<!--Imported libraries-->
-		<head>
-			<link rel="shortcut icon" href="images/webSprites/i65TabIcon.ico">
-			<link rel="stylesheet" href="stylesheets/s01Main.css"><!--Imported main stylesheet-->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--Imported icons-->
-			<link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Droid+Sans+Mono|Chewy|Faster+One|Hanalei+Fill|Monofett|Oswald|Permanent+Marker|Slackey|Roboto" rel="stylesheet"><!--Imported fonts-->
-		</head>
-		
-	<!--CSS-->
-		<style>
-		</style>
+
+<!--tab title-->
+
+	<title>Degrees</title>
 	
-	<!--javascript-->
-		<script src='javascript/j01JQuery311.js'></script>
-	    <script src="javascript/j03UpperBanner.js"></script>
-		<script src="javascript/j04UpperButtons.js"></script>
-		<script src="javascript/j05LowerBanner.js"></script>
-		<script src="javascript/j06Footnote.js"></script>
+<!--imported styles-->
+
+	<head>
+		<script src="javascript/j09HeaderImports.js"></script>
+	</head>
+
+<!--imported scripts-->
+
+	<script src='javascript/j01JQuery311.js'></script>
+	<script src="javascript/j03UpperBanner.js"></script>
+	<script src="javascript/j04UpperButtons.js"></script>
+	<script src="javascript/j05LowerBanner.js"></script>
+	<script src="javascript/j06Footnote.js"></script>
+	
+<!--page script-->
+
+	<script>
+		$('document').ready(function(){
 		
-	<!--page script-->
-		<script>
-			$('document').ready(function(){
-				//Table invokes
+			// table invokes
+			
+				// table# 1
 				
-					//Table#1(don't forget to include inside <body>)
-						//Header
-							insertTableHeader(".tableContainer1", "table1", "Master of Computer & Information Science", "Institute", "Description", "Semester", "Duration (days)", "Grade");
-						//Rows
-							insertTableItem(".table1", "Cleveland State University", "Advanced Operating Systems", "Spring 2020", "112", "A-"); //2
-							insertTableItem(".table1", "Cleveland State University", "Analysis of Algorithms", "Spring 2019", "112", "A"); //3
-							insertTableItem(".table1", "Cleveland State University", "Advanced Computer Architecture", "Spring 2019", "112", "A"); //4
-							insertTableItem(".table1", "Cleveland State University", "Software Engineering", "Fall 2018", "112", "A"); //5
-							insertTableItem(".table1", "Cleveland State University", "Big Data", "Spring 2018", "112", "A"); //6
-							insertTableItem(".table1", "Cleveland State University", "Introduction to Algorithms", "Spring 2018", "112", "A"); //7
-							insertTableItem(".table1", "Cleveland State University", "Graduate Seminar", "Fall 2017", "112", "A"); //8
-							insertTableItem(".table1", "Cleveland State University", "Operating Systems", "Fall 2017", "112", "A-"); //9
-							insertTableItem(".table1", "Cleveland State University", "Intro to Computer Architecture", "Fall 2017", "112", "A"); //10
-							insertTableItem(".table1", "Cleveland State University", "Comparative Program Languages", "Fall 2017", "112", "A"); //11
-							insertTableItem(".table1", "Cleveland State University", "Intro to Database Concepts", "Fall 2017", "112", "A"); //12
-							insertTableItem(".table1", "Cleveland State University", "Systems Programming", "Fall 2017", "112", "A"); //13
-							insertTableItem(".table1", "Cuyahoga Community College", "Introduction to Discrete Math", "Summer 2017", "112", "A"); //14
-							insertTableItem(".table1", "Cleveland State University", "Language Processors", "Summer 2017", "112", "A"); //15
-							insertTableItem(".table1", "Cuyahoga Community College", "Java Programming", "Spring 2017", "112", "A"); //16
-							insertTableItem(".table1", "Cuyahoga Community College", "Data Structures and Algorithms", "Spring 2017", "112", "A"); //17
-							
-					//Table#2(don't forget to include inside <body>)
-						//Header
-							insertTableHeader(".tableContainer2", "table2", "Master of Mechatronics Engineering", "Institute", "Description", "Semester", "Duration (days)", "Grade");
-						//Rows
-							insertTableItem(".table2", "Cleveland State University", "Lubrication & Bearing Design", "Fall 2016", "112", "A"); //1
-							insertTableItem(".table2", "Cleveland State University", "Master's Project in MCE", "Fall 2016", "112", "S"); //2
-							insertTableItem(".table2", "Cleveland State University", "Advanced Machine Analysis", "Spring 2011", "112", "A"); //3
-							insertTableItem(".table2", "Cleveland State University", "Linear Control Systems", "Spring 2011", "112", "A"); //4
-							insertTableItem(".table2", "Cleveland State University", "Applied Thermodynamics", "Spring 2011", "112", "B"); //5
-							insertTableItem(".table2", "Cleveland State University", "Interface & Control of Mechatronic Systems", "Spring 2011", "112", "B+"); //6
-							insertTableItem(".table2", "Cleveland State University", "Graduate Seminar", "Fall 2010", "112", "S"); //7
-							insertTableItem(".table2", "Cleveland State University", "Modeling & Simulation of Mechatronic Systems", "Fall 2010", "112", "B-"); //8
-							insertTableItem(".table2", "Cleveland State University", "Energy Conversions", "Fall 2010", "112", "A"); //9
-							
-					//Table#3(don't forget to include inside <body>)
-						//Header
-							insertTableHeader(".tableContainer3", "table3", "Bachelor of Mechanical Engineering", "Institute", "Description", "Semester", "Duration (days)", "Grade");
-						//Rows
-							insertTableItem(".table3", "Cleveland State University", "Technical Writing", "Spring 2010", "112", "A-"); //1
-							insertTableItem(".table3", "Cleveland State University", "Universal Honors Experience", "Spring 2010", "112", "S"); //2
-							insertTableItem(".table3", "Cleveland State University", "Design Project II", "Spring 2010", "112", "A"); //3
-							insertTableItem(".table3", "Cleveland State University", "Honors Thesis", "Spring 2010", "112", "A"); //4
-							insertTableItem(".table3", "Cleveland State University", "Advanced Machine Analysis", "Spring 2010", "112", "A"); //5
-							insertTableItem(".table3", "Cleveland State University", "Engineering Economy", "Fall 2009", "112", "A"); //6
-							insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Fall 2009", "112", "S"); //7
-							insertTableItem(".table3", "Cleveland State University", "Design Project I", "Fall 2009", "112", "A"); //8
-							insertTableItem(".table3", "Cleveland State University", "Thermal Systems Lab", "Fall 2009", "112", "A"); //9
-							insertTableItem(".table3", "Cleveland State University", "Linear Control Systems", "Fall 2009", "112", "A"); //10
-							insertTableItem(".table3", "Cleveland State University", "Engineering Ethics", "Fall 2009", "112", "A"); //11
-							insertTableItem(".table3", "Cleveland State University", "Psychology of Aging", "Fall 2009", "112", "A"); //12
-							insertTableItem(".table3", "Cleveland State University", "Power / Auth / Soc NW Comm", "Spring 2009", "112", "A-"); //13
-							insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Spring 2009", "112", "S"); //14
-							insertTableItem(".table3", "Cleveland State University", "Intro to Heat Transfer", "Spring 2009", "112", "A"); //15
-							insertTableItem(".table3", "Cleveland State University", "Machine Design I", "Spring 2009", "112", "A-"); //16
-							insertTableItem(".table3", "Cleveland State University", "Instrumentation / Measurements Lab", "Spring 2009", "112", "B+"); //17
-							insertTableItem(".table3", "Cleveland State University", "Applied Thermodynamics", "Spring 2009", "112", "B"); //18
-							insertTableItem(".table3", "Cleveland State University", "College Writing I", "Fall 2008", "112", "B-"); //19
-							insertTableItem(".table3", "Cleveland State University", "Engineering Stats / Probability", "Fall 2008", "112", "B"); //20
-							insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Fall 2008", "112", "S"); //21
-							insertTableItem(".table3", "Cleveland State University", "Kinematics / Dynamics Machinery", "Fall 2008", "112", "A"); //22
-							insertTableItem(".table3", "Cleveland State University", "Junior Honors", "Fall 2008", "112", "A"); //23
-							insertTableItem(".table3", "Cleveland State University", "Strength of Materials", "Spring 2008", "112", "A-"); //24
-							insertTableItem(".table3", "Cleveland State University", "Electrical Engineering Concepts", "Spring 2008", "112", "A"); //25
-							insertTableItem(".table3", "Cleveland State University", "Linear Algebra / Numerical Methods in Engineering", "Spring 2008", "112", "A"); //26
-							insertTableItem(".table3", "Cleveland State University", "Computer Aided Engineering Design", "Spring 2008", "112", "A"); //27
-							insertTableItem(".table3", "Cleveland State University", "Career Orientation", "Fall 2007", "112", "S"); //28
-							insertTableItem(".table3", "Cleveland State University", "Dynamics", "Fall 2007", "112", "B"); //29
-							insertTableItem(".table3", "Cleveland State University", "Fluid Mechanics", "Fall 2007", "112", "A"); //30
-							insertTableItem(".table3", "Cleveland State University", "Engineering Thermodynamics I", "Fall 2007", "112", "A-"); //31
-							insertTableItem(".table3", "Cleveland State University", "Material Processing / Metrology", "Fall 2007", "112", "A-"); //32
-							insertTableItem(".table3", "Cleveland State University", "Material Process / Metrology Lab", "Fall 2007", "112", "A"); //33
-							insertTableItem(".table3", "Cleveland State University", "Multivariable Calculus for Engineers", "Fall 2007", "112", "A-"); //34
-							insertTableItem(".table3", "Cuyahoga Community College", "Intro to Urban Studies", "Summer 2007", "112", "B"); //35
-							insertTableItem(".table3", "Cuyahoga Community College", "University Physics II", "Summer 2007", "112", "A"); //36
-							insertTableItem(".table3", "Cleveland State University", "Intro to Film", "Spring 2007", "112", "A"); //37
-							insertTableItem(".table3", "Cleveland State University", "Statics", "Spring 2007", "112", "A"); //38
-							insertTableItem(".table3", "Cleveland State University", "Material Science / Engineering", "Spring 2007", "112", "B"); //39
-							insertTableItem(".table3", "Cleveland State University", "Early Modern Philosophy", "Spring 2007", "112", "A-"); //40
-							insertTableItem(".table3", "Ohio State University", "Intro to Enginering", "Fall 2006", "56", "A"); //41
-							insertTableItem(".table3", "Cleveland State University", "General Chemistry I", "Fall 2006", "112", "A"); //42
-							insertTableItem(".table3", "Cleveland State University", "General Chemistry Lab I", "Fall 2006", "112", "A"); //43
-							insertTableItem(".table3", "Cleveland State University", "C Programming", "Fall 2006", "112", "A"); //44
-							insertTableItem(".table3", "Cleveland State University", "Differential equations for Engineers", "Fall 2006", "112", "A-"); //45
-							insertTableItem(".table3", "Cleveland State University", "University Physics I", "Fall 2006", "112", "A"); //46
-		
-					//Table#4(don't forget to include inside <body>)
-						//Header
-							insertTableHeader(".tableContainer4", "table4", "High School Diploma", "Institute", "Description", "Semester", "Duration (days)", "Grade");
-						//Rows
-							insertTableItem(".table4", "Orange High School", "AP Calculus AB / BC", "2005", "126", "B"); //1
-							insertTableItem(".table4", "Orange High School", "Architectural Design I", "2005", "126", "A+"); //2
-							insertTableItem(".table4", "Orange High School", "Art II", "2005", "126", "A+"); //3
-							insertTableItem(".table4", "Orange High School", "English IV CP / 1", "2005", "126", "A"); //4
-							insertTableItem(".table4", "Orange High School", "English IV CP / 2", "2005", "126", "A-"); //5
-							insertTableItem(".table4", "Orange High School", "History / Democracy", "2005", "126", "A-"); //6
-							insertTableItem(".table4", "Orange High School", "Honors Physics", "2005", "126", "A-"); //7
-							insertTableItem(".table4", "Orange High School", "AP Economics", "2004", "126", "A-"); //8
-							insertTableItem(".table4", "Orange High School", "Art I", "2004", "126", "A+"); //9
-							insertTableItem(".table4", "Orange High School", "CP Government", "2004", "126", "A"); //10
-							insertTableItem(".table4", "Orange High School", "English III", "2004", "126", "A+"); //11
-							insertTableItem(".table4", "Orange High School", "French III", "2004", "126", "A"); //12
-							insertTableItem(".table4", "Orange High School", "Honors Precalculus", "2004", "126", "B"); //13
-							insertTableItem(".table4", "Orange High School", "Honors Biology II", "2004", "126", "A-"); //14
-							insertTableItem(".table4", "Orange High School", "Psychology", "2004", "126", "A+"); //15
-							insertTableItem(".table4", "Orange High School", "Visual Design I", "2004", "126", "A+"); //16
-							insertTableItem(".table4", "Orange High School", "Honors American History", "2003", "126", "B+"); //17
-							insertTableItem(".table4", "Orange High School", "AP Statistics", "2003", "126", "B+"); //18
-							insertTableItem(".table4", "Orange High School", "Engineering Drawing II", "2003", "126", "A+"); //19
-							insertTableItem(".table4", "Orange High School", "English II CP", "2003", "126", "A-"); //20
-							insertTableItem(".table4", "Orange High School", "French II", "2003", "126", "A+"); //21
-							insertTableItem(".table4", "Orange High School", "Health 9-12", "2003", "126", "A+"); //22
-							insertTableItem(".table4", "Orange High School", "Honors Chemistry", "2003", "126", "A"); //23
-							insertTableItem(".table4", "Orange High School", "Intro to Speech", "2003", "126", "A+"); //24
-							insertTableItem(".table4", "Orange High School", "Engineering Drawing I", "2002", "126", "A+"); //25
-							insertTableItem(".table4", "Orange High School", "English I CP", "2002", "126", "A"); //26
-							insertTableItem(".table4", "Orange High School", "French I", "2002", "126", "A+"); //27
-							insertTableItem(".table4", "Orange High School", "Honors Biology", "2002", "126", "B"); //28
-							insertTableItem(".table4", "Orange High School", "Honors Geometry", "2002", "126", "A-"); //29
-							insertTableItem(".table4", "Orange High School", "Physical Education", "2002", "126", "A"); //30
-							insertTableItem(".table4", "Orange High School", "US / World History", "2002", "126", "A+"); //31
-							
-				//Code to build the tables
-					//Variables
-						var rowAlt = false;	
-						var rowAltStyle = "";
+					// header
 					
-					//Functions
-						//Add table header
-							function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry, col5Entry)
-								{
-									//Add the table to the DOM
-										$(entry).append(
-															'<div class = "addShadow">' +
-																'<table class = "' + tableName + '" id = "addTableBlue">'+
-																	'<tbody>'+
-																		//Header
-																			'<tr class = "tableHeader">'+
-																				'<td colspan="5">' + tableTitleEntry + '</td>'+
-																			'</tr>'+
-																			
-																		//Subheader
-																			'<tr class = "tableContentRow" id = "tableSubHeader">'+
-																				'<td class = "tableContent">' + col1Entry + '</td>'+
-																				'<td class = "tableContent">' + col2Entry + '</td>'+
-																				'<td class = "tableContent">' + col3Entry + '</td>'+
-																				'<td class = "tableContent">' + col4Entry + '</td>'+
-																				'<td class = "tableContent">' + col5Entry + '</td>'+
-																			'</tr>'+
-																	'</tbody>'+
-																'</table>' + 
-															'</div>' 
-														);
-								}//End of insertTableHeader function
-								
-						//Add row items
-							function insertTableItem(tableEntry, academyEntry, descriptionEntry, yearEntry, durationEntry, gradeEntry)
-								{
-									//Swap the alternating row so it shades differently
-										if (rowAlt == true)
-											{ 
-												rowAltStyle = 'id = "altRow"'; 
-												rowAlt = false;
-											}
-										else
-											{ 	
-												rowAltStyle = ""; 
-												rowAlt = true;
-											}
+						insertTableHeader(".tableContainer1", "table1", "Master of Computer & Information Science", "Institute", "Description", "Semester", "Duration (days)", "Grade");
+						
+					// rows
+					
+						insertTableItem(".table1", "Cleveland State University", "Advanced Operating Systems", "Spring 2020", "112", "A-"); //2
+						insertTableItem(".table1", "Cleveland State University", "Analysis of Algorithms", "Spring 2019", "112", "A"); //3
+						insertTableItem(".table1", "Cleveland State University", "Advanced Computer Architecture", "Spring 2019", "112", "A"); //4
+						insertTableItem(".table1", "Cleveland State University", "Software Engineering", "Fall 2018", "112", "A"); //5
+						insertTableItem(".table1", "Cleveland State University", "Big Data", "Spring 2018", "112", "A"); //6
+						insertTableItem(".table1", "Cleveland State University", "Introduction to Algorithms", "Spring 2018", "112", "A"); //7
+						insertTableItem(".table1", "Cleveland State University", "Graduate Seminar", "Fall 2017", "112", "A"); //8
+						insertTableItem(".table1", "Cleveland State University", "Operating Systems", "Fall 2017", "112", "A-"); //9
+						insertTableItem(".table1", "Cleveland State University", "Intro to Computer Architecture", "Fall 2017", "112", "A"); //10
+						insertTableItem(".table1", "Cleveland State University", "Comparative Program Languages", "Fall 2017", "112", "A"); //11
+						insertTableItem(".table1", "Cleveland State University", "Intro to Database Concepts", "Fall 2017", "112", "A"); //12
+						insertTableItem(".table1", "Cleveland State University", "Systems Programming", "Fall 2017", "112", "A"); //13
+						insertTableItem(".table1", "Cuyahoga Community College", "Introduction to Discrete Math", "Summer 2017", "112", "A"); //14
+						insertTableItem(".table1", "Cleveland State University", "Language Processors", "Summer 2017", "112", "A"); //15
+						insertTableItem(".table1", "Cuyahoga Community College", "Java Programming", "Spring 2017", "112", "A"); //16
+						insertTableItem(".table1", "Cuyahoga Community College", "Data Structures and Algorithms", "Spring 2017", "112", "A"); //17
+						
+				// table# 2
+				
+					// header
+					
+						insertTableHeader(".tableContainer2", "table2", "Master of Mechatronics Engineering", "Institute", "Description", "Semester", "Duration (days)", "Grade");
+						
+					// rows
+					
+						insertTableItem(".table2", "Cleveland State University", "Lubrication & Bearing Design", "Fall 2016", "112", "A"); //1
+						insertTableItem(".table2", "Cleveland State University", "Master's Project in MCE", "Fall 2016", "112", "S"); //2
+						insertTableItem(".table2", "Cleveland State University", "Advanced Machine Analysis", "Spring 2011", "112", "A"); //3
+						insertTableItem(".table2", "Cleveland State University", "Linear Control Systems", "Spring 2011", "112", "A"); //4
+						insertTableItem(".table2", "Cleveland State University", "Applied Thermodynamics", "Spring 2011", "112", "B"); //5
+						insertTableItem(".table2", "Cleveland State University", "Interface & Control of Mechatronic Systems", "Spring 2011", "112", "B+"); //6
+						insertTableItem(".table2", "Cleveland State University", "Graduate Seminar", "Fall 2010", "112", "S"); //7
+						insertTableItem(".table2", "Cleveland State University", "Modeling & Simulation of Mechatronic Systems", "Fall 2010", "112", "B-"); //8
+						insertTableItem(".table2", "Cleveland State University", "Energy Conversions", "Fall 2010", "112", "A"); //9
+						
+				// table# 3
+				
+					// header
+					
+						insertTableHeader(".tableContainer3", "table3", "Bachelor of Mechanical Engineering", "Institute", "Description", "Semester", "Duration (days)", "Grade");
+						
+					// rows
+					
+						insertTableItem(".table3", "Cleveland State University", "Technical Writing", "Spring 2010", "112", "A-"); //1
+						insertTableItem(".table3", "Cleveland State University", "Universal Honors Experience", "Spring 2010", "112", "S"); //2
+						insertTableItem(".table3", "Cleveland State University", "Design Project II", "Spring 2010", "112", "A"); //3
+						insertTableItem(".table3", "Cleveland State University", "Honors Thesis", "Spring 2010", "112", "A"); //4
+						insertTableItem(".table3", "Cleveland State University", "Advanced Machine Analysis", "Spring 2010", "112", "A"); //5
+						insertTableItem(".table3", "Cleveland State University", "Engineering Economy", "Fall 2009", "112", "A"); //6
+						insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Fall 2009", "112", "S"); //7
+						insertTableItem(".table3", "Cleveland State University", "Design Project I", "Fall 2009", "112", "A"); //8
+						insertTableItem(".table3", "Cleveland State University", "Thermal Systems Lab", "Fall 2009", "112", "A"); //9
+						insertTableItem(".table3", "Cleveland State University", "Linear Control Systems", "Fall 2009", "112", "A"); //10
+						insertTableItem(".table3", "Cleveland State University", "Engineering Ethics", "Fall 2009", "112", "A"); //11
+						insertTableItem(".table3", "Cleveland State University", "Psychology of Aging", "Fall 2009", "112", "A"); //12
+						insertTableItem(".table3", "Cleveland State University", "Power / Auth / Soc NW Comm", "Spring 2009", "112", "A-"); //13
+						insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Spring 2009", "112", "S"); //14
+						insertTableItem(".table3", "Cleveland State University", "Intro to Heat Transfer", "Spring 2009", "112", "A"); //15
+						insertTableItem(".table3", "Cleveland State University", "Machine Design I", "Spring 2009", "112", "A-"); //16
+						insertTableItem(".table3", "Cleveland State University", "Instrumentation / Measurements Lab", "Spring 2009", "112", "B+"); //17
+						insertTableItem(".table3", "Cleveland State University", "Applied Thermodynamics", "Spring 2009", "112", "B"); //18
+						insertTableItem(".table3", "Cleveland State University", "College Writing I", "Fall 2008", "112", "B-"); //19
+						insertTableItem(".table3", "Cleveland State University", "Engineering Stats / Probability", "Fall 2008", "112", "B"); //20
+						insertTableItem(".table3", "Cleveland State University", "Universal Honors Course", "Fall 2008", "112", "S"); //21
+						insertTableItem(".table3", "Cleveland State University", "Kinematics / Dynamics Machinery", "Fall 2008", "112", "A"); //22
+						insertTableItem(".table3", "Cleveland State University", "Junior Honors", "Fall 2008", "112", "A"); //23
+						insertTableItem(".table3", "Cleveland State University", "Strength of Materials", "Spring 2008", "112", "A-"); //24
+						insertTableItem(".table3", "Cleveland State University", "Electrical Engineering Concepts", "Spring 2008", "112", "A"); //25
+						insertTableItem(".table3", "Cleveland State University", "Linear Algebra / Numerical Methods in Engineering", "Spring 2008", "112", "A"); //26
+						insertTableItem(".table3", "Cleveland State University", "Computer Aided Engineering Design", "Spring 2008", "112", "A"); //27
+						insertTableItem(".table3", "Cleveland State University", "Career Orientation", "Fall 2007", "112", "S"); //28
+						insertTableItem(".table3", "Cleveland State University", "Dynamics", "Fall 2007", "112", "B"); //29
+						insertTableItem(".table3", "Cleveland State University", "Fluid Mechanics", "Fall 2007", "112", "A"); //30
+						insertTableItem(".table3", "Cleveland State University", "Engineering Thermodynamics I", "Fall 2007", "112", "A-"); //31
+						insertTableItem(".table3", "Cleveland State University", "Material Processing / Metrology", "Fall 2007", "112", "A-"); //32
+						insertTableItem(".table3", "Cleveland State University", "Material Process / Metrology Lab", "Fall 2007", "112", "A"); //33
+						insertTableItem(".table3", "Cleveland State University", "Multivariable Calculus for Engineers", "Fall 2007", "112", "A-"); //34
+						insertTableItem(".table3", "Cuyahoga Community College", "Intro to Urban Studies", "Summer 2007", "112", "B"); //35
+						insertTableItem(".table3", "Cuyahoga Community College", "University Physics II", "Summer 2007", "112", "A"); //36
+						insertTableItem(".table3", "Cleveland State University", "Intro to Film", "Spring 2007", "112", "A"); //37
+						insertTableItem(".table3", "Cleveland State University", "Statics", "Spring 2007", "112", "A"); //38
+						insertTableItem(".table3", "Cleveland State University", "Material Science / Engineering", "Spring 2007", "112", "B"); //39
+						insertTableItem(".table3", "Cleveland State University", "Early Modern Philosophy", "Spring 2007", "112", "A-"); //40
+						insertTableItem(".table3", "Ohio State University", "Intro to Enginering", "Fall 2006", "56", "A"); //41
+						insertTableItem(".table3", "Cleveland State University", "General Chemistry I", "Fall 2006", "112", "A"); //42
+						insertTableItem(".table3", "Cleveland State University", "General Chemistry Lab I", "Fall 2006", "112", "A"); //43
+						insertTableItem(".table3", "Cleveland State University", "C Programming", "Fall 2006", "112", "A"); //44
+						insertTableItem(".table3", "Cleveland State University", "Differential equations for Engineers", "Fall 2006", "112", "A-"); //45
+						insertTableItem(".table3", "Cleveland State University", "University Physics I", "Fall 2006", "112", "A"); //46
+	
+				// table# 4
+				
+					// header
+					
+						insertTableHeader(".tableContainer4", "table4", "High School Diploma", "Institute", "Description", "Semester", "Duration (days)", "Grade");
+						
+					// rows
+					
+						insertTableItem(".table4", "Orange High School", "AP Calculus AB / BC", "2005", "126", "B"); //1
+						insertTableItem(".table4", "Orange High School", "Architectural Design I", "2005", "126", "A+"); //2
+						insertTableItem(".table4", "Orange High School", "Art II", "2005", "126", "A+"); //3
+						insertTableItem(".table4", "Orange High School", "English IV CP / 1", "2005", "126", "A"); //4
+						insertTableItem(".table4", "Orange High School", "English IV CP / 2", "2005", "126", "A-"); //5
+						insertTableItem(".table4", "Orange High School", "History / Democracy", "2005", "126", "A-"); //6
+						insertTableItem(".table4", "Orange High School", "Honors Physics", "2005", "126", "A-"); //7
+						insertTableItem(".table4", "Orange High School", "AP Economics", "2004", "126", "A-"); //8
+						insertTableItem(".table4", "Orange High School", "Art I", "2004", "126", "A+"); //9
+						insertTableItem(".table4", "Orange High School", "CP Government", "2004", "126", "A"); //10
+						insertTableItem(".table4", "Orange High School", "English III", "2004", "126", "A+"); //11
+						insertTableItem(".table4", "Orange High School", "French III", "2004", "126", "A"); //12
+						insertTableItem(".table4", "Orange High School", "Honors Precalculus", "2004", "126", "B"); //13
+						insertTableItem(".table4", "Orange High School", "Honors Biology II", "2004", "126", "A-"); //14
+						insertTableItem(".table4", "Orange High School", "Psychology", "2004", "126", "A+"); //15
+						insertTableItem(".table4", "Orange High School", "Visual Design I", "2004", "126", "A+"); //16
+						insertTableItem(".table4", "Orange High School", "Honors American History", "2003", "126", "B+"); //17
+						insertTableItem(".table4", "Orange High School", "AP Statistics", "2003", "126", "B+"); //18
+						insertTableItem(".table4", "Orange High School", "Engineering Drawing II", "2003", "126", "A+"); //19
+						insertTableItem(".table4", "Orange High School", "English II CP", "2003", "126", "A-"); //20
+						insertTableItem(".table4", "Orange High School", "French II", "2003", "126", "A+"); //21
+						insertTableItem(".table4", "Orange High School", "Health 9-12", "2003", "126", "A+"); //22
+						insertTableItem(".table4", "Orange High School", "Honors Chemistry", "2003", "126", "A"); //23
+						insertTableItem(".table4", "Orange High School", "Intro to Speech", "2003", "126", "A+"); //24
+						insertTableItem(".table4", "Orange High School", "Engineering Drawing I", "2002", "126", "A+"); //25
+						insertTableItem(".table4", "Orange High School", "English I CP", "2002", "126", "A"); //26
+						insertTableItem(".table4", "Orange High School", "French I", "2002", "126", "A+"); //27
+						insertTableItem(".table4", "Orange High School", "Honors Biology", "2002", "126", "B"); //28
+						insertTableItem(".table4", "Orange High School", "Honors Geometry", "2002", "126", "A-"); //29
+						insertTableItem(".table4", "Orange High School", "Physical Education", "2002", "126", "A"); //30
+						insertTableItem(".table4", "Orange High School", "US / World History", "2002", "126", "A+"); //31
+						
+			// code to build the tables
+			
+				// variables
+				
+					var rowAlt = false;	
+					var rowAltStyle = "";
+				
+				// functions
+				
+					// add table header
+					
+						function insertTableHeader(entry, tableName, tableTitleEntry, col1Entry, col2Entry, col3Entry, col4Entry, col5Entry){
+						$(entry).append(
+							'<div class = "addShadow">' +
+								'<table class = "' + tableName + '" id = "addTableBlue">'+
+									'<tbody>'+
+									// header
+										'<tr class = "tableHeader">'+
+											'<td colspan="5">' + tableTitleEntry + '</td>'+
+										'</tr>'+
 										
-									//Append the row to the table
-										$(tableEntry).append(
-													'<tr class = "tableContentRow"' + rowAltStyle + '>'+
-														'<td class = "tableContent" style = "width: 350px;"><span class = "propagate">' + academyEntry + '</span></td>'+
-														'<td class = "tableContent" ><span class = "propagate">' + descriptionEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center; width: 250px;"><span class = "propagate">' + yearEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center; width: 50px;"><span class = "propagate">' + durationEntry + '</span></td>'+
-														'<td class = "tableContent" style = "text-align: center; width: 50px;"><span class = "propagate">' + gradeEntry + '</span></td>'+
-													'</tr>'																		
-														);
-								}//End of insertTableItem function
-					});			
-		</script>
-		
-	<!--HTML-->
-		<body>
-		
-			<table class="tableContainer">
-				<tbody>
-						<!--Row#1: upperBanner-->
-							<div class = "upperBanner"></div><!--imported script-->
+									// sub header
+										'<tr class = "tableContentRow" id = "tableSubHeader">'+
+											'<td class = "tableContent">' + col1Entry + '</td>'+
+											'<td class = "tableContent">' + col2Entry + '</td>'+
+											'<td class = "tableContent">' + col3Entry + '</td>'+
+											'<td class = "tableContent">' + col4Entry + '</td>'+
+											'<td class = "tableContent">' + col5Entry + '</td>'+
+										'</tr>'+
+									'</tbody>'+
+								'</table>' + 
+							'</div>' 
+							);
+						}
 							
-						<!--Row#2: upperButtons-->	
-							<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
-								<div class = "upperButtons"></div><!--imported script-->
-							</div>
+					// add row items
 					
-						<!--Row#3: custom content-->
-							<tr>
-								<td colspan="5">					
-										<div id = "object" class = "animateDownContainers">
-											<div class = "addShadow">
-												<div class="infoContainer">
-													<!--Start of custom page content-->
-														<!--Content Header-->
-															<span class = "fontBlueBoldTitle">8. <u>Degrees:</u></span>
-															<br><br>
-														<!--table1-->	
-															<span class = "fontBlueBoldTitle"><span class = "tab1">8.1. <u>MCIS:</u></span></span>
-															<br><br>
-																<div class = "tableContainer1"></div>
-															<br>	
-														<!--table2-->			
-															<span class = "fontBlueBoldTitle"><span class = "tab1">8.2. <u>MSME:</u></span></span>
-															<br><br>
-																<div class = "tableContainer2"></div>
-															<br>
-														<!--table3-->			
-															<span class = "fontBlueBoldTitle"><span class = "tab1">8.3. <u>BSME:</u></span></span>
-															<br><br>
-																<div class = "tableContainer3"></div>
-															<br>
-														<!--table4-->			
-															<span class = "fontBlueBoldTitle"><span class = "tab1">8.4. <u>HSDG:</u></span></span>
-															<br><br>
-															<div class = "tableContainer4"></div>
-													<!--End of custom page content-->	
-												</div>
-											<div class = "lowerBanner"></div><!--imported script-->
-											</div>
-											<div class = "footnote"></div>	
-										</div>
-								</td>
-							</tr>
-				</tbody>
-			</table>
-		</body>
+						function insertTableItem(tableEntry, academyEntry, descriptionEntry, yearEntry, durationEntry, gradeEntry){
+						
+						// swap the alternating row so it shades differently
+						
+							if (rowAlt == true){ 
+								rowAltStyle = 'id = "altRow"'; 
+								rowAlt = false;
+							}
+							else{
+								rowAltStyle = ""; 
+								rowAlt = true;
+							}
+							
+						// append the row to the table
+						
+							$(tableEntry).append(
+							'<tr class = "tableContentRow"' + rowAltStyle + '>'+
+								'<td class = "tableContent" style = "width: 350px;"><span class = "propagate">' + academyEntry + '</span></td>'+
+								'<td class = "tableContent" ><span class = "propagate">' + descriptionEntry + '</span></td>'+
+								'<td class = "tableContent" style = "text-align: center; width: 250px;"><span class = "propagate">' + yearEntry + '</span></td>'+
+								'<td class = "tableContent" style = "text-align: center; width: 50px;"><span class = "propagate">' + durationEntry + '</span></td>'+
+								'<td class = "tableContent" style = "text-align: center; width: 50px;"><span class = "propagate">' + gradeEntry + '</span></td>'+
+							'</tr>'																		
+							);
+						}
+				});			
+	</script>
+	
+<!--html-->
+
+	<body>
+		<table class="tableContainer">
+			<tbody>
+			
+				<!--row# 1: upper banner-->
+				
+					<div class = "upperBanner"></div>
+					
+				<!--row# 2: upper buttons-->
+				
+					<div style = "box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.5); width: 900px; text-align: center; margin: auto;">
+						<div class = "upperButtons"></div>
+					</div>
+			
+				<!--row# 3: custom content-->
+				
+					<tr>
+						<td colspan="5">					
+							<div id = "object" class = "animateDownContainers">
+								<div class = "addShadow">
+									<div class="infoContainer">
+									
+									<!--start of custom page content-->
+									
+										<!--content header-->
+										
+											<span class='fontSectionHeader'>DEGREES:</span>
+											
+											<br><br>
+											
+										<!--table# 1-->
+										
+											<span class = "fontBlueBoldTitle">
+												<span class = "tab1">
+													<span class='fontSectionHeader'>MCIS:</span>
+												</span>
+											</span>
+											
+											<br><br>
+											
+											<div class = "tableContainer1"></div>
+											
+											<br>
+											
+										<!--table# 2-->
+										
+											<span class = "fontBlueBoldTitle">
+												<span class = "tab1">
+													<span class='fontSectionHeader'>MSME:</span>
+												</span>
+											</span>
+											
+											<br><br>
+											
+												<div class = "tableContainer2"></div>
+												
+											<br>
+											
+										<!--table# 3-->
+										
+											<span class = "fontBlueBoldTitle">
+												<span class = "tab1">
+													<span class='fontSectionHeader'>BSME:</span>
+												</span>
+											</span>
+											
+											<br><br>
+												<div class = "tableContainer3"></div>
+											<br>
+											
+										<!--table# 4-->
+										
+											<span class = "fontBlueBoldTitle">
+												<span class = "tab1">
+													<span class='fontSectionHeader'>HSDG:</span>
+												</span>
+											</span>
+											<br><br>
+											<div class = "tableContainer4"></div>
+									
+									<!--end of custom page content-->
+									</div>
+								<div class = "lowerBanner"></div>
+								</div>
+								<div class = "footnote"></div>	
+							</div>
+						</td>
+					</tr>
+			</tbody>
+		</table>
+	</body>
 </html>
