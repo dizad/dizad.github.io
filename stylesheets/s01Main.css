@@ -1,6 +1,6 @@
-/*This is the main stylesheet for the entire site*/
+/* main stylesheet for the entire site */
 
-/*General styles*/
+/* general styles */
 	body
 		{
 			font-family: Arial, Sans-serif !important;
@@ -74,7 +74,7 @@
 			100% {-webkit-transform: scaleY(1);}		
 		}
 		
-	/*Auxiliary Styles*/
+	/* auxiliary styles */
 		.buttonTabPressed 
 			{
 				background-color: #FF8800;
@@ -100,7 +100,7 @@
 		.tab4 { margin-left: 70px; display:inline-block;}
 		.tab5 { margin-left: 80px; display:inline-block;}
 
-/*Slideshow styles*/	
+/* slideshow styles*/	
 	.slideshowContainer
 		{
 		  max-width: 100%;
@@ -184,7 +184,7 @@
 		  to {opacity: 1}
 		}
 	
-/*Figure styles*/		
+/* figure styles */		
 	.figureCaption
 		{
 			font-style: italic;
@@ -197,7 +197,24 @@
 			font-weight: bold;		
 		}	
 		
-/*Font styles*/
+/* font styles */
+	.fontSectionHeader
+		{
+			color: #4975AA;
+			font-weight: bold;
+			font-family: 'Archivo Black', sans-serif;
+			text-decoration: underline;
+			font-style: normal;
+		}
+		
+	.fontMenuHeader
+		{
+			color: white;
+			font-weight: normal;
+			font-family: 'Archivo Black', sans-serif;
+			font-style: normal;
+		}
+
 	.fontBlueBoldTitle
 		{
 			color: #4975AA;
@@ -223,14 +240,13 @@
 			font-size: 12px;
 			color: #737d86;
 			font-weight: bold;
-			/*opacity: 0.5;*/
 			font-style: italic;
 			text-align: center;
 			margin: auto;
 			padding-top: 7px;
 		}
 				
-/*Table styles*/	
+/* table styles*/	
 	.tableContainer
 		{
 			max-width: 900px;	
@@ -244,7 +260,7 @@
 			background-color: #4975AA; 
 			font-weight: bold;
 			color: white;
-			height: 40px; /*This adjusts the height of the upper header of content tables*/
+			height: 40px; /* adjusts the height of the upper header of content tables */
 			transition: 0.2s ease;
 		}
 				
@@ -304,7 +320,7 @@
 			background-color: #E0F9FF;
 		}
 				
-	/*Software Table*/
+	/* software table */
 		.tableSoftware
 			{
 				text-align: center;
@@ -328,7 +344,7 @@
 				cursor: pointer;
 			}
 			
-/*Icons*/
+/* icons */
 	.iconSize
 		{
 			font-size: 20px;
@@ -351,11 +367,11 @@
 			color: white;
 		}
 
-/*Banners*/		
+/* banners */		
 	.lowerBanner
 		{
-			padding: 15px 0px 0px 0px; /*adjust position of icons relative to banner height*/
-			height: 30px; /*adjusts height of lower banner*/
+			padding: 15px 0px 0px 0px; /* adjust position of icons relative to banner height */
+			height: 30px; /* adjusts height of lower banner */
 			background-color: #4975AA;
 		}
 		
@@ -365,10 +381,10 @@
 			margin: auto;
 			margin-top: 40px;
 			width: 900px;
-			height: 175px; /*This adjusts the offset of the upperbanner*/
+			height: 175px; /* this adjusts the offset of the upper banner */
 		}
 				
-/*Dropdown styles*/
+/* dropdown styles */
 	.dropbtn 
 		{
 			background-color: #4975AA;
@@ -377,11 +393,11 @@
 			color:white;
 			font-size:15px;
 			font-weight:bold;
-			padding: 10px 5px 0px 5px; /*have to adjust this in corrolation to height to maintain vertical align*/			 
+			padding: 10px 5px 0px 5px; /* have to adjust this in corrolation to height to maintain vertical align */			 
 			text-decoration:none;
 			transition: 0.5s ease;
 			width: 170px;
-			height: 30px; /*This adjusts the height of the banner buttons*/			 
+			height: 30px; /* this adjusts the height of the banner buttons */			 
 		}
 
 	.dropdown 
@@ -438,7 +454,7 @@
 			transition: 0.5s ease;
 		}
 	
-/*Tooltip styles*/
+/* tooltip styles */
 	.tooltip 
 		{
 			text-decoration:none;
