@@ -41,9 +41,9 @@
 			
 		// rows
 		
-			insertTableItem(".table01", "Python", "Custom Chat Bots", "2026", "Intermediate");
-			insertTableItem(".table01", "OpenAI", "Custom Chat Bots", "2026", "Beginner");
-			insertTableItem(".table01", "PyTorch", "Data Analytics", "2026", "Beginner");
+			insertTableItem(".table01", "OpenAI API", "Chatbots / RAG", "2026", "Intermediate");
+			insertTableItem(".table01", "Python", "Data Conditioning", "2026", "Beginner");
+			insertTableItem(".table01", "PyTorch", "Custom Neural Networks", "2026", "Beginner");
 
 	// prompt tools
 	
@@ -218,6 +218,52 @@
 									<br><br>
 									
 									<div class = "tableContainer01"></div>
+
+									<br>
+
+								<!--projects-->	
+									
+									<span class='fontSectionHeader tab1'>PROJECTS:</span>
+										
+										<br><br>
+										
+										<span class = "tab1"> 
+										Dan has experience using the OpenAI API to build chatbots that provide natural language responses to custom docs, help menus, and reports.
+										<br><br>
+										Dan begins by pre-processing, filtering, and chunking those documents so that the LLMs provide high quality responses.
+										He builds a frontend page so an admin can add or delete these training documents as necessary.
+										Those documents are then sent through the OpenAI API to generate vector stores on the cloud.
+										<br><br>
+										Dan then builds a frontend chatbot dialog so users can question those documents.
+										Any time the chatbot is prompted, the prompt is sent to the OpenAI API along with the vector Ids it was trained on.
+										Using the gpt-4o-mini model and RAG, the OpenAI API retrieves a response that is sent to the user.
+										<br><br>
+										This process can allow a user to answer the following help-menu questions about an app:
+										<ul>
+											<li>How do you print this page?</li>
+											<li>What does this page do?</li>
+											<li>How do you create an account?</li>
+										</ul>
+
+										However, a deeper process is required to answer code-related questions about an app:
+										<ul>
+											<li>How was this metric calculated?</li>
+											<li>Why is this button disabled?</li>
+											<li>Can you return a metric per these conditions?</li>
+											<li>Can you convert these durations from minutes to hours?</li>
+											<li>Can you generate a report with these requirements?</li>
+										</ul>
+
+										To answer those questions, Dan has to upload selected code base files into the vector stores.
+										For questions that require information from the database, Dan fetches an aggregate from the model, executes it against the database, and returns the data in a friendly format.
+										This process is heavily guarded to avoid sending sensitive information to the user.
+										</span>
+
+									<!--image-->
+										<img src="images/artificialIntelligence/i110Chatbot.jpg" alt="Chatbot" align="middle" style="width:100%">
+
+									<!--caption-->
+										<span class = "figureCaption" style = "margin-left: 60px;"><span class = "figurelabel">Figure 19.1:</span> Interfaces Dan built for AI training and AI prompting.</span>	
 									
 								</div>
 								<div class = "lowerBanner"></div>
